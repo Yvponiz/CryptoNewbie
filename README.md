@@ -58,6 +58,5 @@ Le sprint 0 contient tous les doucments nécessaires à la plannification, la co
 
 Références :
 =======================================================
-Aucune référence pour le moment. 
-
->>>>>>> main
+Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database
+Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs
