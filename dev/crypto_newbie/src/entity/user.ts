@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 export class utilisateur {
 
     @PrimaryGeneratedColumn()
-    _id: number;
+    id: number;
 
     @Column()
     nom: string;
@@ -16,11 +16,9 @@ export class utilisateur {
     courriel: string;
 
     @Column()
-    mot_de_passe: string;
+    password: string;
 
     @Column()
     id_type_compte: number;
 
-    @Column()
-    id_portfolio: number;
 }
