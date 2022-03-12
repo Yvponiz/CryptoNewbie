@@ -35,3 +35,4 @@ Références :
 Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs
+Connexion à l'API coinGecko : https://www.npmjs.com/package/coingecko-api

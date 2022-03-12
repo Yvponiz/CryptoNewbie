@@ -4,6 +4,15 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 
 const Home: NextPage = () => {
+
+  const CoinGecko = require('coingecko-api');
+  const CoinGeckoClient = new CoinGecko();
+
+  var func = async() => {
+    let data = await CoinGeckoClient.ping();
+  };
+  // en attendant, juste pour tester
+
   return (
     <Layout className='container'>
       <Head>
