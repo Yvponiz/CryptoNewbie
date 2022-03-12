@@ -1,17 +1,13 @@
 # C61_Projet_synthese
 Projet synthèse
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-===========================
-=======
+
 Titre du projet : Crypto-Newbie
 
->>>>>>> main
-=======
+
 Titre du projet : Crypto-Newbie
 
->>>>>>> 34abf0753c248b4e0623cd6475040c8c0ea8a7c0
+
 Équipe :
 =======================================================
 	Yvanoski Sanon
