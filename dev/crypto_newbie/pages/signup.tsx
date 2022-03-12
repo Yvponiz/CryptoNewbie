@@ -2,14 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
-import Form from '../components/login'
+import Form from '../components/signup'
 
-const Connexion: NextPage = () => {
-
+const Signup: NextPage = () => {
     return (
-      <Layout className='container'>
+        <Layout className='container'>
         <Head>
-          <title>Crypto Newbie | Connexion</title>
+          <title>Crypto Newbie | Signup</title>
           <meta name="description" content="" />
           <link rel="icon" href="/favicon.ico" />                  
         </Head>
@@ -24,5 +23,5 @@ const Connexion: NextPage = () => {
       </Layout>
     )
 }
-  
-export default Connexion
+
+export default Signup

@@ -1,6 +1,7 @@
 export default function Form() {
+
     return (
-      <form className="login" action="/api/form" method="post">
+      <form className="form" action="/api/form" method="post">
         <h1>Vous avez un compte ? connectez vous</h1>
 
         <label htmlFor="courriel">Courriel</label>
@@ -12,7 +13,8 @@ export default function Form() {
         <button type="submit">Submit</button>
 
         <h1>Pas encore de compte ? Créez en un</h1>
-        <button>Créer un compte</button>
+        <a href="signup">Créer un compte</a>
+        
         
       </form>
     )
