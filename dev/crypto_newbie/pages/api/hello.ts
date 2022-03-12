@@ -22,13 +22,13 @@ createConnection({
     username: "yvan",
     password: "AAAaaa111",
     database: "test",
-    entities: [
+    entities: [ //table
         utilisateur
     ],
-    synchronize: true,
+    synchronize: true, //true pour créer la bd, false pour lier
     logging: true
 }).then(async connection => {
-    const user = new utilisateur()
+    const user = new utilisateur(user.nom, user.prenom, user.courriel, user.id_type_compte, user.password)
     user.courriel = "jim@jim.com"
     user.id_type_compte = 2
     user.password = "AAAaaa111"

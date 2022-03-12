@@ -11,9 +11,6 @@ export default function Layout({children}: LayoutProps) {
   return (
   <>
     <Header></Header>
-    <style jsx>{`
-    
-    `}</style>
 
     <div>
       {children}

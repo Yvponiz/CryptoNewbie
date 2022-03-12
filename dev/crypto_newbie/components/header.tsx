@@ -8,27 +8,19 @@ type HeaderProps = {
   
   export default function Header({children}: HeaderProps) {
     return (
-        <>
-            <style jsx>{`
-                div {
-                    display:flex;
-                    justify-content: space-evenly;
-                }
-            `}</style>
-                
+        <>                
             <div className='header'>
                 <div className='header-logo'>
                     <h1>
-                        CryptoNewbie
+                        Crypto Newbie
                     </h1>
                 </div>
                 <div className='header-links'>
-                    <Link href='Accueil'><a>Accueil</a></Link>
+                    <Link href='/'><a>Accueil</a></Link>
                     <Link href='Contactez-nous'><a>Contact</a></Link>
-                    <Link href='Connexion'><a>Connexion</a></Link>
+                    <Link href='connexion'><a>Connexion</a></Link>
                 </div>
             </div>
         </>
-     
     )
   }
