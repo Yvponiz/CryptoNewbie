@@ -12,6 +12,9 @@ export default function Form() {
   
         <label htmlFor="date_naissance">Date de naissance</label>
         <input type="date" id="date_naissance" name="date_naissance" required />
+
+        <label htmlFor="type_compte">Le type de compte</label>
+        <select id="type_compte" name="type_compte" required />
   
         <label htmlFor="password">Mot de passe</label>
         <input type="password" id="password" name="password" required />
