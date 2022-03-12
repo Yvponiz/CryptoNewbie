@@ -13,6 +13,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
+        <div className='search-section'>
+          <form action="/api/search" method="post">
+            <input type="text" id="search" name="search" placeholder="Rechercher" />
+            <button type='submit'>Rechercher</button>
+          </form>
+        </div>
         
       </main>
 

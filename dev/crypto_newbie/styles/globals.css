@@ -28,6 +28,11 @@ button {
   margin-top: 30px;
 }
 
+input{
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+  font-size: 1em;
+}
+
 .container {
   padding: 0 2rem;
 }
@@ -94,6 +99,12 @@ button {
   border-radius: 15px ;
   border-style: groove;
   text-align: center;
+}
+
+.search-section{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 
