@@ -14,7 +14,7 @@ const Signup: NextPage = () => {
         </Head>
   
         <main className='main'>
-            <div className='signup'>
+            <div className='content-form'>
                 {Form()}
             </div>
 

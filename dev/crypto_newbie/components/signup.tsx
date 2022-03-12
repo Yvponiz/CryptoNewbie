@@ -1,6 +1,6 @@
 export default function Form() {
     return (
-      <form className="signup" action="/api/form" method="post">
+      <form className="form" action="/api/form" method="post">
         <label htmlFor="first">First Name</label>
         <input type="text" id="first" name="first" required />
   
