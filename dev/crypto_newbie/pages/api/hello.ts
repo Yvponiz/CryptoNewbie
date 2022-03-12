@@ -34,6 +34,7 @@ createConnection({
     user.password = "AAAaaa111"
     user.nom = "jam"
     user.prenom = "jim"
+    user.date_naissance = "2022-08-22"
 
     await connection.manager.save(user);
     console.log("User has been saved");
