@@ -1,4 +1,4 @@
-export default function Form() {
+export default function Login() {
 
     return (
       <form className="form" action="/api/form" method="post">

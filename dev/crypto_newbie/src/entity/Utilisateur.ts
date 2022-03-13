@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class utilisateur {
+export class Utilisateur {
     constructor(nom:string, prenom:string, courriel:string,id_type_compte:number, password:string, date_naissance:string){
         this.nom = nom
         this.prenom = prenom
