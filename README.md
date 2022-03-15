@@ -30,4 +30,6 @@ Références :
 =======================================================
 Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm
+Solution pour créer une seule connexion: https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs
+

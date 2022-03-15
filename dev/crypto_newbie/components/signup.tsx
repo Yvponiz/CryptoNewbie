@@ -1,11 +1,11 @@
 export default function Form() {
     return (
-      <form className="form" action="/api/form" method="post">
-        <label htmlFor="first">First Name</label>
-        <input type="text" id="first" name="first" required />
+      <form className="form" action="/api/loginForm" method="post">
+        <label htmlFor="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" required />
   
-        <label htmlFor="last">Last Name</label>
-        <input type="text" id="last" name="last" required />
+        <label htmlFor="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required />
   
         <label htmlFor="courriel">Courriel</label>
         <input type="text" id="courriel" name="courriel" required />
@@ -14,7 +14,7 @@ export default function Form() {
         <input type="date" id="date_naissance" name="date_naissance" required />
 
         <label htmlFor="type_compte">Le type de compte</label>
-        <select id="type_compte" name="type_compte" required />
+        <input type="text" id="type_compte" name="type_compte" required />
   
         <label htmlFor="password">Mot de passe</label>
         <input type="password" id="password" name="password" required />
