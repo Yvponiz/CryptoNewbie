@@ -5,13 +5,6 @@ import Layout from '../components/layout'
 
 const Home: NextPage = () => {
 
-  const CoinGecko = require('coingecko-api');
-  const CoinGeckoClient = new CoinGecko();
-
-  var func = async() => {
-    let data = await CoinGeckoClient.ping();
-  };
-  // en attendant, juste pour tester
 
   return (
     <Layout className='container'>
@@ -27,6 +20,9 @@ const Home: NextPage = () => {
             <input type="text" id="search" name="search" placeholder="Rechercher" />
             <button type='submit'>Rechercher</button>
           </form>
+        </div>
+
+        <div className='crypto-section'>    
         </div>
         
       </main>
