@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import crypto from 'crypto';
 
 function CallCrypto() {
   const [cryptos, setCryptos] = useState([]);
+  const [recherche, setRecherche] = useState('');
 
   useEffect(() => {
     axios.get(
@@ -12,6 +14,20 @@ function CallCrypto() {
         setCryptos(response.data);
       })
   }, []);
+
+/*
+  return(
+    <div className='cryptos-section'>
+      <Crypto
+        nom={crypto.name}
+        symbol={crypto.id}
+        prix={crypto.price}
+        marketCap={crypto.market_cap}
+      />
+    </div>
+  )
+  */
 }
+
 
 export default CallCrypto;
