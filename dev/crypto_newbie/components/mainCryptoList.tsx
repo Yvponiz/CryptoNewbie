@@ -4,7 +4,6 @@ import crypto from 'crypto';
 
 function CallCrypto() {
   const [cryptos, setCryptos] = useState([]);
-  const [recherche, setRecherche] = useState('');
 
   useEffect(() => {
     axios.get(
@@ -15,18 +14,18 @@ function CallCrypto() {
       })
   }, []);
 
-/*
+
   return(
     <div className='cryptos-section'>
-      <Crypto
-        nom={crypto.name}
-        symbol={crypto.id}
-        prix={crypto.price}
-        marketCap={crypto.market_cap}
-      />
+      <div className='crypto-column'>
+        <p className='crypto-rang'>{crypto.rank}</p>
+        <p className='crypto-nom'>{crypto.name}</p>
+        <p className='crypto-symbol'>{crypto.id}</p>
+        <p className='crypto-prix'>{crypto.price}</p>
+        <p className='crypto-marketCap'>{crypto.market_cap}</p>
+      </div>
     </div>
   )
-  */
 }
 
 
