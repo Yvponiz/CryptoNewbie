@@ -33,7 +33,11 @@ Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeo
 Solution pour créer une seule connexion: https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs
 <<<<<<< HEAD
+<<<<<<< HEAD
 Connexion à l'API coinGecko : https://www.npmjs.com/package/coingecko-api
+=======
+
+>>>>>>> 83365120d41bb87f473d6808fb93fb3c20f22240
 =======
 
 >>>>>>> 83365120d41bb87f473d6808fb93fb3c20f22240

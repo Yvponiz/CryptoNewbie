@@ -98,7 +98,7 @@ input{
   text-align: center;
 }
 
-<<<<<<< HEAD
+
 .search-section{
   display: flex;
   flex-direction: row;
@@ -111,13 +111,11 @@ input{
   color: white;
 }
 
-=======
+
 .william {
   color: white;
   font-size: 30px;
 }
->>>>>>> 83365120d41bb87f473d6808fb93fb3c20f22240
-
 
 /* @media (max-width: 600px) {
   .grid {
@@ -125,5 +123,3 @@ input{
     flex-direction: column;
   }
 } */
-
-
