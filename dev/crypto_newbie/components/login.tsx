@@ -1,7 +1,7 @@
-export default function Form() {
+export default function Login() {
 
     return (
-      <form className="form" action="/api/form" method="post">
+      <form className="form" action="/api/loginForm" method="post">
         <h1>Vous avez un compte ? connectez vous</h1>
 
         <label htmlFor="courriel">Courriel</label>

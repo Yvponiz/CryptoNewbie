@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-      <link href="http://fonts.cdnfonts.com/css/pf-tempesta-five" rel="stylesheet"/> 
+      <link href="https://fonts.cdnfonts.com/css/pf-tempesta-five" rel="stylesheet"/> 
       </Head>
       <body>
         <Main />

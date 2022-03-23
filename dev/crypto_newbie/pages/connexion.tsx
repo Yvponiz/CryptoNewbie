@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import Layout from '../components/layout'
-import Form from '../components/login'
+import Login from '../components/login'
 
 const Connexion: NextPage = () => {
 
@@ -16,7 +15,7 @@ const Connexion: NextPage = () => {
   
         <main className='main'>
             <div className='content-form'>
-                {Form()}
+                <Login />
             </div>
 
         </main>
