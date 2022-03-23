@@ -2,8 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
-import Willy from '../components/willy'
-
+import getPing from '../pages/api/coinGecko'
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
-
+        {getPing}
       </main>
 
     </Layout>

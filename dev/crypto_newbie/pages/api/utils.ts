@@ -1,6 +1,8 @@
 import { Connection, ConnectionOptions, createConnection, getConnectionManager } from "typeorm"
 import { Utilisateur } from "../../src/entity/Utilisateur"
 
+const connectionManager = getConnectionManager()
+
 // const connection = createConnection({
 //     type: "postgres",
 //     url: process.env.DATABASE_URL || "postgres://yvan:AAAaaa111@localhost:5432/cryptonewbie",
@@ -13,8 +15,6 @@ import { Utilisateur } from "../../src/entity/Utilisateur"
 //     synchronize: true, //true pour créer la bd, false pour lier
 //     logging: true
 // })
-
-const connectionManager = getConnectionManager()
 
 export async function getConnection(name: string = "default"): Promise < Connection > {
     const CONNECTION_NAME: string = name;
@@ -43,6 +43,8 @@ export async function getConnection(name: string = "default"): Promise < Connect
     }
     return connection;
 }
+
+
 
 
 // export const getConnection = () => {
