@@ -16,7 +16,7 @@ export default function getPing(
 ) {
     getPong().then(async connection => {
 
-        //   await CoinGeckoClient.ping;
+        await connection.CoinGeckoClient.ping;
         console.log("Ping");
 
         res.status(200).send("Ping Successful")
