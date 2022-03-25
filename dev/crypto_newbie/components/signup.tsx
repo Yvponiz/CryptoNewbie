@@ -1,4 +1,4 @@
-export default function Form() {
+export default function SignupForm() {
     return (
       <form className="form" action="/api/loginForm" method="post">
         <label htmlFor="prenom">Prénom</label>

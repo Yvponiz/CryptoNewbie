@@ -20,18 +20,5 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<string>
 ) {
-<<<<<<< HEAD
-    getPong().then(async connection => {
-
-        await connection.CoinGeckoClient.ping;
-        console.log("Ping");
-
-        res.status(200).send("Ping Successful")
-    }).catch(error => {
-        res.status(500).send(error.toString())
-    });
-}
-=======
     res.status(200).json(await getList()) // fonctionne même si en rouge, une fonction doit être async pour que await fonctionne
 }
->>>>>>> 5bd166174fba433cb026be0ed43087415bcc50cf
