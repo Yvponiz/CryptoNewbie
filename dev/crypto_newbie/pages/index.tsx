@@ -40,7 +40,7 @@ const Home: NextPage = () => {
 
       <main className='main'>
         <div>{pingState}</div>
-        
+        <SearchBar />
         <ul>{handlerState.slice(0,10).map((coin) => <li>{coin.id} {coin.symbol} {coin.name}</li>)}</ul>
       </main>
 
