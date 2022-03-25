@@ -21,13 +21,13 @@ Installation :
 =======================================================
 Liste des dependecies :
 -------------------------------------------------------
-React  
-React-dom  
-Next  
-Typescript-Node  
-Postgres  
-TypeORM  
-CoinGecko API  
+	React  
+	React-dom  
+	Next  
+	Typescript-Node  
+	Postgres  
+	TypeORM  
+	CoinGecko API  
 
 Références :
 =======================================================
