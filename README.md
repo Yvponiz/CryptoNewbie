@@ -4,10 +4,6 @@ Projet synthèse
 
 Titre du projet : Crypto-Newbie
 
-
-Titre du projet : Crypto-Newbie
-
-
 Équipe :
 =======================================================
 	Yvanoski Sanon

@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
-import Form from '../components/signup'
+import Form from '../components/signupForm'
 
 const Signup: NextPage = () => {
     return (

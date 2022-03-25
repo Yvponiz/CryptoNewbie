@@ -1,6 +1,8 @@
-export default function Form() {
+import { TypeCompte } from "../src/entity/Utilisateur"
+
+export default function signupForm() {
     return (
-      <form className="form" action="/api/loginForm" method="post">
+      <form className="form" action="/api/submitForm" method="post">
         <label htmlFor="prenom">Prénom</label>
         <input type="text" id="prenom" name="prenom" required />
   
@@ -14,7 +16,11 @@ export default function Form() {
         <input type="date" id="date_naissance" name="date_naissance" required />
 
         <label htmlFor="type_compte">Le type de compte</label>
-        <input type="text" id="type_compte" name="type_compte" required />
+        <select id="type_compte" name="type_compte" required>
+          <option selected value={TypeCompte[1].Value}>Débutant</option>
+          <option value={TypeCompte[2].Value}>Amateur</option>
+          <option value={TypeCompte[3].Value}>Professionnel</option>
+        </select>
   
         <label htmlFor="password">Mot de passe</label>
         <input type="password" id="password" name="password" required />
@@ -23,7 +29,7 @@ export default function Form() {
         <input type="password" id="conf_password" name="conf_password" required />
   
         <button type="submit">Submit</button>
-  
+        {TypeCompte[1].Montant}
       </form>
     )
   }
