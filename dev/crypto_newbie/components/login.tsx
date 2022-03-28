@@ -14,8 +14,6 @@ export default function Login() {
 
         <h1>Pas encore de compte ? Créez en un</h1>
         <a href="signup">Créer un compte</a>
-        
-        
       </form>
     )
   }

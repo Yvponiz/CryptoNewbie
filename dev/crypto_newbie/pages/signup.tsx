@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import Layout from '../components/layout'
-import Form from '../components/signupForm'
+import SignupForm from '../components/signupForm'
 
 const Signup: NextPage = () => {
     return (
@@ -15,7 +14,7 @@ const Signup: NextPage = () => {
   
         <main className='main'>
             <div className='content-form'>
-                {Form()}
+              <SignupForm />
             </div>
 
         </main>

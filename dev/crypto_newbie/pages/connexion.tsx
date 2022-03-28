@@ -15,7 +15,7 @@ const Connexion: NextPage = () => {
   
         <main className='main'>
             <div className='content-form'>
-                <Login />
+              <Login />
             </div>
 
         </main>

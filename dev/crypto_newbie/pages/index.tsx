@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import Image from 'next/image'
 
 
 const Home: NextPage = () => {
 
   const [handlerState, setHandler] = useState([])
-  const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
+  //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
 
   /* Facon de faire avant le Hook (useEffect + fetch)
   const [listState, setList] = useState("List?");
@@ -39,8 +40,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
-        <div>{pingState}</div>
-        <ul>{handlerState.slice(0,10).map((coin) => <li>{coin.id} {coin.symbol} {coin.name}</li>)}</ul>
+        <ul>{handlerState.slice(0,20).map((coin) => <li key={coin.id}>{coin.symbol} {coin.name} {coin.market_data.current_price.cad+'$'} <Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image> </li>)}</ul>
       </main>
 
     </Layout>
