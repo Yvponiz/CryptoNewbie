@@ -1,12 +1,10 @@
 import { stringify } from "querystring";import React, { useState } from "react";
+import { searchCrypto } from "../pages/api/coinGecko";
 
 export default function SearchBar () {
-  const [clickedButton, setClickedButton] = useState('');
-  const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    setClickedButton(button.name);
-  };
+  function searchAction(search:String){
+    searchCrypto(search);
+  }
 
   return(
     <div className="searchbar-section">
@@ -14,8 +12,8 @@ export default function SearchBar () {
         <input type="text" id="search" name="search" placeholder="Rechercher" />
       </div>
       <div className="button-search">
-        <button onClick={buttonHandler}>Rechercher</button>
+        <button onClick={searchAction}>Rechercher</button>
       </div>
     </div>
   )
-}
+  }

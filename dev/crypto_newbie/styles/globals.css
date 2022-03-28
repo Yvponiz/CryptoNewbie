@@ -100,7 +100,7 @@ input{
 }
 
 
-.search-section{
+.searchbar-section{
   display: flex;
   flex-direction: row;
   align-items: flex-end;

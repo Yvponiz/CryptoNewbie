@@ -1,19 +1,33 @@
-import axios from "axios"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation } from "typeorm";
+import "reflect-metadata";
+import { ListePerso } from "./ListePerso";
 
-
+@Entity()
 export class Crypto {
-    constructor(rank:number, nom:string, symbol:string, price:number, marketCap:number){
-        this.rank = rank
+    constructor(nom:string, symbole:string, croissance:number, market_cap:number){
         this.nom = nom
-        this.symbol = symbol
-        this.price = price
-        this.marketCap = marketCap
+        this.symbole = symbole
+        this.croissance = croissance
+        this.market_cap = market_cap
     }
 
-    rank:number;
-    nom:string;
-    symbol:string;
-    price:number;
-    marketCap:number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
+    @Column()
+    nom: string;
+    
+    @Column()
+    symbole: string;
+
+    @Column({ type: "float"})
+    croissance: number
+
+    @Column({ type: "float"})
+    market_cap: number
+
+    @ManyToOne(()=> ListePerso, (listes) => listes.crypto, {
+        cascade: true
+    })
+    liste_perso: Relation<ListePerso>
 }
