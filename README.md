@@ -43,3 +43,4 @@ Documentation sur Find : https://developer.mozilla.org/en-US/docs/Web/JavaScript
 Documentation sur Filter : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter  
 Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch  
 Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?  
+Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event  

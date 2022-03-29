@@ -3,14 +3,14 @@ import { ListePerso } from '../../backend/entity/ListePerso';
 import { Portfolio } from '../../backend/entity/Portfolio';
 import {Utilisateur } from "../../backend/entity/Utilisateur";
 import { Crypto } from '../../backend/entity/Crypto';
-import { TypeCompte } from '../../frontend/components/signupForm';
+import { TypeCompte } from '../../common/typecompte';
 import { Transactions } from '../../backend/entity/Transactions';
 import * as utils from "../../backend/utils"; //tout ce qui est dans utils
 
 
 export default function submitForm(
   req: NextApiRequest,
-  res: NextApiResponse<string>
+  res: NextApiResponse<{status:string}>
 ) {
   utils.getConnection().then(async connection => {
     // Arguments
@@ -47,7 +47,7 @@ export default function submitForm(
     await userRepo.save(user)
     console.log("User has been saved");
 
-    res.status(200).redirect("/connexion")
+    res.status(200).json({status:"success"})
   }).catch(error => {
     res.status(500).send(error.toString())
   });

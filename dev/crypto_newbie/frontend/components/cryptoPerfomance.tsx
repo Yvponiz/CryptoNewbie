@@ -15,8 +15,7 @@ export default function BestCrypto() {
 
     return (
         <div className="crypto-performance">
-            {handlerState.map((coin) => <div key={coin.id}> {coin.name}</div>)}
+            {handlerState.slice(0,1).map((coin) => <div key={coin.id}> {coin.name}</div>)}
         </div>
     )
-
 }
