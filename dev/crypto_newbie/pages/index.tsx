@@ -40,12 +40,19 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
-      <div>
-        <SearchBar />
-      </div>
-      <div>
-      <ul>{handlerState.slice(0,20).map((coin) => <li key={coin.id}>{coin.symbol} {coin.name} {coin.market_data.current_price.cad+'$'} <Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image> </li>)}</ul>
-      </div>
+        <div className='search-bar'>
+          <SearchBar />
+        </div>
+        <div className='section-list'>
+          <div className='titles-list'>
+            <p>#</p>
+            <p>Nom</p>
+            <p>Symbol</p>
+            <p>Prix</p>
+            <p>Market cap</p>
+          </div>
+          <div>{handlerState.slice(0,25).map((coin) => <div className='coin' key={coin.id}> <p>{coin.market_data.market_cap_rank}</p> <img src={coin.image.small} width="30px" height="30px" alt='coin image'></img> <p>{coin.name}</p> <p>{coin.symbol}</p> <p>{coin.market_data.current_price.cad+'$'}</p> <p>{coin.market_data.market_cap.cad+'$'}</p> <button>Acheter</button> </div>)}</div>
+        </div>
       </main>
 
     </Layout>

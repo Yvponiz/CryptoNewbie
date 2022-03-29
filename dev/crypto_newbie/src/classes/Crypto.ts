@@ -4,7 +4,8 @@ import { ListePerso } from "./ListePerso";
 
 @Entity()
 export class Crypto {
-    constructor(nom:string, symbole:string, croissance:number, market_cap:number){
+    constructor(rank:number, nom:string, symbole:string, croissance:number, market_cap:number){
+        this.rank = rank
         this.nom = nom
         this.symbole = symbole
         this.croissance = croissance
@@ -16,6 +17,9 @@ export class Crypto {
 
     @Column()
     nom: string;
+
+    @Column()
+    rank: number;
     
     @Column()
     symbole: string;

@@ -22,8 +22,8 @@ export async function getCoins(){
     return data.data
 }
 
-export async function searchCrypto(crypto:String){
-    let data = await CoinGeckoClient.search(crypto);
+export async function searchCrypto(crypto){
+    let data = await CoinGeckoClient.coins.fetch(crypto, {});
     return data.data
 }
 

@@ -2,9 +2,10 @@ import { stringify } from "querystring";import React, { useState } from "react";
 import { searchCrypto } from "../pages/api/coinGecko";
 
 export default function SearchBar () {
-  function searchAction(search:String){
-    searchCrypto(search);
-  }
+  const searchAction = () => {
+    let inputValue = (document.getElementById('search') as HTMLInputElement).value;
+    searchCrypto(inputValue);
+  };
 
   return(
     <div className="searchbar-section">

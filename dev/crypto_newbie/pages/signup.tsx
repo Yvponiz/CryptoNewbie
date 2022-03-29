@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import Layout from '../components/layout'
+<<<<<<< HEAD
 import SignupForm from '../components/signup'
+=======
+import SignupForm from '../components/signupForm'
+>>>>>>> 75155911c1684d728e596ebb41b6d7c05d96b238
 
 const Signup: NextPage = () => {
     return (
