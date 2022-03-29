@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import Layout from '../components/layout'
+import Layout from '../frontend/components/layout'
 import Image from 'next/image'
-
+import { useState, useEffect } from 'react'
+import BestCrypto from '../frontend/components/cryptoPerfomance'
 
 const Home: NextPage = () => {
 
@@ -40,7 +39,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
-        <ul>{handlerState.slice(0,20).map((coin) => <li key={coin.id}>{coin.symbol} {coin.name} {coin.market_data.current_price.cad+'$'} <Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image> </li>)}</ul>
+        <BestCrypto />
+        <ul>{handlerState.slice(0, 20).map((coin) => <li key={coin.id}>{coin.symbol} {coin.name} {coin.market_data.current_price.cad + '$'} <Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image> </li>)}</ul>
       </main>
 
     </Layout>

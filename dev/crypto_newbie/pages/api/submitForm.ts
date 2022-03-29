@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { ListePerso } from '../../src/entity/ListePerso';
-import { Portfolio } from '../../src/entity/Portfolio';
-import {Utilisateur } from "../../src/entity/Utilisateur";
-import { Crypto } from '../../src/entity/Crypto';
-import { TypeCompte } from '../../components/signupForm';
-import * as utils from "./utils"; //tout ce qui est dans utils
-import { Transactions } from '../../src/entity/Transactions';
+import { ListePerso } from '../../backend/entity/ListePerso';
+import { Portfolio } from '../../backend/entity/Portfolio';
+import {Utilisateur } from "../../backend/entity/Utilisateur";
+import { Crypto } from '../../backend/entity/Crypto';
+import { TypeCompte } from '../../frontend/components/signupForm';
+import { Transactions } from '../../backend/entity/Transactions';
+import * as utils from "../../backend/utils"; //tout ce qui est dans utils
 
 
 export default function submitForm(
@@ -32,11 +32,12 @@ export default function submitForm(
     const portfolioRepo = connection.manager.getRepository(Portfolio)
     const userRepo = connection.manager.getRepository(Utilisateur)
 
-    listes.crypto = [cryptomonnaie] // Connecter crypto à liste perso
-    portfolio.valeur = TypeCompte[type_compte].Valeur // Passer directement la valeur au portfolio selon le type de compte
-    portfolio.liste_perso = [listes] // Connecter liste perso à portfolio
-    user.transactions = [transaction] // Connecter transactions à utilisateur
-    user.portfolio = portfolio // Connecter portfolio à utilisateur
+    // Liens entre tables
+    listes.crypto = [cryptomonnaie] 
+    portfolio.valeur = TypeCompte[type_compte].Valeur
+    portfolio.liste_perso = [listes]
+    user.transactions = [transaction]
+    user.portfolio = portfolio 
 
     // Sauvegarde des entities(tables)
     await cryptoRepo.save(cryptomonnaie);

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import * as utils from "../api/utils"; //tout ce qui est dans utils
+import * as utils from "../../backend/utils"; //tout ce qui est dans utils
 
 
 const CoinGecko = require('coingecko-api');
@@ -9,7 +9,6 @@ export async function getPing() {
     let data = await CoinGeckoClient.ping();
     return data.data.gecko_says
 };
-
 
 export async function getList() {
     let data = await CoinGeckoClient.coins.list();
@@ -22,9 +21,14 @@ export async function getCoins(){
     return data.data
 }
 
+export async function getBest() {
+    let data = await CoinGeckoClient.coins.all(CoinGecko.ORDER["HOUR_24_ASC"])
+    return data.data
+}
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<string>
 ) {
-    res.status(200).json(await getCoins()) // fonctionne même si en rouge, une fonction doit être async pour que await fonctionne
+    res.status(200).json(await getBest()) // fonctionne même si en rouge, une fonction doit être async pour que await fonctionne
 }

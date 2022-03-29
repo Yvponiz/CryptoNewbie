@@ -1,9 +1,9 @@
 import { Connection, ConnectionOptions, createConnection, getConnectionManager } from "typeorm"
-import { Utilisateur } from "../../src/entity/Utilisateur"
-import { Portfolio } from "../../src/entity/Portfolio";
-import { ListePerso } from "../../src/entity/ListePerso";
-import { Crypto } from "../../src/entity/Crypto";
-import { Transactions } from "../../src/entity/Transactions";
+import { Utilisateur } from "./entity/Utilisateur"
+import { Portfolio } from "./entity/Portfolio";
+import { ListePerso } from "./entity/ListePerso";
+import { Crypto } from "./entity/Crypto";
+import { Transactions } from "./entity/Transactions";
 
 const connectionManager = getConnectionManager()
 

@@ -66,6 +66,16 @@ button {
   text-decoration: underline;
 }
 
+/*-------------------------------Accueil-------------------------------*/
+
+.crypto-performance {
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px ;
+  border-style: groove;
+  text-align: center;
+}
+
+
 /*-------------------------------Connexion-------------------------------*/
 
 .content-form {
