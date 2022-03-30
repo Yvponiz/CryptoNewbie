@@ -10,11 +10,16 @@ function onSubmit(event: FormEvent, state) {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then((response) => response.json())
+    }).catch((response) => response.json())
+      .then((response) => response.json())
       .then((data) => {
         if(data.status === "success"){
           window.location.href = "/connexion"
         }
+        else if (data.status === "erreur") {
+          window.alert(data.errors.join("\n"))
+        }
+        console.log(data)
       })
   console.log(state)
 }

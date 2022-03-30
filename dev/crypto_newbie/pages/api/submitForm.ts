@@ -6,15 +6,20 @@ import { Crypto } from '../../backend/entity/Crypto';
 import { TypeCompte } from '../../common/typecompte';
 import { Transactions } from '../../backend/entity/Transactions';
 import * as utils from "../../backend/utils"; //tout ce qui est dans utils
+import { stringify } from 'querystring';
 
 
 export default function submitForm(
   req: NextApiRequest,
-  res: NextApiResponse<{status:string}>
+  res: NextApiResponse<{status:string, errors:string[]}>
 ) {
   utils.getConnection().then(async connection => {
     // Arguments
-    const { nom, prenom, courriel, type_compte, password, date_naissance } = req.body // arguments reçu du form dans signup.tsx
+    const { nom, prenom, courriel, type_compte, password, conf_password, date_naissance } = req.body // arguments reçu du form dans signup.tsx
+    if (password !== conf_password){
+      res.status(400).json( {status:"erreur", errors:["Les deux mots de passes ne sont pas identiques"]})
+      return
+    }
     //const nomListe = req.body // arguments reçu de création de liste
     const nomListe = "nom"
 
@@ -47,7 +52,7 @@ export default function submitForm(
     await userRepo.save(user)
     console.log("User has been saved");
 
-    res.status(200).json({status:"success"})
+    res.status(200).json({status:"success", errors:[]})
   }).catch(error => {
     res.status(500).send(error.toString())
   });
