@@ -12,7 +12,7 @@ type HeaderProps = {
             <div className='header'>
                 <div className='header-logo'>
                     <h1>
-                        Crypto Newbie
+                        <a href="/">Crypto Newbie</a>
                     </h1>
                 </div>
                 <div className='header-links'>

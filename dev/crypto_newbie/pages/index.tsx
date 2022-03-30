@@ -2,10 +2,27 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
 import Image from 'next/image'
+import SearchBar from '../frontend/components/searchBar'
 import { useState, useEffect } from 'react'
 import BestCrypto from '../frontend/components/cryptoPerfomance'
+import { getSession } from '../common/getSession'
 
-const Home: NextPage = () => {
+
+export async function getServerSideProps({ req, res }) {
+  const session = await getSession(req, res);
+
+  return {
+    props: {
+      userid: session.userid ?? null,
+    },
+  };
+}
+
+interface Props{
+  userid: number; 
+}
+
+const Home: NextPage<Props> = (props:{userid:number | null}) => {
 
   const [handlerState, setHandler] = useState([])
   //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
@@ -39,8 +56,29 @@ const Home: NextPage = () => {
       </Head>
 
       <main className='main'>
-        <BestCrypto />
-        <ul>{handlerState.slice(0, 20).map((coin) => <li key={coin.id}>{coin.symbol} {coin.name} {coin.market_data.current_price.cad + '$'} <Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image> </li>)}</ul>
+        <div className='search-bar'>
+          <SearchBar />
+        </div>
+        <div className='section-list'>
+          <div className='titles-list'> 
+            <p>#</p>
+            <p>Logo</p>
+            <p>Nom</p>
+            <p>Symbol</p>
+            <p>Prix</p>
+            <p>Market cap</p>
+            <p>24 heures</p>
+          </div>
+          <div>{handlerState.slice(0,25).map((coin) => <div className='coin' key={coin.id}> 
+            <li>{coin.market_data.market_cap_rank}</li> 
+            <li><Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image></li>
+            <li>{coin.name}</li> 
+            <li>{coin.symbol}</li> 
+            <li>{coin.market_data.current_price.cad.toLocaleString()+' $'}</li> 
+            <li>{coin.market_data.market_cap.cad.toLocaleString()+' $'}</li> 
+            <li>{coin.market_data.price_change_percentage_24h.toFixed(2)+' %'}</li> 
+          </div>)}</div>
+        </div>
       </main>
 
     </Layout>

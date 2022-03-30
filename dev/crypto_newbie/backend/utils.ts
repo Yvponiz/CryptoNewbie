@@ -25,7 +25,7 @@ export async function getConnection(name: string = "default"): Promise < Connect
             extra: {
                 ssl: process.env.NODE_ENV === 'production', rejectUnauthorized: false
             },
-            entities: [ //table
+            entities: [ //tables
             Utilisateur,
             Portfolio,
             Transactions,
