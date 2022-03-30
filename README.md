@@ -24,6 +24,7 @@ Liste des dependecies :
 	React  
 	React-dom  
 	Next  
+	Next-Session  
 	Typescript-Node  
 	Postgres  
 	TypeORM  
@@ -44,3 +45,4 @@ Documentation sur Filter : https://developer.mozilla.org/en-US/docs/Web/JavaScri
 Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch  
 Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?  
 Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event  
+Documentation sur Next-Session : https://github.com/hoangvvo/next-session  

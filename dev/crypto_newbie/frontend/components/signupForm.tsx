@@ -3,7 +3,7 @@ import { TypeCompte } from "../../common/typecompte"
 
 function onSubmit(event: FormEvent, state) {
   event.preventDefault()
-  fetch("/api/submitForm",
+  fetch("/api/signup",
     {
       body: JSON.stringify(state),
       method: "POST",
@@ -39,7 +39,7 @@ export default function SignupForm() {
   //onChange={(event) => changeState({...state, prenom:event.target.value})} prends tout ce qui à dans le state plus nouvelle valeur
 
   return (
-    <form className="form" action="/api/submitForm" method="POST" onSubmit={(event) => onSubmit(event, state)}>
+    <form className="form" method="POST" onSubmit={(event) => onSubmit(event, state)}>
       <label htmlFor="prenom">Prénom</label>
       <input onChange={(event) => changeState({ ...state, prenom: event.target.value })} type="text" id="prenom" name="prenom" required />
 

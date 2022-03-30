@@ -19,6 +19,7 @@ type HeaderProps = {
                     <Link href='/'><a>Accueil</a></Link>
                     <Link href='Contactez-nous'><a>Contact</a></Link>
                     <Link href='connexion'><a>Connexion</a></Link>
+
                 </div>
             </div>
         </>

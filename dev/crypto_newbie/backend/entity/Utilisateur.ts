@@ -1,11 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation, BaseEntity } from "typeorm";
 import "reflect-metadata";
 import { Portfolio } from "./Portfolio";
 import { Transactions } from "./Transactions";
 
-// const bcrypt = require('bcrypt')
-// const saltRounds = 10
-// const salt = bcrypt.genSaltSync(saltRounds);
 
 export enum UserRole {
     Admin = "Admin",
@@ -14,8 +11,9 @@ export enum UserRole {
 }
 
 @Entity()
-export class Utilisateur {
+export class Utilisateur extends BaseEntity{
     constructor(nom:string, prenom:string, courriel:string, type_compte:number, password:string, date_naissance:string){
+        super()
         this.nom = nom
         this.prenom = prenom
         this.courriel = courriel
