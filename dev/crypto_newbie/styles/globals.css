@@ -38,33 +38,28 @@ input{
   justify-content: flex-start;
   align-items: flex-start;
   background-color: black;
-  padding-left: 5%;
+  padding: 0 5% 5%;
 }
 
 .coin{
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 8px 8px;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  justify-content: space-between;
   width: 100%;
   align-items: center;
 }
 
-.coin button{
-  padding: 10px;
-}
 
 .section-list{
+  display: grid;
   width: 100%;
 }
 
 .titles-list{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .search-bar{

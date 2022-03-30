@@ -46,12 +46,22 @@ const Home: NextPage = () => {
         <div className='section-list'>
           <div className='titles-list'>
             <p>#</p>
+            <p>Logo</p>
             <p>Nom</p>
             <p>Symbol</p>
             <p>Prix</p>
             <p>Market cap</p>
+            <p>24 heures</p>
           </div>
-          <div>{handlerState.slice(0,25).map((coin) => <div className='coin' key={coin.id}> <p>{coin.market_data.market_cap_rank}</p> <img src={coin.image.small} width="30px" height="30px" alt='coin image'></img> <p>{coin.name}</p> <p>{coin.symbol}</p> <p>{coin.market_data.current_price.cad+'$'}</p> <p>{coin.market_data.market_cap.cad+'$'}</p> <button>Acheter</button> </div>)}</div>
+          <div>{handlerState.slice(0,25).map((coin) => <div className='coin' key={coin.id}> 
+            <p>{coin.market_data.market_cap_rank}</p> 
+            <img src={coin.image.small} width="30px" height="30px" alt='coin image'></img> 
+            <p>{coin.name}</p> 
+            <p>{coin.symbol}</p> 
+            <p>{coin.market_data.current_price.cad+' $'}</p> 
+            <p>{coin.market_data.market_cap.cad+' $'}</p> 
+            <p>{coin.market_data.price_change_percentage_24h+' %'}</p> 
+          </div>)}</div>
         </div>
       </main>
 
