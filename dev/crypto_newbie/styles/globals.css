@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -66,7 +70,9 @@ input{
   padding: 15px;
 }
 
+
 /*----------------------------------Header----------------------------*/
+
 .header {
   display: flex;
   flex-direction: row;
@@ -97,6 +103,38 @@ input{
   text-decoration: underline;
 }
 
+/*----------------------------------Index----------------------------*/
+
+.coin{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 8px 8px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  width: 100%;
+  align-items: center;
+}
+
+.section-list{
+  display: grid;
+  width: 100%;
+}
+
+.titles-list{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.search-bar{
+  padding: 15px;
+}
+
+.searchbar-section{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
 /*-------------------------------Connexion-------------------------------*/
 
 .content-form {
@@ -106,7 +144,6 @@ input{
   width: 100%;
   height: 100%;
 }
-
 
 .form {
   display: flex;
@@ -118,6 +155,12 @@ input{
   border-radius: 15px ;
   border-style: groove;
   text-align: center;
+}
+
+/*-------------------------------Contactez-Nous---------------------------------*/
+
+.contact{
+  color: white;
 }
 
 

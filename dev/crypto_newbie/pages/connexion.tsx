@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../components/layout'
-import Login from '../components/login'
+import Layout from '../frontend/components/layout'
+import Login from '../frontend/components/loginForm'
 
 const Connexion: NextPage = () => {
 
