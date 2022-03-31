@@ -40,7 +40,7 @@ export default function Login() {
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
-      <button type="submit">Submit</button>
+      <button type="submit">Connexion</button>
 
       <h1>Pas encore de compte ? Créez en un</h1>
       <a href="signup">Créer un compte</a>

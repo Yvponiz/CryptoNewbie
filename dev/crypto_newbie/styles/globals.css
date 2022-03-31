@@ -34,41 +34,6 @@ input{
   padding: 0 2rem;
 }
 
-.main {
-  min-height: 100vh;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-color: black;
-  padding: 0 5% 5%;
-}
-
-.coin{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  padding: 8px 8px;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  width: 100%;
-  align-items: center;
-}
-
-
-.section-list{
-  display: grid;
-  width: 100%;
-}
-
-.titles-list{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.search-bar{
-  padding: 15px;
-}
 
 
 /*----------------------------------Header----------------------------*/
@@ -105,6 +70,20 @@ input{
 
 /*----------------------------------Index----------------------------*/
 
+main {
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-image: url("../public/crypto_background");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 0 5% 5%;
+}
+
 .coin{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -115,9 +94,13 @@ input{
   align-items: center;
 }
 
+
 .section-list{
   display: grid;
   width: 100%;
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
 }
 
 .titles-list{
@@ -127,12 +110,6 @@ input{
 
 .search-bar{
   padding: 15px;
-}
-
-.searchbar-section{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
 }
 
 /*-------------------------------Connexion-------------------------------*/

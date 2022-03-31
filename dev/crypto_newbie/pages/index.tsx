@@ -1,14 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-<<<<<<< HEAD
 import Link from 'next/link'
-import SearchBar from '../components/searchBar'
-import Layout from '../components/layout'
-=======
-import Layout from '../frontend/components/layout'
->>>>>>> d6a85a6c40ca775514f61dc9f7d098adf2efe685
-import Image from 'next/image'
 import SearchBar from '../frontend/components/searchBar'
+import Layout from '../frontend/components/layout'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import BestCrypto from '../frontend/components/cryptoPerfomance'
 import { getSession } from '../common/getSession'
@@ -71,7 +66,7 @@ const Home: NextPage<Props> = (props:{userid:number | null}) => {
             <p>Nom</p>
             <p>Symbol</p>
             <p>Prix</p>
-            <p>Market cap</p>
+            <p>Capitalisation de marché</p>
             <p>24 heures</p>
           </div>
           <div>{handlerState.slice(0,25).map((coin) => <div className='coin' key={coin.id}> 
@@ -81,7 +76,7 @@ const Home: NextPage<Props> = (props:{userid:number | null}) => {
             <li>{coin.symbol}</li> 
             <li>{coin.market_data.current_price.cad.toLocaleString()+' $'}</li> 
             <li>{coin.market_data.market_cap.cad.toLocaleString()+' $'}</li> 
-            <li>{coin.market_data.price_change_percentage_24h.toFixed(2)+' %'}</li> 
+            <li style={{color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green'}}>{coin.market_data.price_change_percentage_24h.toFixed(2)+' %'}</li> 
           </div>)}</div>
         </div>
       </main>
