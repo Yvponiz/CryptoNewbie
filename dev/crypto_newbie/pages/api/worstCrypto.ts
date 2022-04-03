@@ -5,7 +5,8 @@ const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 
 export async function getWorst() {
-    let data = await CoinGeckoClient.coins.all(CoinGecko.ORDER["HOUR_24_DESC"])
+    let data = await CoinGeckoClient.coins.all({order: CoinGecko.ORDER.HOUR_24_ASC})
+
     return data.data
 }
 

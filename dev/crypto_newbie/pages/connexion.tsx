@@ -10,7 +10,7 @@ const Connexion: NextPage = () => {
         <Head>
           <title>Crypto Newbie | Connexion</title>
           <meta name="description" content="" />
-          <link rel="icon" href="/favicon.ico" />                  
+          <link rel="icon" href="/CryptoNewbie.png" />                  
         </Head>
   
         <main className='main'>

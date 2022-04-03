@@ -26,8 +26,8 @@ function onSubmit(event: FormEvent, state) {
 export default function Login() {
 
   const [state, changeState] = useState({
-    courriel:null,
-    password:null,
+    courriel: null,
+    password: null,
   })
 
   return (

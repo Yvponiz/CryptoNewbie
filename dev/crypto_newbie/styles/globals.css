@@ -41,7 +41,10 @@ input{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: black;
+  background-image: url("../public/crypto_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 0 5% 5%;
 }
 
@@ -55,13 +58,20 @@ input{
   align-items: center;
   width: 100%;
   background-color: black;
+  padding-bottom: 30px;
 }
 
 .header-logo{
+  display: flex;
   justify-self: flex-start;
+  align-items: center;
   padding-left: 2rem;
   color: darkblue;
   font-size: 20px;
+}
+
+.logo{
+  align-self: center;
 }
 
 .header-links {
@@ -90,14 +100,56 @@ input{
   align-items: center;
 }
 
+.coin-name {
+  text-decoration: underline;
+}
+
+.performance {
+  color: white;
+  width: 400px;
+  padding: 10px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px ;
+  border-style: groove;
+  text-align: center;
+}
+
+.performance-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+}
+
+.performance-title {
+  font-size: 25px;
+}
+
+.performance-layout-in {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.performance-layout-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 20px;
+  height: 100%;
+}
+
 .section-list{
   display: grid;
   width: 100%;
 }
 
-.titles-list{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+.section-performance {
+  display: flex;
+  justify-content:space-evenly;
+  width: 100%;
+  padding-top: 20px;
 }
 
 .search-bar{
@@ -108,6 +160,11 @@ input{
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+}
+
+.titles-list{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 /*-------------------------------Connexion-------------------------------*/
@@ -137,6 +194,27 @@ input{
 .contact{
   color: white;
 }
+
+
+
+/*----------------------------------Footer----------------------------*/
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: black;
+  padding: 50px 30px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 
 /* @media (max-width: 600px) {
