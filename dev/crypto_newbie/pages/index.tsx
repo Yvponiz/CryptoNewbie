@@ -39,7 +39,7 @@ const Home: NextPage<Props> = (props:{userid:number | null}) => {
   })*/
 
   useEffect(() => { // Fetch les data coté client, empêche le data d'être constament fetch
-    fetch('/api/coinGecko') // Appelle la fonction exporté par défaut dans coinGecko, fonctionne même si en rouge
+    fetch('/api/coinsList') // Appelle la fonction exporté par défaut dans coinGecko, fonctionne même si en rouge
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
@@ -57,7 +57,7 @@ const Home: NextPage<Props> = (props:{userid:number | null}) => {
 
       <main className='main'>
         <div className='search-bar'>
-          <SearchBar />
+          <SearchBar/>
         </div>
         <div className='section-list'>
           <div className='titles-list'> 
