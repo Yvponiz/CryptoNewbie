@@ -3,11 +3,11 @@ import Head from 'next/head'
 import Layout from '../frontend/components/layout'
 import Image from 'next/image'
 import SearchBar from '../frontend/components/searchBar'
+import Footer from '../frontend/components/footer'
 import { useState, useEffect } from 'react'
 import { getSession } from '../common/getSession'
 import { BestCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
-import Footer from '../frontend/components/footer'
 
 
 export async function getServerSideProps({ req, res }) {
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
       <Head>
         <title>Crypto Newbie | Accueil</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/CryptoNewbie.png" />
+        <link rel="icon" href="cryptonewbie.ico" />
       </Head>
 
       <main className='main'>
@@ -89,9 +89,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
           }</div>
         </div>
       </main>
-      <Footer>
-
-      </Footer>
+      <Footer></Footer>
     </Layout>
   )
 }
