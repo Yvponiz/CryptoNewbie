@@ -8,6 +8,7 @@ import { Transactions } from "./entity/Transactions";
 const connectionManager = getConnectionManager()
 
 // Fonction permettant de se connecter à postgres
+// Source: https://stackoverflow.com/a/65317768
 export async function getConnection(name: string = "default"): Promise < Connection > {
     const CONNECTION_NAME: string = name;
     let connection: Connection;

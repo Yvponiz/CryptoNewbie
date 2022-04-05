@@ -33,6 +33,7 @@ Liste des dependecies :
 Références :
 =======================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
 Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm
 Solution pour créer une seule connexion : https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm
@@ -48,9 +49,11 @@ Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch
 Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?
 =======
 Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
+=======
+Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs 
+Connexion à la base de données (solution problème de connexion bd): https://stackoverflow.com/a/65317768 
+>>>>>>> c4051eda80f6dda4a98f9a8b281917a18ef1f02d
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm  
-Solution pour créer une seule connexion : https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm  
-Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs  
 Documentation sur hooks de React : https://reactjs.org/docs/hooks-state.html  
 Documentation sur Effects Hooks : https://reactjs.org/docs/hooks-effect.html  
 Documentation sur Fonction useEffect() : https://nextjs.org/docs/basic-features/data-fetching/client-side  
