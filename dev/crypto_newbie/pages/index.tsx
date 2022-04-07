@@ -6,7 +6,9 @@ import Layout from '../frontend/components/layout'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import BestCrypto from '../frontend/components/cryptoPerfomance'
+import { trace } from 'console'
 import { getSession } from '../common/getSession'
+
 
 
 export async function getServerSideProps({ req, res }) {
