@@ -34,6 +34,19 @@ input{
   padding: 0 2rem;
 }
 
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-image: url("../public/crypto_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 0 5% 5%;
+}
 
 
 /*----------------------------------Header----------------------------*/
@@ -45,13 +58,20 @@ input{
   align-items: center;
   width: 100%;
   background-color: black;
+  padding-bottom: 30px;
 }
 
 .header-logo{
+  display: flex;
   justify-self: flex-start;
+  align-items: center;
   padding-left: 2rem;
   color: darkblue;
   font-size: 20px;
+}
+
+.logo{
+  align-self: center;
 }
 
 .header-links {
@@ -94,6 +114,45 @@ main {
   align-items: center;
 }
 
+.coin-name {
+  text-decoration: underline;
+}
+
+.performance {
+  color: white;
+  width: 400px;
+  padding: 10px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px ;
+  border-style: groove;
+  text-align: center;
+}
+
+.performance-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+}
+
+.performance-title {
+  font-size: 25px;
+}
+
+.performance-layout-in {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.performance-layout-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 20px;
+  height: 100%;
+}
 
 .section-list{
   display: grid;
@@ -103,13 +162,35 @@ main {
   border-radius: 10px;
 }
 
-.titles-list{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+.section-performance {
+  display: flex;
+  justify-content:space-evenly;
+  width: 100%;
+  padding-top: 20px;
 }
 
 .search-bar{
   padding: 15px;
+}
+
+.search-bar input {
+  background: rgba(0, 0, 0, 0.0);
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: 1.2em;
+  width: 50%;
+  transition: width 0.5s ease-in-out;
+}
+
+.search-bar input:focus {
+  outline: none;
+  width: 100%;
+}
+
+.titles-list{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 /*-------------------------------Connexion-------------------------------*/
@@ -120,6 +201,7 @@ main {
   align-items: center;
   width: 100%;
   height: 100%;
+  padding-top: 20px;
 }
 
 .form {
@@ -154,14 +236,20 @@ main {
 }
 
 
-.william {
-  color: white;
-  font-size: 30px;
+/*----------------------------------Footer----------------------------*/
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: black;
+  padding: 50px 30px;
 }
 
-/* @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-} */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+

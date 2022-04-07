@@ -1,15 +1,16 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
+
+import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
 
 const Contact: NextPage = () => {
     return (
         <Layout className='container'>
         <Head>
-          <title>Crypto Newbie | Contact</title>
+          <title>Crypto Newbie | Contactez-Nous</title>
           <meta name="description" content="" />
-          <link rel="icon" href="/favicon.ico" />                  
+          <link rel="icon" href="cryptonewbie.ico" />                 
         </Head>
   
         <main className='main'>
@@ -23,7 +24,7 @@ const Contact: NextPage = () => {
             </p>
           </div>
         </main>
-  
+        <Footer></Footer>
       </Layout>
     )
 }

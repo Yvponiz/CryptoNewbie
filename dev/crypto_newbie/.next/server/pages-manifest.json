@@ -2,6 +2,10 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+<<<<<<< HEAD
   "/": "pages/index.js",
   "/api/coinGecko": "pages/api/coinGecko.js"
+=======
+  "/": "pages/index.js"
+>>>>>>> 4a0b2df9be2df05d0bcb16cbe3d5699564e44153
 }
