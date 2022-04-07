@@ -28,6 +28,7 @@ interface Props {
 const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
   const [handlerState, setHandler] = useState([])
+  const [search, setSearch] = useState('');
   //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
 
   /* Facon de faire avant le Hook (useEffect + fetch)
@@ -48,6 +49,12 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
         setHandler(data)
       })
   }, [])
+
+  const handleChange = e => {
+    setSearch(e.target.value);
+  };
+
+
 
   return (
     <Layout className='container'>
