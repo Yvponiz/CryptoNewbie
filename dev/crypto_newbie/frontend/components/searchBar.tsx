@@ -1,15 +1,16 @@
-import { useState, useEffect, FormEvent} from 'react'
+import { useState, useEffect} from 'react'
 import searchCrypto from '../../pages/api/searchCrypto';
 import Image from 'next/image';
 import handler from '../../pages/api/bestCrypto';
 
-const [handlerState, setHandler] = useState([])
-const [search, setSearch] = useState('');
-const handleChange = e => {
-    setSearch(e.target.value);
-};
 
-export function SearchFunction(event: FormEvent, state){
+
+//function searchFunction(event: FormEvent, state){
+//}
+
+export default function SearchBar() {
+    const [handlerState, setHandler] = useState({id:"", name:"", market_data:{current_price:{cad:""}}})
+
     useEffect(() => { 
         fetch('/api/searchCrypto') 
         .then((res) => res.json())
@@ -18,31 +19,24 @@ export function SearchFunction(event: FormEvent, state){
         setHandler(data)
         })
     }, [])
-}
 
-export default function SearchBar() {
+
     return (
         <div>
         <form className='searchbar-section' action='/index'>
             <div className="searchbar">
-                <input type="text" id="search" name="search" onChange={handleChange} placeholder="Rechercher" />
+                <input type="text" id="search" name="search" placeholder="Rechercher" />
             </div>
             <div className="button-search">
                 <button type="submit">Rechercher</button>
             </div>
         </form>
 
-        <div>{handlerState.slice(0, 1).map((coin) =>
-            <div className='coin' key={coin.id}>
-            <li>{coin.market_data.market_cap_rank}</li>
-            <li><Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image></li>
-            <li>{coin.name}</li>
-            <li>{coin.symbol}</li>
-            <li>{coin.market_data.current_price.cad.toLocaleString() + ' $'}</li>
-            <li>{coin.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
-            <li style={{ color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{coin.market_data.price_change_percentage_24h.toFixed(2) + ' %'}</li>
-        </div>)
-    }</div>
-    </div>
+        <div>
+            <li>{handlerState.name}</li>
+            <li>{handlerState.symbol}</li>
+            <li>{handlerState.market_data.current_price.cad}</li>
+        </div>
+        </div>
     )
 }

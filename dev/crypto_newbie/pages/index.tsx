@@ -6,11 +6,6 @@ import Layout from '../frontend/components/layout'
 import Image from 'next/image'
 import Footer from '../frontend/components/footer'
 import { useState, useEffect } from 'react'
-<<<<<<< HEAD
-import BestCrypto from '../frontend/components/cryptoPerfomance'
-import { trace } from 'console'
-=======
->>>>>>> 4a0b2df9be2df05d0bcb16cbe3d5699564e44153
 import { getSession } from '../common/getSession'
 import { BestCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
@@ -34,7 +29,7 @@ interface Props {
 const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
   const [handlerState, setHandler] = useState([])
-  const [search, setSearch] = useState('');
+  //const [search, setSearch] = useState('');
   //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
 
   /* Facon de faire avant le Hook (useEffect + fetch)
@@ -56,11 +51,6 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
       })
   }, [])
 
-  const handleChange = e => {
-    setSearch(e.target.value);
-  };
-
-
 
   return (
     <Layout className='container'>
@@ -77,7 +67,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
         </div>
         <div className='search-bar'>
-          <SearchBar/>
+          <SearchBar />
         </div>
         <div className='section-list'>
           <div className='titles-list'>
