@@ -11,6 +11,7 @@ import { BestCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
 
 
+
 export async function getServerSideProps({ req, res }) {
   const session = await getSession(req, res);
 
@@ -28,7 +29,7 @@ interface Props {
 const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
   const [handlerState, setHandler] = useState([])
-  const [search, setSearch] = useState('');
+  //const [search, setSearch] = useState('');
   //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
 
   /* Facon de faire avant le Hook (useEffect + fetch)
@@ -50,11 +51,6 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
       })
   }, [])
 
-  const handleChange = e => {
-    setSearch(e.target.value);
-  };
-
-
 
   return (
     <Layout className='container'>
@@ -71,7 +67,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
         </div>
         <div className='search-bar'>
-          <SearchBar/>
+          <SearchBar />
         </div>
         <div className='section-list'>
           <div className='titles-list'>

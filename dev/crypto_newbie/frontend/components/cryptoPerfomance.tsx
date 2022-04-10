@@ -4,6 +4,7 @@ import handler from "../../pages/api/bestCrypto"
 
 export function BestCrypto() {
     const [handlerState, setHandler] = useState([])
+    let crypto = 0
     
     useEffect(() => { // Fetch les data coté client, empêche le data d'être constament fetch
         fetch('/api/bestCrypto') // Appelle la fonction exporté par défaut dans coinGecko, fonctionne même si en rouge
