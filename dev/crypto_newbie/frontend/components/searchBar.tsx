@@ -1,47 +1,47 @@
-//import { setCoin } from "../../pages/api/searchCrypto"
 import { useState, useEffect} from 'react'
+import Image from 'next/image';
+import handler from '../../pages/api/bestCrypto';
 
 export default function SearchBar() {
-    //const [handlerState, setHandler] = useState({id:"", name:"", market_data:{current_price:{cad:""}}})
-    const [search, setSearch] = useState({});
+    const [handlerState, setHandler] = useState({market_data:{current_price:{cad: ""}, market_cap_rank:"", market_cap:{cad: ""}, price_change_percentage_24h: ""}});
+    const [search, setSearch] = useState("");
+    
+
+    const updateSearch = (e) => {
+        setSearch(e.target.value);
+    };
 
     const coingeckoUrl = (coin) => {
-        coin = String(coin);
-        return `https://api.coingecko.com/api/v3/coins/${coin}?/`;
+        coin = String(coin); 
+        return `https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`;
       };
 
-    const coingeckoFetch = async (coin) => {
-        fetch(coingeckoUrl(coin)).then((response) =>
-          response.json().then((jsonData) => {
-            setSearch(jsonData);
-            console.log("holla!");
-            console.log(jsonData);
-           })
+    const coingeckoFetch = () => {
+        fetch(coingeckoUrl(search)).then((response) =>
+            response.json().then((jsonData) => {
+                setHandler(jsonData);
+            })
         );
     };
-/*
-    useEffect(() => { 
-        fetch('/api/searchCrypto') 
-        .then((res) => res.json())
-        .then((data) => {
-        console.log(data)
-        setHandler(data)
-        })
-    }, [])
-    */
 
     return (
         <div>
-            <form className="search" method="POST">
-                <div className="searchbar">
-                    <input type="text" id="search" name="search" onChange={(e) => coingeckoFetch(e.target.value)} placeholder="Rechercher" />
+            <div className='search-section'>
+                <div className="input-search">
+                    <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
                 </div>
                 <div className="button-search">
-                    <button type="submit">Rechercher</button>
+                    <button onClick={coingeckoFetch}>Rechercher</button>
                 </div>
-            </form>
-            <h3>{search.symbol}</h3>
+            </div>
+            <div className='search-result'>
+                <li>{handlerState.market_data.market_cap_rank}</li>
+                <li>{handlerState.name}</li>
+                <li>{handlerState.symbol}</li>
+                <li>{handlerState.market_data.current_price.cad.toLocaleString() + ' $'}</li>
+                <li>{handlerState.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
+                <li style={{ color: Math.sign(handlerState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{handlerState.market_data.price_change_percentage_24h + ' %'}</li>
+            </div>
         </div>
-        
     )
 }
