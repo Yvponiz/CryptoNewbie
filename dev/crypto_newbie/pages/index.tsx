@@ -68,6 +68,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
         </div>
         <div className='search-bar'>
           <SearchBar />
+          
         </div>
         <div className='section-list'>
           <div className='titles-list'>

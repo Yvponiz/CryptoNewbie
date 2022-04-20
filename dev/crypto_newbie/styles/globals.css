@@ -183,10 +183,16 @@ main {
   transition: width 0.5s ease-in-out;
 }
 
-.search-bar input:focus {
+.input-search input:focus {
   outline: none;
   width: 100%;
 }
+
+.search-section{
+  display: grid;
+  grid-template-columns: repeat(2, 2fr 1fr);
+}
+
 
 .titles-list{
   display: grid;
