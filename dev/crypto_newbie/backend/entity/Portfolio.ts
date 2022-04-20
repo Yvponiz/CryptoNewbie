@@ -1,23 +1,23 @@
-import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation, BaseEntity } from "typeorm";
+import { PersoList } from "./PersoList";
+import { User } from "./User";
 import "reflect-metadata";
-import { ListePerso } from "./ListePerso";
-import { Utilisateur } from "./Utilisateur";
 
 @Entity()
-export class Portfolio {
+export class Portfolio extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    valeur: number;
+    value: number;
 
-    @OneToOne(()=> Utilisateur, (utilisateur) => utilisateur.portfolio, {
+    @OneToOne(() => User, (user) => user.portfolio, {
         cascade: true
     })
-    utilisateur: Relation<Utilisateur>
+    user: Relation<User>
 
-    @OneToMany(()=> ListePerso, (liste_perso) => liste_perso.portfolio)
+    @OneToMany(() => PersoList, (perso_list) => perso_list.portfolio)
     @JoinColumn()
-    liste_perso: Relation <ListePerso[]>
+    perso_list: Relation<PersoList[]>
 }

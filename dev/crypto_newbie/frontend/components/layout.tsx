@@ -1,18 +1,18 @@
-import {ReactElement} from "react";
+import { ReactElement } from "react";
 import Header from "./header";
 
 type LayoutProps = {
   children: ReactElement[],
-  className?:string
+  className?: string
 };
 
-export default function Layout({children}: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-  <>
-    <Header></Header>
+    <>
+      <Header></Header>
 
-    <div>
-      {children}
-    </div>
-  </>);
+      <div>
+        {children}
+      </div>
+    </>);
 }

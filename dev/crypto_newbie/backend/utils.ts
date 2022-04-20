@@ -1,19 +1,22 @@
 import { Connection, ConnectionOptions, createConnection, getConnectionManager } from "typeorm"
-import { Utilisateur } from "./entity/Utilisateur"
+import { User } from "./entity/User"
 import { Portfolio } from "./entity/Portfolio";
-import { ListePerso } from "./entity/ListePerso";
+import { PersoList } from "./entity/PersoList";
 import { Crypto } from "./entity/Crypto";
 import { Transactions } from "./entity/Transactions";
+import "reflect-metadata";
 
 const connectionManager = getConnectionManager()
 
 // Fonction permettant de se connecter à postgres
 // Source: https://stackoverflow.com/a/65317768
-export async function getConnection(name: string = "default"): Promise < Connection > {
+
+export async function getConnection(name: string = "default"): Promise<Connection> {
     const CONNECTION_NAME: string = name;
     let connection: Connection;
     const hasConnection = connectionManager.has(CONNECTION_NAME);
-    if(hasConnection) {
+    
+    if (hasConnection) {
         connection = connectionManager.get(CONNECTION_NAME);
         if (!connection.isConnected) {
             connection = await connection.connect();
@@ -24,19 +27,21 @@ export async function getConnection(name: string = "default"): Promise < Connect
             type: "postgres",
             url: process.env.DATABASE_URL || "postgres://yvan:AAAaaa111@localhost:5432/cryptonewbie",
             extra: {
-                ssl: process.env.NODE_ENV === 'production', rejectUnauthorized: false
+                ssl: process.env.NODE_ENV === 'production', rejectUnauthorized: false,
+                keepConnectionAlive: true
             },
             entities: [ //tables
-            Utilisateur,
-            Portfolio,
-            Transactions,
-            ListePerso,
-            Crypto
-        ],
-        synchronize: true, //true pour créer la bd, false pour lier
-        logging: true
-    }
-      connection = await createConnection(connectionOptions);
+                Crypto,
+                PersoList,
+                Transactions,
+                Portfolio,
+                User
+                
+            ],
+            synchronize: true, //true pour créer la bd, false pour lier
+            logging: true
+        }
+        connection = await createConnection(connectionOptions);
     }
     return connection;
 }
