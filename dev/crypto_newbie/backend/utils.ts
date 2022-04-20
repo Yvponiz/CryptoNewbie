@@ -25,7 +25,7 @@ export async function getConnection(name: string = "default"): Promise<Connectio
 
         const connectionOptions: ConnectionOptions = {
             type: "postgres",
-            url: process.env.DATABASE_URL || "postgres://yvan:AAAaaa111@localhost:5432/cryptonewbie",
+            url: process.env.DATABASE_URL || "postgres://postgres:AAAaaa111@localhost:5432/cryptonewbie",
             extra: {
                 ssl: process.env.NODE_ENV === 'production', rejectUnauthorized: false,
                 keepConnectionAlive: true

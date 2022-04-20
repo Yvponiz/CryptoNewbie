@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import SearchBar from '../frontend/components/searchBar'
 import Layout from '../frontend/components/layout'
-import SearchBar from '../frontend/components/searchBar'
 import Footer from '../frontend/components/footer'
 // import { getSession } from '../common/getSession'
 import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfomance'
@@ -44,6 +43,7 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
           <CryptoList />
         </div>
       </main>
+      <Footer></Footer>
     </Layout>
   )
 }
