@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation, BaseEntity } from "typeorm";
-import "reflect-metadata";
 import { Portfolio } from "./Portfolio";
 import { Transactions } from "./Transactions";
+import "reflect-metadata";
 
 
 export enum UserRole {
@@ -11,37 +11,37 @@ export enum UserRole {
 }
 
 @Entity()
-export class Utilisateur extends BaseEntity{
-    constructor(nom:string, prenom:string, courriel:string, type_compte:number, password:string, date_naissance:string){
+export class User extends BaseEntity{
+    constructor(lastName:string, firstName:string, email:string, accountType:number, password:string, dateOfBirth:string){
         super()
-        this.nom = nom
-        this.prenom = prenom
-        this.courriel = courriel
-        this.type_compte = type_compte
+        this.lastName = lastName
+        this.firstName = firstName
+        this.email = email
+        this.accountType = accountType
         this.password = btoa(password)
-        this.date_naissance = date_naissance
+        this.dateOfBirth = dateOfBirth
     }
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    nom: string;
+    lastName: string;
 
     @Column()
-    prenom: string;
+    firstName: string;
 
     @Column()
-    courriel: string;
+    email: string;
 
     @Column()
     password: string;
 
     @Column( {type: "float"})
-    type_compte: number;
+    accountType: number;
 
     @Column({ type: 'date' })
-    date_naissance: string
+    dateOfBirth: string
 
     @Column({
         type: "enum",
@@ -54,7 +54,7 @@ export class Utilisateur extends BaseEntity{
     @JoinColumn()
     portfolio: Relation <Portfolio>
 
-    @OneToMany(()=> Transactions, (transactions) => transactions.utilisateur)
+    @OneToMany(()=> Transactions, (transactions) => transactions.user)
     @JoinColumn()
     transactions: Relation <Transactions[]>
 }

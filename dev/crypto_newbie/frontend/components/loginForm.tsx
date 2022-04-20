@@ -26,7 +26,7 @@ function onSubmit(event: FormEvent, state) {
 export default function Login() {
 
   const [state, changeState] = useState({
-    courriel: null,
+    email: null,
     password: null,
   })
 
@@ -35,7 +35,7 @@ export default function Login() {
       <h1>Vous avez un compte ? connectez vous</h1>
 
       <label htmlFor="courriel">Courriel</label>
-      <input onChange={(event) => changeState({ ...state, courriel: event.target.value })} type="text" id="courriel" name="courriel" required />
+      <input onChange={(event) => changeState({ ...state, email: event.target.value })} type="text" id="courriel" name="courriel" required />
 
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />

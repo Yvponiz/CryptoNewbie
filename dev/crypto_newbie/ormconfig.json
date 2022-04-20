@@ -7,21 +7,22 @@
    "database": "test",
    "synchronize": true,
    "logging": false,
+   "keepConnectionAlive": true,
    "extra":{
       "ssl": true, "rejectUnauthorized": false
    },
    "entities": [
-      "src/entity/**/*.ts"
+      "/backend/entity/*{.ts, .js}"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "backend/migration/**/*.ts"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "backend/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "backend/entity",
+      "migrationsDir": "backend/migration",
+      "subscribersDir": "backend/subscriber"
    }
 }

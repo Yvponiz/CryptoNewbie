@@ -42,6 +42,7 @@ Documentation sur Map (Structure de donnée) : https://developer.mozilla.org/en-
 Documentation sur Find : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find  
 Documentation sur Filter : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter  
 Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch  
+Documentation node fetch : https://www.npmjs.com/package/node-fetch  
 Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?  
 Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event  
 Documentation sur Next-Session : https://github.com/hoangvvo/next-session  

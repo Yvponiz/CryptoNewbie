@@ -1,3 +1,5 @@
-import nextSession from "next-session";
+// import nextSession from "next-session";
+// import MemoryStore from "../backend/postgres-session-store";
 
-export const getSession = nextSession();
+// const store = new MemoryStore();
+// export const getSession = nextSession({store});

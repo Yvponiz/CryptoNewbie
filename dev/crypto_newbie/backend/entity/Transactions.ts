@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, Relation } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity } from "typeorm";
 import "reflect-metadata";
-import { Utilisateur } from "./Utilisateur";
+import { User } from "./User";
 
 @Entity()
-export class Transactions {
+export class Transactions extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -17,8 +17,8 @@ export class Transactions {
     // @Column({ type: "date"})
     // date_transaction: string
 
-    @ManyToOne(()=> Utilisateur, (utilisateur) => utilisateur.transactions, {
+    @ManyToOne(()=> User, (user) => user.transactions, {
         cascade: true
     })
-    utilisateur: Relation <Utilisateur>
+    user: Relation <User>
 }
