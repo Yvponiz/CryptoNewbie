@@ -12,7 +12,7 @@
       "ssl": true, "rejectUnauthorized": false
    },
    "entities": [
-      "/backend/entity/*{.ts, .js}"
+      "backend/entity/*{.ts, .js}"
    ],
    "migrations": [
       "backend/migration/**/*.ts"

@@ -5,7 +5,6 @@ import {User } from "../../backend/entity/User";
 import { Crypto } from '../../backend/entity/Crypto';
 import { AccountType } from '../../common/typecompte';
 import { Transactions } from '../../backend/entity/Transactions';
-import { getConnection } from 'typeorm';
 import * as utils from "../../backend/utils";
 
 

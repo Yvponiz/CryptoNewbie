@@ -1,5 +1,8 @@
-// import nextSession from "next-session";
-// import MemoryStore from "../backend/postgres-session-store";
+// Module Next-Session ajouté au projet pour créer et conserver session de l'utilisateur
+// Documentation: https://github.com/hoangvvo/next-session
 
-// const store = new MemoryStore();
-// export const getSession = nextSession({store});
+import nextSession from "next-session";
+import SessionStore from "../backend/postgres-session-store";
+
+const store = new SessionStore();
+export const getSession = nextSession({store});
