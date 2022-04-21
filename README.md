@@ -1,12 +1,15 @@
 # C61_Projet_synthese
 Projet synthèse
 
+
 Titre du projet : Crypto-Newbie
 
 Équipe :
 =======================================================
 	Yvanoski Sanon
 	Nikolas Ouimet
+
+
 	
 	
 Description du projet :
@@ -14,27 +17,32 @@ Description du projet :
 Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la création de listes personnalisée.
 
 
-Installation : 
-======================================================
-Aucun élément pour le moment
-
-
-Utilisation :
-======================================================
-Le sprint 0 contient tous les doucments nécessaires à la plannification, la conception et au mandat. 
-
-	- Document de conception.pdf
-	Ce document présente tous les graphiques des maquettes, les diagrammes des classes, des cas d'usage et de la structure de la base de données. À la dernière page du document, il y a plus de détails sur l'utilisation des structures de données, des algorithmes, des patrons de conceptions, sur les expressions régulières ainsi que sur les calculs mathématiques. 
-	
-	- Document de définition.pdf
-	Ce document présente le mandat du projet avec sa description plus détaillé. 
-	
-	- Document de planification.pdf
-	Ce document présente tous les étapes du projet qui seront exécuté et l'avancement du projet dans le temps. Chaque étape contient son niveau de difficulté et sa durée. 
-
-
+Installation :
+=======================================================
+Liste des dependecies :
+-------------------------------------------------------
+	React  
+	React-dom  
+	Next  
+	Next-Session  
+	Typescript-Node  
+	Postgres  
+	TypeORM  
+	CoinGecko API  
 
 Références :
 =======================================================
-Aucune référence pour le moment. 
-
+Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs 
+Connexion à la base de données (solution problème de connexion bd): https://stackoverflow.com/a/65317768 
+Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm  
+Documentation sur hooks de React : https://reactjs.org/docs/hooks-state.html  
+Documentation sur Effects Hooks : https://reactjs.org/docs/hooks-effect.html  
+Documentation sur Fonction useEffect() : https://nextjs.org/docs/basic-features/data-fetching/client-side  
+Documentation sur Map (Structure de donnée) : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map  
+Documentation sur Find : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find  
+Documentation sur Filter : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter  
+Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch  
+Documentation node fetch : https://www.npmjs.com/package/node-fetch  
+Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?  
+Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event  
+Documentation sur Next-Session : https://github.com/hoangvvo/next-session  

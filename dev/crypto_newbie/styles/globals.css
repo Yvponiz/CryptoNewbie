@@ -1,0 +1,276 @@
+html,
+body {
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+  font-size: 1em;
+  margin-top: 30px;
+}
+
+input{
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+  font-size: 1em;
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background-image: url("../public/crypto_background.png"); */
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 0 5% 5%;
+}
+
+
+/*----------------------------------Header----------------------------*/
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(40, 40, 40);
+  padding-bottom: 30px;
+}
+
+.header-logo{
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+  padding-left: 2rem;
+  color: darkblue;
+  font-size: 20px;
+}
+
+.logo{
+  align-self: center;
+}
+
+.header-links {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  color: white;
+}
+
+
+.header-links a {
+  padding: 2rem;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.header-links a:hover {
+  color: blue;
+}
+
+/*----------------------------------Index----------------------------*/
+
+.index-coin{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 8px 8px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  width: 100%;
+  align-items: center;
+}
+
+/* .coin-name {
+  text-decoration: underline;
+} */
+
+.index-coin:hover {
+  background-color: rgb(40, 40, 40) ;
+}
+.performance {
+  color: white;
+  width: 400px;
+  padding: 10px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px ;
+  border-style: groove;
+  text-align: center;
+}
+
+.performance-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+}
+
+.performance-title {
+  font-size: 25px;
+  color: gold;
+  text-decoration: underline;
+}
+
+.performance-layout-in {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.performance-layout-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 20px;
+  height: 100%;
+}
+
+.section-list{
+  display: grid;
+  width: 100%;
+}
+
+.section-performance {
+  display: flex;
+  justify-content:space-evenly;
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.search-bar div{
+  display: flex;
+  flex-direction: row;
+}
+
+.input-search input {
+  background: rgba(0, 0, 0, 0.0);
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.5rem;
+  width: 50%;
+  height: 35px;
+  margin-top: 1.4em;
+  margin-left: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+.search-bar button {
+  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
+}
+
+.search-bar button:hover{
+  background-color: #00008b;
+  padding: 0.2em;
+  border-radius: 10px;
+  border: none;
+}
+
+.input-search input:focus {
+  outline: none;
+  width: 100%;
+}
+
+.search-result{
+  display: flex;
+  margin-left: 75px;
+  visibility: hidden;
+}
+
+.search-result li{
+  margin-top: 35px;
+  padding-right: 25px;
+  padding-left: 25px;
+  font-size: 1.3rem;
+}
+
+.titles-list{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/*-------------------------------Connexion-------------------------------*/
+
+.content-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 500px;
+  padding: 50px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px ;
+  border-style: groove;
+  text-align: center;
+}
+
+/*--------------------------Contactez-Nous----------------------------*/
+
+.contact{
+  color: white;
+}
+
+
+
+/*----------------------------------Footer----------------------------*/
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(40, 40, 40);
+  padding: 50px 30px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-links a:hover{
+  color: blue;
+}
+
+
+
+/* @media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+} */
