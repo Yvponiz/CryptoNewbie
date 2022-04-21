@@ -1,8 +1,5 @@
-import { ReactElement } from "react";
-import { getSession } from "../../common/getSession";
 import Link from "next/link";
 import Image from "next/image"
-import ReactDOM from "react-dom";
 
 type HeaderProps = {
     isLoggedIn: boolean 
@@ -10,7 +7,7 @@ type HeaderProps = {
 
 function ShowHeader(props){
     const isLoggedIn = props.isLoggedIn;
-    console.log("SHOW HEADER",isLoggedIn);
+
     if (isLoggedIn) {
         return (
             <>
@@ -32,7 +29,7 @@ function ShowHeader(props){
 }
 
 export default function Header({ isLoggedIn }: HeaderProps) {
-    console.log("HEADER",isLoggedIn);
+
     return (
         <>
             <div className='header'>

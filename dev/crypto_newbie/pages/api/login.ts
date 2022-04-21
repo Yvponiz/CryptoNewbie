@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { SemanticClassificationFormat } from 'typescript';
 import { User } from '../../backend/entity/User';
 import * as utils from "../../backend/utils";
 import { getSession } from '../../common/getSession';

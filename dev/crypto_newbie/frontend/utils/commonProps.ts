@@ -1,5 +1,7 @@
 import { getSession } from "../../common/getSession";
 
+// Type créer pour passer paramètres à divers components pour éviter de répéter du code
+
 export type CommonProps = {
     isLoggedIn: boolean ,
     firstName: string
