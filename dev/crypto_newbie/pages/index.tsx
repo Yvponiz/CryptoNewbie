@@ -1,34 +1,32 @@
 import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import SearchBar from '../frontend/components/searchBar'
 import Layout from '../frontend/components/layout'
-import Footer from '../frontend/components/footer'
-// import { getSession } from '../common/getSession'
+import SearchBar from '../frontend/components/searchBar'
 import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
 import { CryptoList } from '../frontend/components/cryptoList'
+import commonProps, { CommonProps } from '../frontend/utils/commonProps'
 
+type Props = CommonProps
 
-
-interface Props {
-  userid: number;
+export function getServerSideProps({ req, res }){
+  return commonProps({req, res})
 }
 
-const Home: NextPage<Props> = (props: { userid: number | null }) => {
-
+const Home: NextPage<Props> = (props:Props) => {
+  console.log("PROPS",props)
+  {props.firstName}
   return (
-    <Layout className='container'>
+    <Layout isLoggedIn={props.isLoggedIn} className='container'>
       <Head>
         <title>Crypto Newbie | Accueil</title>
         <meta name="description" content="" />
         <link rel="icon" href="cryptonewbie.ico" />
       </Head>
-      
+
       <main className='main'>
         <div className='section-performance'>
-          {props.userid}
+          {props.firstName}
           <TrendingCrypto />
           <BestCrypto />
           <WorstCrypto />
@@ -36,14 +34,13 @@ const Home: NextPage<Props> = (props: { userid: number | null }) => {
 
         <div className='search-bar'>
           <SearchBar />
-          
         </div>
 
         <div className='section-list'>
           <CryptoList />
         </div>
       </main>
-      <Footer></Footer>
+      
     </Layout>
   )
 }

@@ -3,10 +3,17 @@ import Head from 'next/head'
 import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
 import SignupForm from '../frontend/components/signupForm'
+import commonProps, { CommonProps } from '../frontend/utils/commonProps'
 
-const Signup: NextPage = () => {
+export function getServerSideProps({ req, res }){
+  return commonProps({req, res})
+}
+
+type Props = CommonProps
+
+const Signup: NextPage<Props> = (props:Props) => {
     return (
-        <Layout className='container'>
+        <Layout isLoggedIn={props.isLoggedIn} className='container'>
         <Head>
           <title>Crypto Newbie | Signup</title>
           <meta name="description" content="" />
@@ -19,7 +26,6 @@ const Signup: NextPage = () => {
             </div>
 
         </main>
-        <Footer></Footer>
       </Layout>
     )
 }

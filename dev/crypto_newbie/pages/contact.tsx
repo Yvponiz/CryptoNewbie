@@ -2,10 +2,17 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
+import commonProps, { CommonProps } from '../frontend/utils/commonProps'
 
-const Contact: NextPage = () => {
+export function getServerSideProps({ req, res }){
+  return commonProps({req, res})
+}
+
+type Props = CommonProps
+
+const Contact: NextPage<Props> = (props:Props) => {
     return (
-        <Layout className='container'>
+        <Layout isLoggedIn={props.isLoggedIn} className='container'>
         <Head>
           <title>Crypto Newbie | Contactez-Nous</title>
           <meta name="description" content="" />
@@ -23,7 +30,6 @@ const Contact: NextPage = () => {
             </p>
           </div>
         </main>
-        <Footer></Footer>
       </Layout>
     )
 }

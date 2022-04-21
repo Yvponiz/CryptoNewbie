@@ -1,20 +1,21 @@
-import { ReactElement } from "react";
 import Link from "next/link";
 import Image from "next/image"
-import ReactDOM from "react-dom";
 
 type HeaderProps = {
-    [name: string]: ReactElement[]
+    isLoggedIn: boolean 
 };
 
 function ShowHeader(props){
     const isLoggedIn = props.isLoggedIn;
+
     if (isLoggedIn) {
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
-                <Link href='contact'><a>Contactez-nous</a></Link>
-                <Link href='connexion'><a>Connexion</a></Link>
+                <Link href='transactions'><a>Transactions</a></Link>
+                <Link href='portfolio'><a>Portfolio</a></Link>
+                <Link href='profil'><a>Profil</a></Link>
+                <Link href='api/disconnect'><a>Deconnexion</a></Link>
             </>
         )
     }
@@ -22,17 +23,13 @@ function ShowHeader(props){
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
-                <Link href='transactions'><a>Transactions</a></Link>
-                <Link href='portfolio'><a>Portfolio</a></Link>
-                <Link href='profil'><a>Profil</a></Link>
-                <Link href='contact'><a>Contactez-nous</a></Link>
-                <Link href='connexion'><a>Deconnexion</a></Link>
+                <Link href='connexion'><a>Connexion</a></Link>
             </>
         )
 }
 
-export default function Header({ children }: HeaderProps) {
-    
+export default function Header({ isLoggedIn }: HeaderProps) {
+
     return (
         <>
             <div className='header'>
@@ -43,16 +40,11 @@ export default function Header({ children }: HeaderProps) {
                     </h1>
                 </div>
                 <div className='header-links' id="header-links">
-                    <ShowHeader/>
+                    <ShowHeader isLoggedIn={isLoggedIn}/>
                 </div>
             </div>
         </>
     )
 }
 
-if(typeof window !=='undefined'){
-    ReactDOM.render(
-        <ShowHeader isLoggedIn={true} />,
-        document.getElementById('header-links')
-    )
-}
+
