@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+}
+
 li {
   list-style: none;
 }
@@ -17,12 +21,6 @@ li {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-button {
-  font-family: 'PF Tempesta Five Condensed', sans-serif;
-  font-size: 1em;
-  margin-top: 30px;
 }
 
 input{
@@ -242,6 +240,13 @@ input{
 }
 
 /*----------------------------------Profil----------------------------*/
+
+.change-email {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 500px;
+}
 
 .profil {
   height: 100%;

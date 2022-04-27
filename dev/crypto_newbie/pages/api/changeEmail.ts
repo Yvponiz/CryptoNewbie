@@ -9,25 +9,15 @@ export default function submitForm(
 ) {
   utils.getConnection().then(async connection => {
 
-    const {oldPassword, newPassword, confPassword} = req.body;
+    const {email} = req.body;
     const session = await getSession(req, res);
     const userRepo = connection.manager.getRepository(User);
     const user = await userRepo.findOne({id: session.user.id});
-
-    if (newPassword !== confPassword){
-        res.status(400).json( {status:"erreur", errors:["Les deux mots de passes ne sont pas identiques"]})
-        return
-    }
     
-    if(user === undefined){
-        res.status(400).json( {status:"erreur", errors:["Mot de passe invalide"]})
-        return
-    }
-
-    (await user).password = btoa(newPassword);
+    (await user).email = email;
     await userRepo.save(user);
     await session.commit();
-    console.log("Password Changed");
+    console.log("Email Changed");
 
     res.status(200).json({status:"success", errors:[]})
   }).catch(error => {
