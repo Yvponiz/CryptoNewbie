@@ -36,7 +36,7 @@ export function CryptoList() {
                     <li>{coin.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
                     <li style={{ color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
                         {coin.market_data.price_change_percentage_24h.toFixed(2) + ' %'}</li>
-                </a>)
+                </a>).sort(function(a, b){console.log()})
             }</div>
         </div>
     )
