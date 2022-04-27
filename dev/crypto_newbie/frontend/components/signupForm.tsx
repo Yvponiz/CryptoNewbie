@@ -33,7 +33,7 @@ export default function SignupForm() {
     dateOfBirth: null,
     accountType: null,
     password: null,
-    conf_password: null,
+    confPassword: null,
   })
 
   //onChange={(event) => changeState({...state, prenom:event.target.value})} prends tout ce qui à dans le state plus nouvelle valeur
@@ -61,7 +61,7 @@ export default function SignupForm() {
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
       <label htmlFor="conf_password">Confirmer le mot de passe</label>
-      <input onChange={(event) => changeState({ ...state, conf_password: event.target.value })} type="password" id="conf_password" name="conf_password" required />
+      <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="conf_password" name="conf_password" required />
 
       <button type="submit">Soumettre</button>
     </form>

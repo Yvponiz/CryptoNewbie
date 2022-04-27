@@ -2,24 +2,27 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
-import LoginForm from '../frontend/components/loginForm'
-import commonProps, { CommonProps } from '../frontend/utils/commonProps'
+import ChangePasswordForm from '../frontend/components/passwordForm'
+import commonProps, { ProfilProps } from '../frontend/utils/commonProps'
+
 
 export function getServerSideProps({ req, res }){
   return commonProps({req, res})
 }
 
-type Props = CommonProps
+type Props = ProfilProps
 
-const Connexion: NextPage<Props> = (props:Props) => {
+const Password: NextPage<Props> = (props:Props) => {
 
     return (
       <Layout isLoggedIn={props.isLoggedIn} className='container'>
-        <Head> <title>Crypto Newbie | Connexion</title> </Head>
+        <Head>
+          <title>Crypto Newbie | Connexion</title>          
+        </Head>
   
         <main className='main'>
             <div className='content-form'>
-              <LoginForm />
+              <ChangePasswordForm/>
             </div>
 
         </main>
@@ -28,4 +31,4 @@ const Connexion: NextPage<Props> = (props:Props) => {
     )
 }
   
-export default Connexion
+export default Password

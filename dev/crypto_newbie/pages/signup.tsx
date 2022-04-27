@@ -15,9 +15,7 @@ const Signup: NextPage<Props> = (props:Props) => {
     return (
         <Layout isLoggedIn={props.isLoggedIn} className='container'>
         <Head>
-          <title>Crypto Newbie | Signup</title>
-          <meta name="description" content="" />
-          <link rel="icon" href="cryptonewbie.ico" />                  
+          <title>Crypto Newbie | Signup</title>              
         </Head>
   
         <main className='main'>

@@ -1,6 +1,6 @@
 import { SessionData, SessionStore } from "next-session/lib/types";
 import { Session } from "./entity/Session";
-import * as utils from "./utils";
+import * as utils from "./DButils";
 
 
 // MemoryStore pour, pour créer un et garder un cookie(session)

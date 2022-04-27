@@ -13,11 +13,7 @@ type Props = CommonProps
 const Contact: NextPage<Props> = (props:Props) => {
     return (
         <Layout isLoggedIn={props.isLoggedIn} className='container'>
-        <Head>
-          <title>Crypto Newbie | Contactez-Nous</title>
-          <meta name="description" content="" />
-          <link rel="icon" href="cryptonewbie.ico" />                 
-        </Head>
+        <Head> <title>Crypto Newbie | Contactez-Nous</title> </Head>
   
         <main className='main'>
           <div className='contact'>
