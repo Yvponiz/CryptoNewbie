@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '../../backend/entity/User';
-import * as utils from "../../backend/utils";
+import * as utils from "../../backend/DButils";
 import { getSession } from '../../common/getSession';
 
 export default function submitForm(
@@ -22,7 +22,12 @@ export default function submitForm(
     session.views = session.views ? session.views + 1 : 1; // si pas setter va setter à 1 si setter incremente
     session.user = {
       id: user.id,
-      firstName:user.firstName
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      accountType: user.accountType,
+      accountAmount: user.accountAmount,
+      dateOfBirth: user.dateOfBirth
     }
 
     await session.commit();

@@ -6,6 +6,7 @@ import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfoma
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
 import { CryptoList } from '../frontend/components/cryptoList'
 import commonProps, { CommonProps } from '../frontend/utils/commonProps'
+import { FunctionComponent } from 'react'
 
 type Props = CommonProps
 
@@ -13,11 +14,16 @@ export function getServerSideProps({ req, res }){
   return commonProps({req, res})
 }
 
-const Home: NextPage<Props> = (props:Props) => {
-  console.log("PROPS",props)
-  {props.firstName}
+const Welcome: FunctionComponent<CommonProps> = ({ isLoggedIn, firstName}) => {
+  return isLoggedIn ? (
+    <h1>Bonjour, {firstName}</h1>
+  ):<></>
+}
+
+const Home: NextPage<Props> = ({isLoggedIn, firstName}) => {
+  
   return (
-    <Layout isLoggedIn={props.isLoggedIn} className='container'>
+    <Layout isLoggedIn={isLoggedIn} className='container'>
       <Head>
         <title>Crypto Newbie | Accueil</title>
         <meta name="description" content="" />
@@ -25,8 +31,8 @@ const Home: NextPage<Props> = (props:Props) => {
       </Head>
 
       <main className='main'>
+        <Welcome isLoggedIn={isLoggedIn} firstName={firstName}/>
         <div className='section-performance'>
-          {props.firstName}
           <TrendingCrypto />
           <BestCrypto />
           <WorstCrypto />

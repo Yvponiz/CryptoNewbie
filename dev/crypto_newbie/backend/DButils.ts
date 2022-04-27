@@ -27,7 +27,6 @@ const connectionOptions: ConnectionOptions = {
     Portfolio,
     User,
     Session
-
   ],
   synchronize: true, //true pour créer la bd, false pour lier
   logging: true

@@ -5,7 +5,7 @@ import {User } from "../../backend/entity/User";
 import { Crypto } from '../../backend/entity/Crypto';
 import { AccountType } from '../../common/typecompte';
 import { Transactions } from '../../backend/entity/Transactions';
-import * as utils from "../../backend/utils";
+import * as utils from "../../backend/DButils";
 
 
 export default function signup(
@@ -24,7 +24,7 @@ export default function signup(
       const listName = "nom"
 
       // Classes
-      const user = new User(lastName, firstName, email, AccountType[accountType].Amount, password, dateOfBirth)
+      const user = new User(lastName, firstName, email, AccountType[accountType].Type, AccountType[accountType].Amount, password, dateOfBirth)
       const portfolio = new Portfolio()
       const transaction = new Transactions()
       const lists = new PersoList(listName)

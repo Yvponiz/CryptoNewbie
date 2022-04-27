@@ -20,5 +20,5 @@ export class Transactions extends BaseEntity{
     @ManyToOne(()=> User, (user) => user.transactions, {
         cascade: true
     })
-    user: Relation <User>
+    user: Relation <User>;
 }

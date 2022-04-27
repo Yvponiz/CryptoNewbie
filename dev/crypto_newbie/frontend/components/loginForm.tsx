@@ -23,7 +23,7 @@ function onSubmit(event: FormEvent, state) {
   console.log(state)
 }
 
-export default function Login() {
+export default function LoginForm() {
 
   const [state, changeState] = useState({
     email: null,
