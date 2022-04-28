@@ -4,7 +4,7 @@ import Layout from '../frontend/components/layout'
 import SearchBar from '../frontend/components/searchBar'
 import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
-import { CryptoList } from '../frontend/components/cryptoList'
+import CryptoList from '../frontend/components/cryptoList'
 import commonProps, { CommonProps } from '../frontend/utils/commonProps'
 import { FunctionComponent } from 'react'
 
