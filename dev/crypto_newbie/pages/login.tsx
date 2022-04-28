@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
-import SignupForm from '../frontend/components/signupForm'
+import LoginForm from '../frontend/components/loginForm'
 import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
 
 export function getServerSideProps({ req, res }) {
@@ -11,22 +11,20 @@ export function getServerSideProps({ req, res }) {
 
 type Props = GreetingProps
 
-const Signup: NextPage<Props> = (props: Props) => {
+const Login: NextPage<Props> = (props: Props) => {
+
   return (
     <Layout isLoggedIn={props.isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Inscription</title>
-      </Head>
+      <Head> <title>Crypto Newbie | Connexion</title> </Head>
 
       <main className='main'>
-        <h1>Inscription</h1>
+        <h1>Connexion</h1>
         <div className='content-form'>
-          <SignupForm />
+          <LoginForm />
         </div>
-
       </main>
     </Layout>
   )
 }
 
-export default Signup
+export default Login

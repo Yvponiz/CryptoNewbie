@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Image from "next/image";
 import { Coin } from "../utils/coin";
 
-export function CryptoList() {
+export const CryptoList: FunctionComponent = () => {
     const [handlerState, setHandlerState] = useState<Coin[]>([])
     useEffect(() => { // Fetch les data coté client
         fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinList

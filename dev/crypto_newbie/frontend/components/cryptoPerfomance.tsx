@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { FunctionComponent, useEffect, useState } from "react"
 import Image from "next/image"
 import { Coin } from "../utils/coin"
 
-export function TrendingCrypto() {
+export const TrendingCrypto: FunctionComponent = () => {
     const [handlerState, setHandler] = useState<Coin[]>([])
 
-    useEffect(() => { // Fetch les data coté client, empêche le data d'être constament fetch
+    useEffect(() => {
         fetch('/api/trending')
             .then((res) => res.json())
             .then((data) => {
@@ -33,7 +33,7 @@ export function TrendingCrypto() {
     )
 }
 
-export function BestCrypto() {
+export const BestCrypto: FunctionComponent = () => {
     const [handlerState, setHandler] = useState<Coin[]>([])
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export function BestCrypto() {
     )
 }
 
-export function WorstCrypto() {
+export const WorstCrypto: FunctionComponent = () => {
     const [handlerState, setHandler] = useState<Coin[]>([])
 
     useEffect(() => {

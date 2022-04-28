@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, createConnection, getConnectionManager } from "typeorm"
+import { Connection, ConnectionOptions, getConnectionManager } from "typeorm"
 import { User } from "./entity/User"
 import { Portfolio } from "./entity/Portfolio";
 import { PersoList } from "./entity/PersoList";

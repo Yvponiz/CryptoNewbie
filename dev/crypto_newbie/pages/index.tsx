@@ -1,27 +1,25 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
-import SearchBar from '../frontend/components/searchBar'
+import {SearchBar} from '../frontend/components/searchBar'
 import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfomance'
 import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
 import { CryptoList } from '../frontend/components/cryptoList'
-import commonProps, { CommonProps } from '../frontend/utils/commonProps'
+import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
 import { FunctionComponent } from 'react'
 
-type Props = CommonProps
-
-export function getServerSideProps({ req, res }){
-  return commonProps({req, res})
+export function getServerSideProps({ req, res }) {
+  return commonProps({ req, res })
 }
 
-const Welcome: FunctionComponent<CommonProps> = ({ isLoggedIn, firstName}) => {
+export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstName }) => {
   return isLoggedIn ? (
-    <h1>Bonjour, {firstName}</h1>
-  ):<></>
+    <h1 style={{ color: 'gold' }}>Bonjour, {firstName}</h1>
+  ) : <></>
 }
 
-const Home: NextPage<Props> = ({isLoggedIn, firstName}) => {
-  
+const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
+
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <Head>
@@ -31,22 +29,22 @@ const Home: NextPage<Props> = ({isLoggedIn, firstName}) => {
       </Head>
 
       <main className='main'>
-        <Welcome isLoggedIn={isLoggedIn} firstName={firstName}/>
+        <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
         <div className='section-performance'>
           <TrendingCrypto />
           <BestCrypto />
           <WorstCrypto />
         </div>
 
-        <div className='search-bar'>
-          <SearchBar />
+        <div style={{alignSelf:'flex-start'}} className='search-bar'>
+         <SearchBar/>
         </div>
 
         <div className='section-list'>
           <CryptoList />
         </div>
       </main>
-      
+
     </Layout>
   )
 }

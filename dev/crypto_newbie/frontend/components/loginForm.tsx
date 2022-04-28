@@ -40,10 +40,10 @@ export default function LoginForm() {
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
-      <button type="submit">Submit</button>
+      <button style={{marginTop:'30px'}} type="submit">Submit</button>
 
       <h1>Pas encore de compte ? Créez en un</h1>
-      <a href="signup">Créer un compte</a>
+      <a style={{textDecoration:'underline'}} href="signup">Créer un compte</a>
     </form>
   )
 }

@@ -6,7 +6,7 @@ type FooterProps = {
     [name: string]: ReactElement[]
 };
 
-export default function Footer({ children }: FooterProps) {
+export default function Footer({}: FooterProps) {
     return (
         <>
             <div className='footer'>

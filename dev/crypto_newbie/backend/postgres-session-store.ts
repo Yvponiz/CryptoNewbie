@@ -2,7 +2,6 @@ import { SessionData, SessionStore } from "next-session/lib/types";
 import { Session } from "./entity/Session";
 import * as utils from "./DButils";
 
-
 // MemoryStore pour, pour créer un et garder un cookie(session)
 // Cookie est conservé sur pgadmin
 // Source: https://github.com/hoangvvo/next-session/blob/master/src/memory-store.ts

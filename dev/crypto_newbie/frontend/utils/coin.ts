@@ -22,6 +22,7 @@ interface Item {
 }
 
 export interface Coin {
+    map(): import("react").ReactNode;
     id: string;
     name: string;
     symbol: string;

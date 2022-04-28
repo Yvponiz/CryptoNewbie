@@ -4,12 +4,10 @@ import "reflect-metadata";
 
 @Entity()
 export class Crypto extends BaseEntity{
-    constructor(name:string, symbol:string, growth:number, market_cap:number){
+    constructor(name:string, quantity:number){
         super()
-        this.name = name
-        this.symbol = symbol
-        this.growth = growth
-        this.market_cap = market_cap
+        this.name = name;
+        this.quantity = quantity;
     }
 
     @PrimaryGeneratedColumn()
@@ -17,15 +15,9 @@ export class Crypto extends BaseEntity{
 
     @Column()
     name: string;
-    
+
     @Column()
-    symbol: string;
-
-    @Column({ type: "float"})
-    growth: number
-
-    @Column({ type: "float"})
-    market_cap: number
+    quantity: number;
 
     @ManyToOne(()=> PersoList, (lists) => lists.crypto, {
         cascade: true
