@@ -15,8 +15,8 @@ export default function signup(
     utils.getConnection().then(async connection => {
       
       // Arguments
-      const { lastName, firstName, email, accountType, password, conf_password, dateOfBirth } = req.body // arguments reçu du form dans signupForm.tsx
-      if (password !== conf_password){
+      const { lastName, firstName, email, accountType, password, confPassword, dateOfBirth } = req.body // arguments reçu du form dans signupForm.tsx
+      if (password !== confPassword){
         res.status(400).json( {status:"erreur", errors:["Les deux mots de passes ne sont pas identiques"]})
         return
       }
