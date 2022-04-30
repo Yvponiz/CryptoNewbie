@@ -1,5 +1,4 @@
 export default async function quickSort(listCrypto, element){
-    //console.log(array.slice(0,5).map(coin => coin.element));
     let list = listCrypto.slice(0,25)
     for(let i = 0; i < list.length; i++){
         for(let j = i - 1; j >= 0; j--){
@@ -8,8 +7,36 @@ export default async function quickSort(listCrypto, element){
                     [list[j + 1], list[j]] = [list[j], list[j + 1]]
                 } 
             }
-             //if(listCrypto[i + 1] < listCrypto[j]){
-                //[arr[j + 1],arr[j]] = [arr[j],arr[j + 1]]
+            else if (element === "rank"){
+                if (list[j + 1].market_data.market_cap_rank < (list[j].market_data.market_cap_rank)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
+            else if (element === "symbol"){
+                if (list[j + 1].symbol < (list[j].symbol)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
+            else if (element === "current_price"){
+                if (list[j + 1].market_data.current_price.cad > (list[j].market_data.current_price.cad)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
+            else if (element === "croissance_24h"){
+                if (list[j + 1].market_data.price_change_percentage_24h > (list[j].market_data.price_change_percentage_24h)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
+            else if (element === "market_cap"){
+                if (list[j + 1].market_data.market_cap.cad > (list[j].market_data.market_cap.cad)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
+            else if (element === "logo"){
+                if (list[j + 1].image.small > (list[j].image.small)){
+                    [list[j + 1], list[j]] = [list[j], list[j + 1]]
+                }
+            }
         }
     }
         console.log(list)
