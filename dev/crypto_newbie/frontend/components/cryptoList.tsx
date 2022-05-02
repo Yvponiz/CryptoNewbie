@@ -13,35 +13,23 @@ export default function CryptoList() {
             .then((data) => setHandlerState(data as Coin[]))
     }, [])
 
-    //arr = handlerState.sort(function(a, b) {return a.market_data.current_price.cad - b.market_data.current_price.cad})
-    //const filterByName = () => {
-      //  handlerState.sort(function(a,b) {return a.name.localeCompare(b.name)})
-     //   arr = handlerState.sort(function(a,b) {return a.name.localeCompare(b.name)}) //pour comparer les noms
-     //   console.log("bonjour")
-        console.log(handlerState)
-    //}
-
-    const filterByName = (async () => {
-        //ces trois lignes doivent être conservé pour faire des tests
-        //setHandlerState(handlerState.slice(0,25).sort(function(a,b) {return a.name.localeCompare(b.name)}))
-        //console.log(handlerState)
+    const sort = (async (e) => {
         //document.getElementById('listCrypto').remove
-        let newList = await quickSort(handlerState, "name")
+        let newList = await quickSort(handlerState, e.target.id)
         setHandlerState(newList)
-        console.log("bonsoir")
     })
    
 
     return (
         <div>
             <div className='titles-list'>
-                <p id="rang">#</p>
-                <p id="logo">Logo</p>
-                <p onClick={filterByName} id="nom">Nom</p>
-                <p id="symbol">Symbole</p>
-                <p id="prix">Prix</p>
-                <p id="marketCap">Market cap</p>
-                <p>24 heures</p>
+                <p onClick={sort} id="rank">#</p>
+                <p onClick={sort} id="logo">Logo</p>
+                <p onClick={sort} id="name">Nom</p>
+                <p onClick={sort} id="symbol">Symbole</p>
+                <p onClick={sort} id="current_price">Prix</p>
+                <p onClick={sort} id="market_cap">cap. boursière</p>
+                <p onClick={sort} id="croissance_24h">24 heures</p>
             </div>
 
             <div id="listCrypto">{handlerState.slice(0, 25)
