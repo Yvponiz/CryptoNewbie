@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Coin } from "../utils/coin";
 import handler from "../../pages/api/worstCrypto";
 import quickSort from "../utils/quickSort";
+import CoinInfos from "../../pages/coinInfo";
 
 export default function CryptoList() {
     const [handlerState, setHandlerState] = useState<Coin[]>([])
@@ -23,18 +24,18 @@ export default function CryptoList() {
     return (
         <div>
             <div className='titles-list'>
-                <p onClick={sort} id="rank">#</p>
-                <p onClick={sort} id="logo">Logo</p>
-                <p onClick={sort} id="name">Nom</p>
-                <p onClick={sort} id="symbol">Symbole</p>
-                <p onClick={sort} id="current_price">Prix</p>
-                <p onClick={sort} id="market_cap">cap. boursière</p>
-                <p onClick={sort} id="croissance_24h">24 heures</p>
+                <p onClick={sort} className="title-elem" id="rank">#</p>
+                <p onClick={sort} className="title-elem" id="logo">Logo</p>
+                <p onClick={sort} className="title-elem" id="name">Nom</p>
+                <p onClick={sort} className="title-elem" id="symbol">Symbole</p>
+                <p onClick={sort} className="title-elem" id="current_price">Prix</p>
+                <p onClick={sort} className="title-elem" id="market_cap">cap. boursière</p>
+                <p onClick={sort} className="title-elem" id="croissance_24h">24 heures</p>
             </div>
 
             <div id="listCrypto">{handlerState.slice(0, 25)
                 .map(({ id, name, symbol, market_data: { current_price, market_cap, market_cap_rank, price_change_percentage_24h }, image: { small }}) =>
-                    <a href='' className='index-coin' key={id}>
+                    <a href='coinInfo?{name}' className='index-coin' key={id}>
                         <li>{market_cap_rank}</li>
                         <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
                         <li className="name">{name}</li>

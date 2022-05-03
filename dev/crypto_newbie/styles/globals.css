@@ -99,6 +99,7 @@ input{
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   width: 100%;
+  text-align: center;
   align-items: center;
 }
 
@@ -219,6 +220,19 @@ input{
 .titles-list{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+.title-elem{
+  padding: 0.8em;
+  text-align: center;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s, border-bottom 0.3s;
+}
+
+.title-elem:hover{
+  background-color: rgb(40, 40, 40) ;
+  border-bottom: 4px solid #00008b;
 }
 
 /*-------------------------------Connexion-------------------------------*/
