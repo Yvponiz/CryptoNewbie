@@ -13,7 +13,7 @@ function onSubmit(event: FormEvent, state) {
       .then((response) => response.json())
       .then((data) => {
         if(data.status === "success"){
-          window.location.href = "profil"
+          window.location.href = "profile"
         }
         else if (data.status === "erreur") {
           window.alert(data.errors.join("\n"))
@@ -32,7 +32,7 @@ export default function ChangePasswordForm() {
   })
 
   return (
-    <form className="form" action="/profil" method="post" onSubmit={(event) => onSubmit(event, state)}>
+    <form className="form" action="/profile" method="post" onSubmit={(event) => onSubmit(event, state)}>
       
       <label htmlFor="oldPassword">Ancien Mot de Passe</label>
       <input onChange={(event) => changeState({ ...state, oldPassword: event.target.value })} type="password" id="oldPassword" name="oldPassword" required />
@@ -43,7 +43,7 @@ export default function ChangePasswordForm() {
       <label htmlFor="confPassword">Confirmer Nouveau Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="confPassword" name="confPassword" required />
 
-      <button type="submit">Submit</button>
+      <button style={{marginTop:'30px'}} type="submit">Submit</button>
     </form>
   )
 }

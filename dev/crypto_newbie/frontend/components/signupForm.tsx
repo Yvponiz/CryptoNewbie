@@ -14,7 +14,7 @@ function onSubmit(event: FormEvent, state) {
       .then((response) => response.json())
       .then((data) => {
         if(data.status === "success"){
-          window.location.href = "/connexion"
+          window.location.href = "/login"
         }
         else if (data.status === "erreur") {
           window.alert(data.errors.join("\n"))
@@ -35,8 +35,6 @@ export default function SignupForm() {
     password: null,
     confPassword: null,
   })
-
-  //onChange={(event) => changeState({...state, prenom:event.target.value})} prends tout ce qui à dans le state plus nouvelle valeur
 
   return (
     <form className="form" method="POST" onSubmit={(event) => onSubmit(event, state)}>
@@ -63,7 +61,7 @@ export default function SignupForm() {
       <label htmlFor="conf_password">Confirmer le mot de passe</label>
       <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="conf_password" name="conf_password" required />
 
-      <button type="submit">Soumettre</button>
+      <button style={{marginTop:'30px'}} type="submit">Submit</button>
     </form>
   )
 }

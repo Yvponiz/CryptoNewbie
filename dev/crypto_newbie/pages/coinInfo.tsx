@@ -2,9 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
 import CryptoInfos from '../frontend/components/cryptoInfos'
-import commonProps, { CommonProps } from '../frontend/utils/commonProps'
+import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
 
-type Props = CommonProps
+type Props = GreetingProps
 
 
 const CoinInfos: NextPage<Props> = ({isLoggedIn}) => {

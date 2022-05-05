@@ -15,6 +15,7 @@ export default function submitForm(
     const user = await userRepo.findOne({id: session.user.id});
     
     (await user).email = email;
+    session.user.email = email;
     await userRepo.save(user);
     await session.commit();
     console.log("Email Changed");

@@ -2,10 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
 import { FormEvent, FunctionComponent, useState } from 'react'
-import commonProps, {UserProps } from '../frontend/utils/commonProps'
-import { readFileSync } from 'fs'
+import commonProps, { UserProps } from '../frontend/utils/commonProps'
 
-type EmailProps = {isLoggedIn : boolean, email: string}
+type EmailProps = {
+  isLoggedIn: boolean;
+  email: string;
+};
 
 function onSubmit(event: FormEvent, state) {
   event.preventDefault()
@@ -20,7 +22,7 @@ function onSubmit(event: FormEvent, state) {
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
-        window.location.href = "profil"
+        window.location.href = "profile"
       }
       else if (data.status === "erreur") {
         window.alert(data.errors.join("\n"))
@@ -30,43 +32,67 @@ function onSubmit(event: FormEvent, state) {
   console.log(state)
 }
 
-export function getServerSideProps({ req, res }) {
-  return commonProps({ req, res })
+export async function getServerSideProps({ req, res }) {
+  return await commonProps({ req, res })
 }
 
-const UserProfile: FunctionComponent<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth }) => {
-
+const EmailField: FunctionComponent<EmailProps> = ({ email }) => {
+  const [editable, setEditable] = useState(false);
+  const handleClick = () => setEditable((editable) => !editable);
   const [state, changeState] = useState({
-    editable: false,
     email: null
   })
 
-  return isLoggedIn ? (
-    <div className='profil-box'>
-      <li>Nom : {lastName}</li>
-      <li>Prénom : {firstName}</li>
-
+  if (!editable) {
+    return (
+      <>
+        <div className='change-email'>
+          Courriel :
+          <blockquote contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
+            {email}
+          </blockquote>
+          <button style={{ padding: '2px' }} onClick={handleClick}>Modifier courriel</button>
+        </div>
+      </>
+    );
+  }
+  else {
+    return (
       <form className='change-email' onSubmit={(event) => onSubmit(event, state)}>
-        Courriel : 
-        <blockquote contentEditable={true} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
+        Courriel :
+        <blockquote style={{ backgroundColor: '#00008b' }} contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
           {email}
         </blockquote>
         <button style={{ padding: '2px' }}> Modifier courriel</button>
       </form>
+    )
+  }
+}
 
+const UserProfile: FunctionComponent<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth }) => {
+
+  return isLoggedIn ? (
+    <div className='profile-box'>
+      <li>Nom : {lastName}</li>
+      <li>Prénom : {firstName}</li>
+      <EmailField
+        isLoggedIn={isLoggedIn}
+        email={email}
+      />
       <li>Date de naissance : {dateOfBirth} </li>
     </div>
   ) : <></>
 }
 
-const Profil: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth, accountType, accountAmount }) =>
+const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth, accountType, accountAmount }) =>
 (<Layout isLoggedIn={isLoggedIn} className='container'>
   <Head> <title>Crypto Newbie | Profil</title> </Head>
 
   <main className='main'>
-    <div className='profil'>
-      <div className='profil-top'>
-        <h1>{firstName} {lastName}</h1>
+    <h1 style={{alignSelf:'flex-end'}} >Profil</h1>
+    <div className='profile'>
+      <div className='profile-top'>
+        <h1 style={{ color: 'gold' }} >{firstName} {lastName}</h1>
         <li>Compte {accountType}</li>
         <li>Montant dans le compte : {accountAmount.toLocaleString()}$</li>
       </div>
@@ -89,4 +115,4 @@ const Profil: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, d
 </Layout>
 )
 
-export default Profil
+export default Profile

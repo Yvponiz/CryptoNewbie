@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Image from "next/image"
+import { FunctionComponent } from "react";
 
 type HeaderProps = {
-    isLoggedIn: boolean 
+    isLoggedIn: boolean
 };
 
-function ShowHeader(props){
-    const isLoggedIn = props.isLoggedIn;
-
+const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
     if (isLoggedIn) {
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
                 <Link href='transactions'><a>Transactions</a></Link>
                 <Link href='portfolio'><a>Portfolio</a></Link>
-                <Link href='profil'><a>Profil</a></Link>
+                <Link href='lists'><a>Listes</a></Link>
+                <Link href='profile'><a>Profil</a></Link>
                 <Link href='api/disconnect'><a>Deconnexion</a></Link>
             </>
         )
@@ -23,7 +23,7 @@ function ShowHeader(props){
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
-                <Link href='connexion'><a>Connexion</a></Link>
+                <Link href='login'><a>Connexion</a></Link>
             </>
         )
 }
@@ -40,7 +40,7 @@ export default function Header({ isLoggedIn }: HeaderProps) {
                     </h1>
                 </div>
                 <div className='header-links' id="header-links">
-                    <ShowHeader isLoggedIn={isLoggedIn}/>
+                    <ShowHeader isLoggedIn={isLoggedIn} />
                 </div>
             </div>
         </>
