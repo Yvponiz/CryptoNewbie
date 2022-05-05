@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Image from "next/image";
 import { Coin } from "../utils/coin";
-import handler from "../../pages/api/worstCrypto";
 import quickSort from "../utils/quickSort";
 import session from "next-session";
 

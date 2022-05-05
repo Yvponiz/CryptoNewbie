@@ -8,12 +8,15 @@ export default function CryptoInfos() {
 
     let coin;
     useEffect(() => {
-        if (window.sessionStorage.getItem('selectCoin')) {
-            coin = sessionStorage.getItem('selectCoin');
-            console.log(coin);
-            setCoin(coin);
-        }
+        coin = sessionStorage.getItem('selectCoin');
+        console.log(coin);
+        setCoin(coin);
     }, []);
+
+    const callApi=(() =>{
+        
+    })
+
     fetch('https://api.coingecko.com/api/v3/coins/'+coinState).then((response) => {
         response.json().then((jsonData) => {
             setHandler(jsonData);
