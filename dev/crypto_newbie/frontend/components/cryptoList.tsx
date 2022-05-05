@@ -3,6 +3,10 @@ import Image from "next/image";
 import { Coin } from "../utils/coin";
 import quickSort from "../utils/quickSort";
 
+export function getCoin(){
+    window.sessionStorage.getItem("selectCoin");
+}
+
 
 export const CryptoList: FunctionComponent = () => {
     const [handlerState, setHandlerState] = useState<Coin[]>([])
@@ -21,7 +25,7 @@ export const CryptoList: FunctionComponent = () => {
     
     const setSelection = ( async (e) => {
         let selectCoin = e.currentTarget.id;
-        let response = await window.sessionStorage.setItem("selectCoin", selectCoin);
+        let response = await window.sessionStorage.setItem("selectCoin", JSON.stringify(selectCoin));
         location.href = 'coinInfo';
         console.log(response);
     })
