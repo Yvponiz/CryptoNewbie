@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
+import CryptoInfos from '../frontend/components/cryptoInfos'
 import commonProps, { CommonProps } from '../frontend/utils/commonProps'
-import { FunctionComponent } from 'react'
 
 type Props = CommonProps
 
-let queryString = window.location.search.substring(1);
-console.log(queryString);
 
 const CoinInfos: NextPage<Props> = ({isLoggedIn}) => {
 
@@ -20,8 +18,8 @@ const CoinInfos: NextPage<Props> = ({isLoggedIn}) => {
       </Head>
 
       <main className='main'>
-        <div className='coin-info'>
-          
+        <div className='coin-infos'>
+          <CryptoInfos />
         </div>
       </main>
       

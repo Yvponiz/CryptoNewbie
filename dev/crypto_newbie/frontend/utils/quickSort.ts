@@ -42,3 +42,6 @@ export default async function quickSort(listCrypto, element){
         console.log(list)
         return list
 }
+
+
+//https://www.section.io/engineering-education/sorting-algorithms-in-js/
