@@ -2,10 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
 import { FormEvent, FunctionComponent, useState } from 'react'
-import commonProps, { CommonProps, ProfilProps } from '../frontend/utils/commonProps'
+import commonProps, {UserProps } from '../frontend/utils/commonProps'
 import { readFileSync } from 'fs'
 
-type UserProps = ProfilProps
+type EmailProps = {isLoggedIn : boolean, email: string}
 
 function onSubmit(event: FormEvent, state) {
   event.preventDefault()

@@ -7,6 +7,12 @@ export default function CryptoInfos() {
     const [coinState, setCoin] = useState("");
 
     let coin;
+
+    const coingeckoUrl = (coin) => {
+        coin = String(coin); 
+        return `https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`;
+      };
+
     useEffect(() => {
         coin = sessionStorage.getItem('selectCoin');
         console.log(coin);
@@ -14,7 +20,7 @@ export default function CryptoInfos() {
     }, []);
 
     const callApi=(() =>{
-        
+
     })
 
     fetch('https://api.coingecko.com/api/v3/coins/'+coinState).then((response) => {
