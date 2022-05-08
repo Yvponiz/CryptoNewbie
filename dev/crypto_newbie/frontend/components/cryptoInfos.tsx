@@ -1,25 +1,30 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { Coin } from "../utils/coin";
+import { useState, useEffect, FunctionComponent } from 'react'
+import { Coin } from '../utils/coin';
+import Image from 'next/image';
 
-export default function CryptoInfos() {
-    const [handlerState, setHandlerState] = useState({market_data:{current_price:{cad:""}}});
+export const CryptoInfos: FunctionComponent = () => {
+    const [coinState, setCoin] = useState<Coin>();
 
     useEffect(() => {
-        let coin = sessionStorage.getItem('selectCoin');
-        //console.log(coin);
-        //console.log(`https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`);
-        fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/`)
-        .then((res) => res.json())
-        .then((data) => setHandlerState(data))
+        let coinId = sessionStorage.getItem('coinId');
+
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setCoin(data as Coin);
+            })
     }, []);
 
-
+    if(coinState){
+        return (
+            <div>
+                {coinState.name}
+                <li><Image src={coinState.image.large} width="100px" height="100px" alt='coin image'></Image></li>
+            </div>
+        )
+    }
 
     return (
-        <div className="crypto-info">
-            <div className="crypto-info-name">{handlerState.name}</div>
-            <div className="crypto-info-price">{handlerState.market_data.current_price.cad} $</div>
-        </div>
-        
+        <></>
     )
 }

@@ -40,7 +40,6 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* background-image: url("../public/crypto_background.png"); */
   background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,7 +85,6 @@ input {
   color: white;
 }
 
-
 .header-links a {
   padding: 2rem;
   font-size: 20px;
@@ -116,6 +114,7 @@ input {
 
 .index-coin:hover {
   background-color: rgb(40, 40, 40);
+  cursor: pointer;
 }
 
 .performance {
@@ -321,11 +320,12 @@ input {
   align-items: flex-end;
 }
 
-/*-------------------------------contact nous---------------------------------------------*/
+/*-------------------------------Contact-------------------------*/
 
 .contact{
   color: white;
 }
+
 /*-------------------------------Transactions-------------------------*/
 
 .buy-sell {

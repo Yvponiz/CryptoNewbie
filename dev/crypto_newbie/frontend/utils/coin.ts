@@ -13,6 +13,7 @@ interface MarketData {
 
 interface Image {
     small: string;
+    large: string;
 }
 
 interface Item {
@@ -22,7 +23,6 @@ interface Item {
 }
 
 export interface Coin {
-    map(): import("react").ReactNode;
     id: string;
     name: string;
     symbol: string;
