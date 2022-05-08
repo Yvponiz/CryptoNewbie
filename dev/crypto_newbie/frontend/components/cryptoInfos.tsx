@@ -23,7 +23,6 @@ export const CryptoInfos: FunctionComponent = () => {
                 {coinState.name}
                 <li><Image src={coinState.image.large} width="100px" height="100px" alt='coin image'></Image></li>
             </div>
-    
         )
     }
 
