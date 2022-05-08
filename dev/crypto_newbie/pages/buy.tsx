@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
-import SearchBar from '../frontend/components/searchBar'
+import {SearchBar} from '../frontend/components/searchBar'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
 
 export function getServerSideProps({ req, res }) {

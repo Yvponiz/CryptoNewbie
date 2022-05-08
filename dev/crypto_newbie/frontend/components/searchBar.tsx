@@ -1,12 +1,12 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect, FunctionComponent} from 'react'
 import Image from 'next/image';
-import handler from '../../pages/api/bestCrypto';
+import { Coin } from '../utils/coin';
 
-export default function SearchBar() {
+export const  SearchBar: FunctionComponent = () => {
     const [handlerState, setHandler] = useState({market_data:{current_price:{cad: ""}, market_cap_rank:"", market_cap:{cad: ""}, price_change_percentage_24h: ""}});
+    //const [handlerState, setHandler] = useState<Coin>();
     const [search, setSearch] = useState("");
     
-
     const updateSearch = (e) => {
         setSearch(e.target.value);
     };
@@ -14,22 +14,25 @@ export default function SearchBar() {
     const coingeckoUrl = (coin) => {
         coin = String(coin); 
         return `https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`;
-      };
+    };
 
     const coingeckoFetch = () => {
         if (search != ""){
-            fetch(coingeckoUrl(search)).then((response) =>
-                response.json().then((jsonData) => {
-                    if (jsonData.error != "Could not find coin with the given id"){
-                        setHandler(jsonData);
-                        let divResult = document.querySelector(".search-result");
-                        divResult.style.visibility = "visible";
-                    }
-                    else{
-                        alert("La recherche n'est pas valide !");
-                    }
-                })
-            );
+            useEffect(() => {
+                fetch(coingeckoUrl(search))
+                    .then((response) => response.json()
+                    .then((jsonData) => {
+                        if (jsonData.error != "Could not find coin with the given id"){
+                            setHandler(jsonData as Coin);
+                            let divResult = document.querySelector(".search-result");
+                            divResult.style.visibility = "visible";
+                        }
+                        else{
+                            alert("La recherche n'est pas valide !");
+                        }
+                    })
+                );
+            })
         }
         else {
             alert("Veuillez spécifier une crypto");
@@ -38,6 +41,7 @@ export default function SearchBar() {
 
     return (
         <div>
+            {/* {Object.values(handlerState)} */}
             <div className='search-section'>
                 <div className="input-search">
                     <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
