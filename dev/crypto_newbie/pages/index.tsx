@@ -12,13 +12,22 @@ export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
 
-export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstName }) => {
+export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstName}) => {
+  const h = new Date().getHours()
+  let message = ""
+  if (h >= 9 && h < 18)
+    message = "Bonjour"
+  else if (h >= 18 && h < 23)
+    message = "Bonsoir"
+  else
+    message = "Bon matin"
+
   return isLoggedIn ? (
-    <h1 style={{ color: 'gold' }}>Bonjour, {firstName}</h1>
+    <h1>{message}, {firstName}</h1>
   ) : <></>
 }
 
-const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
+const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
@@ -29,7 +38,9 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
       </Head>
 
       <main className='main'>
-        <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+        <div className='welcome-section'>
+          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+        </div>
         <div className='section-performance'>
           <TrendingCrypto />
           <BestCrypto />

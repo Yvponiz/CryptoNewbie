@@ -23,10 +23,13 @@ const CoinInfos: NextPage<GreetingProps> = ({isLoggedIn, firstName}) => {
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <title>Crypto Newbie | {setCoinName()}  </title>
       <main className='main'>
-        <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+        <div className='welcome-section'>
+          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+        </div>
         <div className='coin-infos'>
           <CryptoInfos />
-          <button className='button-buy'>Acheter</button>
+          {isLoggedIn ? <button className='button-buy' onClick={function () {
+          location.href = "buy"}}>Acheter</button> : null}
         </div>
       </main>
       

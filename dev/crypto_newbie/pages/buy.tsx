@@ -19,7 +19,9 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) 
 
       <main className='main'>
         <div className='page-top'>
-          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          </div>
           <h1>Acheter</h1>
         </div>
         <div style={{marginTop:'50px'}} className='search-bar'>

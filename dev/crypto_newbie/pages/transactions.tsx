@@ -18,7 +18,9 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
 
       <main className='main'>
         <div className='page-top'>
-          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          </div>
           <h1>Transactions</h1>
         </div>
         <div className='buy-sell'>

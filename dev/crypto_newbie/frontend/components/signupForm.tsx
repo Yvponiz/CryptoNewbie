@@ -61,7 +61,7 @@ export default function SignupForm() {
       <label htmlFor="conf_password">Confirmer le mot de passe</label>
       <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="conf_password" name="conf_password" required />
 
-      <button style={{marginTop:'30px'}} type="submit">Submit</button>
+      <button className="login-button" type="submit">Créer un compte</button>
     </form>
   )
 }

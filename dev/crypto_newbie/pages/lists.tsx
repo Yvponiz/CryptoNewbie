@@ -18,7 +18,9 @@ const Listes: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => {
 
             <main className='main'>
                 <div className='page-top'>
-                    <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+                    <div className='welcome-section'>
+                        <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+                    </div>
                     <h1>Listes</h1>
                 </div>
                 <div></div>
