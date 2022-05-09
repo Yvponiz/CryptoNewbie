@@ -26,6 +26,7 @@ const CoinInfos: NextPage<GreetingProps> = ({isLoggedIn, firstName}) => {
         <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
         <div className='coin-infos'>
           <CryptoInfos />
+          <button className='button-buy'>Acheter</button>
         </div>
       </main>
       

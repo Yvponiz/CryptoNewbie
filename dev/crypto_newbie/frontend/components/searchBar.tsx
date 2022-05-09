@@ -44,7 +44,7 @@ export const SearchBar: FunctionComponent = () => {
                         <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
                     </div>
                     <div className="button-search">
-                        <button onClick={coingeckoFetch}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
+                        <button className='search-button' onClick={coingeckoFetch}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
                     </div>
                 </div>
                 <div className='search-result'>
@@ -54,6 +54,7 @@ export const SearchBar: FunctionComponent = () => {
                     <li title="Le prix en cad">{coinState.market_data.current_price.cad.toLocaleString() + ' $'}</li>
                     <li title="La capitalisation">{coinState.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
                     <li title="L'évolution en 24h en %" style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{coinState.market_data.price_change_percentage_24h + ' %'}</li>
+                    <button className='button-buy'>Acheter</button>
                 </div>
             </div>
         )
@@ -64,7 +65,7 @@ export const SearchBar: FunctionComponent = () => {
                 <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
             </div>
             <div className="button-search">
-                <button onClick={coingeckoFetch}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
+                <button className='search-button' onClick={coingeckoFetch}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 enum Currency {
-    CAD = 'cad'
+    CAD = 'cad',
+    USD = 'usd'
 }
 
 type CurrentPrices = Record<Currency, number>
@@ -8,7 +9,12 @@ interface MarketData {
     market_cap: CurrentPrices;
     market_cap_rank: string;
     price_change_percentage_24h: number;
+    price_change_percentage_1y: number;
+    price_change_percentage_7d: number;
+    price_change_percentage_30d: number;
     current_price: CurrentPrices;
+    low_24h : number;
+    high_24h : number;
 }
 
 interface Image {

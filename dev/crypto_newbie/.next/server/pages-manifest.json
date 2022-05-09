@@ -1,9 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js",
-  "/api/trending": "pages/api/trending.js",
-  "/api/worstCrypto": "pages/api/worstCrypto.js",
-  "/api/coinList": "pages/api/coinList.js",
-  "/api/bestCrypto": "pages/api/bestCrypto.js"
+  "/_error": "pages/_error.js"
 }
