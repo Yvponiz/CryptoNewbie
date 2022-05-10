@@ -3,7 +3,7 @@ import Image from "next/image"
 import { FunctionComponent } from "react";
 
 type HeaderProps = {
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
 };
 
 const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {

@@ -24,7 +24,6 @@ export const TrendingCrypto: FunctionComponent = () => {
                         <div className="performance-layout-left">
                             <li className="coin-name">{name}</li>
                             <li>Prix: {price_btc.toFixed(8) + ' $'}</li>
-                            {/* <li style={{ color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}> {coin.market_data.price_change_percentage_24h.toFixed(2) + ' %'}</li> */}
                         </div>
                         <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
                     </div>

@@ -8,6 +8,11 @@ interface MarketData {
     market_cap: CurrentPrices;
     market_cap_rank: string;
     price_change_percentage_24h: number;
+    price_change_percentage_7d: number;
+    price_change_percentage_30d: number;
+    price_change_percentage_1y: number;
+    high_24h: CurrentPrices;
+    low_24h: CurrentPrices;
     current_price: CurrentPrices;
 }
 

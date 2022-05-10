@@ -43,5 +43,5 @@ export default async function quickSort(listCrypto, element){
         return list
 }
 
-
+// Exemple d'algorithme de tri rapide
 //https://www.section.io/engineering-education/sorting-algorithms-in-js/
