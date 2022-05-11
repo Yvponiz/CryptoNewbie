@@ -11,7 +11,7 @@ export default function submitForm(
 
     const {oldPassword, newPassword, confPassword} = req.body;
     const session = await getSession(req, res);
-    const userRepo = connection.manager.getRepository(User);
+    const userRepo = connection.manager.getRepository<User>("User");
     const user = await userRepo.findOne({id: session.user.id});
 
     if (newPassword !== confPassword){

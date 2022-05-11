@@ -5,6 +5,7 @@ import { getSession } from "../../common/getSession";
 export type GreetingProps = {
     isLoggedIn: boolean; 
     firstName: string;
+    lastName: string;
 };
 
 export type UserProps = {

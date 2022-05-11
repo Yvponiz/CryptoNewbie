@@ -3,7 +3,7 @@ import { PersoList } from "./PersoList";
 import { User } from "./User";
 import "reflect-metadata";
 
-@Entity()
+@Entity("Portfolio")
 export class Portfolio extends BaseEntity{
 
     @PrimaryGeneratedColumn()

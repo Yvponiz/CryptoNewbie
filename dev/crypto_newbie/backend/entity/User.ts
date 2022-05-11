@@ -10,7 +10,7 @@ export enum UserRole {
     Public = "Public"
 }
 
-@Entity()
+@Entity("User")
 export class User extends BaseEntity{
     constructor(lastName:string, firstName:string, email:string, accountType:string, accountAmount:number, password:string, dateOfBirth:string){
         super()

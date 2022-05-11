@@ -7,10 +7,11 @@ export default function submitForm(
   req: NextApiRequest,
   res: NextApiResponse<{status:string, errors:string[]}>
 ) {
-  utils.getConnection().then(async () => {
+  utils.getConnection().then(async (connection) => {
 
     const { email, password} = req.body
-    const user = await User.findOne({email, password:btoa(password)})  
+    const userRepo = connection.getRepository<User>("User");
+    const user = await userRepo.findOne({email, password:btoa(password)})  
 
     if(user === undefined){
         res.status(400).json( {status:"erreur", errors:["Courriel ou mot de passe invalide"]})
