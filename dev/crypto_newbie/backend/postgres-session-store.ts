@@ -12,7 +12,6 @@ export default class MemoryStore implements SessionStore {
         let connection = await utils.getConnection();
         const sessionRepository = connection.getRepository<Session>("Session");
         const sess = (await sessionRepository.findOne({ uuid: sid })).data;
-        console.log("GET", sid)
         
         if (sess) {
             const session = JSON.parse(sess, (key, value) => {
@@ -50,11 +49,9 @@ export default class MemoryStore implements SessionStore {
         const sessionRepository = connection.getRepository<Session>("Session");
         let sessionEntity = await sessionRepository.findOne({ uuid: sid });
         await sessionRepository.remove(sessionEntity);
-        console.log("DESTROY", sid)
     }
 
     async touch(sid: string, sess: SessionData) {
-        console.log("TOUCH", sid, sess)
         return this.set(sid, sess)
     }
 }

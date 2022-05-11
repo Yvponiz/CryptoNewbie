@@ -65,6 +65,3 @@ export default async function signup(
     return res.status(500).send(error.toString())
   }
 }
-
-//status 200 = tout est ok
-//status 500 = pas bon

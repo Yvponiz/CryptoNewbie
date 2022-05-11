@@ -56,6 +56,7 @@ Documentation sur Fonction useEffect() : https://nextjs.org/docs/basic-features/
 Documentation sur Map (Structure de donnée) : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map  
 Documentation sur Find : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find  
 Documentation sur Filter : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter  
+Documentation sur getServerSideProps : https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props    
 Documentation fetch : https://developer.mozilla.org/en-US/docs/Web/API/fetch  
 Documentation node fetch : https://www.npmjs.com/package/node-fetch  
 Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?  

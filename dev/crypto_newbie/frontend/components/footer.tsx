@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 
-
 type FooterProps = {
     [name: string]: ReactElement[]
 };

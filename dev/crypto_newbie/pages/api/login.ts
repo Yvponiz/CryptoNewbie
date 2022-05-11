@@ -19,8 +19,6 @@ export default function submitForm(
     }
 
     const session = await getSession(req, res);
-    console.log(session.views);
-    session.views = session.views ? session.views + 1 : 1; // si pas setter va setter à 1 si setter incremente
     session.user = {
       id: user.id,
       firstName: user.firstName,
@@ -41,6 +39,3 @@ export default function submitForm(
     console.log(error)
   });
 }
-
-//status 200 = tout est ok
-//status 500 = pas bon

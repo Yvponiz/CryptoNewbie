@@ -1,3 +1,5 @@
+// Interface pour monnaie
+
 enum Currency {
     CAD = 'cad'
 }

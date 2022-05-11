@@ -3,21 +3,21 @@ import Image from "next/image"
 import { Coin } from "../utils/coin"
 
 export const TrendingCrypto: FunctionComponent = () => {
-    const [handlerState, setHandler] = useState<Coin[]>([])
+    const [coinState, setCoinState] = useState<Coin[]>([])
 
     useEffect(() => {
         fetch('/api/trending')
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                setHandler(data as Coin[])
+                setCoinState(data as Coin[])
             })
     }, [])
 
     return (
         <div className="performance">
             <span className="performance-title">Tendance</span>
-            {handlerState.slice(0, 3)
+            {coinState.slice(0, 3)
             .map(({id, item:{name, price_btc, small}}) =>
                 <div className="tendance-layout" key={id}>
                     <div className="performance-layout-in">
