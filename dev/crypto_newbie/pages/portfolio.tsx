@@ -1,11 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { FunctionComponent } from 'react'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
-import commonProps, { UserProps } from '../frontend/utils/commonProps'
+import commonProps, { GreetingProps, UserProps } from '../frontend/utils/commonProps'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
+}
+
+export const getUserCryptos : FunctionComponent<GreetingProps> = ({isLoggedIn}) => {
+  
+  return (
+    <h1>Bonsoir</h1>
+  )
 }
 
 const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => {
