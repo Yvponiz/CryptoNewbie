@@ -3,9 +3,9 @@ import { Crypto } from "./Crypto";
 import { Portfolio } from "./Portfolio";
 import "reflect-metadata";
 
-@Entity()
+@Entity("PersoList")
 export class PersoList extends BaseEntity {
-    constructor(name:string){
+    constructor(name?: string) {
         super()
         this.name = name
     }
@@ -13,15 +13,15 @@ export class PersoList extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ nullable: true })
     name: string;
 
-    @ManyToOne(()=> Portfolio, (portfolio) => portfolio.perso_list, {
+    @ManyToOne(() => Portfolio, (portfolio) => portfolio.perso_list, {
         cascade: true
     })
     portfolio: Relation<Portfolio>
 
-    @OneToMany(()=> Crypto, (crypto) => crypto.perso_list)
+    @OneToMany(() => Crypto, (crypto) => crypto.perso_list)
     @JoinColumn()
-    crypto: Relation <Crypto[]>
+    crypto: Relation<Crypto[]>
 }

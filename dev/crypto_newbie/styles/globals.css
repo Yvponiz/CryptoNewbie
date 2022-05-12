@@ -95,6 +95,11 @@ input {
   color: blue;
 }
 
+.welcome-section{
+  color: gold;
+  padding-top: 1em;
+}
+
 /*----------------------------------Index----------------------------*/
 
 .welcome-section{
@@ -122,6 +127,7 @@ input {
   cursor: pointer;
 }
 
+/*===Performance===*/
 .performance {
   color: white;
   width: 400px;
@@ -160,14 +166,6 @@ input {
   height: 100%;
 }
 
-.section-list {
-  display: grid;
-  width: 100%;
-  padding: 20px 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-}
-
 .section-performance {
   display: flex;
   justify-content: space-evenly;
@@ -175,59 +173,13 @@ input {
   padding: 30px 0px;
 }
 
-.search-bar div {
-  display: flex;
-  flex-direction: row;
-}
-
-.input-search input {
-  background: rgba(0, 0, 0, 0.0);
-  border: none;
-  border-bottom: 1px solid white;
-  color: white;
-  font-size: 1.5rem;
-  width: 50%;
-  height: 40px;
-  margin-top: 1.4em;
-  margin-left: 20px;
-  border-color: white;
-  transition: width 0.3s, border-color 0.3s ease-in-out;
-}
-
-.search-button {
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 50%;
-  margin-top: 36px;
-  border-radius: 15px;
-  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
-}
-
-.search-button:hover {
-  background-color: #00008b;
-  padding-right: 2em;
-  padding-left: 2em;
-  border-radius: 10px;
-  border: none;
-}
-
-.input-search input:focus {
-  outline: none;
-  border-color:#00008b;
+/*===Crypto list===*/
+.section-list {
+  display: grid;
   width: 100%;
-}
-
-.search-result {
-  display: flex;
-  margin-left: 75px;
-  visibility: hidden;
-}
-
-.search-result li {
-  margin-top: 35px;
-  padding-right: 25px;
-  padding-left: 25px;
-  font-size: 1.3rem;
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
 }
 
 .titles-list {
@@ -246,6 +198,61 @@ input {
 .title-elem:hover{
   background-color: rgb(40, 40, 40) ;
   border-bottom: 4px solid #00008b;
+}
+
+/*===Searchbar===*/
+.input-search input {
+  background: rgba(0, 0, 0, 0.0);
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.5rem;
+  width: 50%;
+  height: 40px;
+  margin-top: 1.4em;
+  margin-left: 20px;
+  border-color: white;
+  transition: width 0.3s, border-color 0.3s ease-in-out;
+}
+
+.input-search input:focus {
+  outline: none;
+  border-color:#00008b;
+  width: 100%;
+}
+
+.search-bar div {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar button {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50%;
+  margin-top: 36px;
+  border-radius: 15px;
+  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
+}
+
+.search-button:hover {
+  background-color: #00008b;
+  padding-right: 2em;
+  padding-left: 2em;
+  border-radius: 10px;
+  border: none;
+}
+
+.search-result {
+  display: flex;
+  margin-left: 75px;
+}
+
+.search-result li {
+  margin-top: 35px;
+  padding-right: 25px;
+  padding-left: 25px;
+  font-size: 1.3rem;
 }
 
 /*-------------------------------Login-------------------------------*/
@@ -353,12 +360,6 @@ input {
   align-items: flex-end;
 }
 
-/*-------------------------------Contact-------------------------*/
-
-.contact{
-  color: white;
-}
-
 /*-------------------------------Transactions-------------------------*/
 
 .buy-sell {
@@ -449,6 +450,19 @@ input {
   color: #8bc53f;
   background-color: white;
   border: 1px solid #8bc53f;
+}
+
+.transaction-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 30px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  font-size: 20px;
 }
 
 /*----------------------------------Footer----------------------------*/

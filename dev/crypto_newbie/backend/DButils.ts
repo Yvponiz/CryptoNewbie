@@ -7,8 +7,6 @@ import { Transactions } from "./entity/Transactions";
 import { Session } from "./entity/Session";
 import "reflect-metadata";
 
-//const connectionManager = getConnectionManager()
-
 // Paramètres de connexion à permettant de se connecter à postgres
 // Source: https://stackoverflow.com/a/65317768
 

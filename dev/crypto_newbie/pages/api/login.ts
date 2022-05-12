@@ -7,10 +7,11 @@ export default function submitForm(
   req: NextApiRequest,
   res: NextApiResponse<{status:string, errors:string[]}>
 ) {
-  utils.getConnection().then(async () => {
+  utils.getConnection().then(async (connection) => {
 
     const { email, password} = req.body
-    const user = await User.findOne({email, password:btoa(password)})  
+    const userRepo = connection.getRepository<User>("User");
+    const user = await userRepo.findOne({email, password:btoa(password)})  
 
     if(user === undefined){
         res.status(400).json( {status:"erreur", errors:["Courriel ou mot de passe invalide"]})
@@ -18,8 +19,6 @@ export default function submitForm(
     }
 
     const session = await getSession(req, res);
-    console.log(session.views);
-    session.views = session.views ? session.views + 1 : 1; // si pas setter va setter à 1 si setter incremente
     session.user = {
       id: user.id,
       firstName: user.firstName,
@@ -40,6 +39,3 @@ export default function submitForm(
     console.log(error)
   });
 }
-
-//status 200 = tout est ok
-//status 500 = pas bon

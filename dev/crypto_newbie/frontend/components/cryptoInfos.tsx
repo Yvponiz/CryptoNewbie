@@ -67,6 +67,6 @@ export const CryptoInfos: FunctionComponent = () => {
     }
 
     return (
-        <></>
+        null
     )
 }

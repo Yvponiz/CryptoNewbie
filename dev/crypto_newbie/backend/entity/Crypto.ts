@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity
 import { PersoList } from "./PersoList";
 import "reflect-metadata";
 
-@Entity()
+@Entity("Crypto")
 export class Crypto extends BaseEntity{
     constructor(name:string, quantity:number){
         super()

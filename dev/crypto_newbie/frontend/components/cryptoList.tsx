@@ -3,19 +3,18 @@ import Image from "next/image";
 import { Coin } from "../utils/coin";
 import quickSort from "../utils/quickSort";
 
-
 export const CryptoList: FunctionComponent = () => {
-    const [handlerState, setHandlerState] = useState<Coin[]>([])
+    const [coinState, setCoinState] = useState<Coin[]>([])
 
     useEffect(() => {
         fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinList
             .then((res) => res.json())
-            .then((data) => setHandlerState(data as Coin[]))
+            .then((data) => setCoinState(data as Coin[]))
     }, [])
 
     const sort = (async (e) => {
-        let newList = await quickSort(handlerState, e.target.id)
-        setHandlerState(newList)
+        let newList = await quickSort(coinState, e.target.id)
+        setCoinState(newList)
     })
 
     const setSelection = ((id, name) => {
@@ -37,7 +36,7 @@ export const CryptoList: FunctionComponent = () => {
                 <p onClick={sort} id="24h_growth" className="title-elem">24 heures</p>
             </div>
 
-            <div>{handlerState.slice(0, 25)
+            <div>{coinState.slice(0, 25)
                 .map(({ id, name, symbol, market_data: { current_price, market_cap, market_cap_rank, price_change_percentage_24h }, image: { small } }) =>
                     <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
                         <li>{market_cap_rank}</li>

@@ -10,7 +10,7 @@ export function getServerSideProps({ req, res }) {
 }
 
 export const getUserCryptos : FunctionComponent<GreetingProps> = ({isLoggedIn}) => {
-  
+
   return (
     <h1>Bonsoir</h1>
   )
@@ -25,12 +25,12 @@ const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => 
       </Head>
 
       <main className='main'>
-          <div className='page-top'>
-            <div className='welcome-section'>
-              <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
-            </div>
-            <h1>Portfolio</h1>
+        <div className='page-top'>
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
+          <h1>Portfolio</h1>
+        </div>
       </main>
     </Layout>
   )
