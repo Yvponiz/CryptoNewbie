@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { Welcome } from '..'
 import { BuyBox } from '../../frontend/components/buyBox'
 import Layout from '../../frontend/components/layout'
@@ -9,12 +10,13 @@ import commonProps, { UserProps } from '../../frontend/utils/commonProps'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
-}
-
+} 
 
 const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
-  const router = useRouter()
-  const id = String(router.query.id)
+  const router = useRouter();
+  const id = String(router.query.id);
+  const [showDiv, setShowDiv] = useState(false);
+
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
@@ -27,13 +29,15 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
           <div className='welcome-section'>
             <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
-          <h1>Acheter {id}</h1>
+          <h1>Acheter</h1>
         </div>
+        <div></div>
         <div style={{ marginTop: '50px', display: 'flex', alignSelf: 'flex-start' }} className='search-bar'>
-          <SearchBar isLoggedIn={isLoggedIn} onBuy={()=>{console.log("im buy")}} defaultCoinId={id}/>
-          {/* {isLoggedIn ? <button> Acheter</button> : null} */}
+          <SearchBar isLoggedIn={isLoggedIn} onBuy={()=>{setShowDiv(true)}} defaultCoinId={id}/>
         </div>
-        <BuyBox/>
+        <div style={{marginTop:'50px'}}>
+          {showDiv ? <BuyBox isLoggedIn={isLoggedIn}/> :null}
+        </div>
       </main>
     </Layout>
   )

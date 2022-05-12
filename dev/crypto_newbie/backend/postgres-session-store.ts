@@ -9,7 +9,7 @@ import * as utils from "./DButils";
 export default class MemoryStore implements SessionStore {
 
     async get(sid: string): Promise<SessionData | null> {
-        let connection = await utils.getConnection();
+        let connection = await utils.getConnection(); 
         const sessionRepository = connection.getRepository<Session>("Session");
         const sess = (await sessionRepository.findOne({ uuid: sid })).data;
         

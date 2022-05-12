@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, getConnectionManager } from "typeorm"
+import { Connection, ConnectionOptions, getConnectionManager} from "typeorm"
 import { User } from "./entity/User"
 import { Portfolio } from "./entity/Portfolio";
 import { PersoList } from "./entity/PersoList";
@@ -13,7 +13,7 @@ import "reflect-metadata";
 const connectionOptions: ConnectionOptions = {
   name: "default",
   type: "postgres",
-  url: process.env.DATABASE_URL || "postgres://yvan:AAAaaa111@localhost:5432/cryptonewbie",
+  url: process.env.DATABASE_URL || "postgres://cryptonewbie:AAAaaa111@localhost:5432/cryptonewbie",
   extra: {
     ssl: process.env.NODE_ENV === 'production', rejectUnauthorized: false,
     keepConnectionAlive: true
@@ -29,6 +29,8 @@ const connectionOptions: ConnectionOptions = {
   synchronize: true, //true pour créer la bd, false pour lier
   logging: true
 }
+
+
 
 // Code pour régler méga problème de connexion
 // Source: https://github.com/typeorm/typeorm/issues/6241#issuecomment-643690383

@@ -95,7 +95,7 @@ input {
   color: blue;
 }
 
-.welcome-section{
+.welcome-section {
   color: gold;
   padding-top: 1em;
 }
@@ -182,7 +182,7 @@ input {
   grid-template-columns: repeat(7, 1fr);
 }
 
-.title-elem{
+.title-elem {
   padding: 0.8em;
   text-align: center;
   font-size: 1.1em;
@@ -190,8 +190,8 @@ input {
   transition: background-color 0.3s, border-bottom 0.3s;
 }
 
-.title-elem:hover{
-  background-color: rgb(40, 40, 40) ;
+.title-elem:hover {
+  background-color: rgb(40, 40, 40);
   border-bottom: 4px solid #00008b;
 }
 
@@ -212,7 +212,7 @@ input {
 
 .input-search input:focus {
   outline: none;
-  border-color:#00008b;
+  border-color: #00008b;
   width: 100%;
 }
 
@@ -276,7 +276,7 @@ input {
   color: #00008b;
 }
 
-.login-button{
+.login-button {
   margin-top: 2em;
   cursor: pointer;
   font-size: 1em;
@@ -284,22 +284,24 @@ input {
   border-radius: 15px;
   text-align: center;
   color: white;
-  background-color: darkblue;;
-  border: 1px solid darkblue;;
+  background-color: darkblue;
+  ;
+  border: 1px solid darkblue;
+  ;
   transition: background-color 0.5s, color 0.5s ease-in-out;
 }
 
-.login-button:hover{
+.login-button:hover {
   color: darkblue;
   background-color: white;
   border: 1px solid darkblue;
 }
 
-.login-button a{
+.login-button a {
   text-decoration: none;
 }
 
-.login-button a:hover{
+.login-button a:hover {
   color: black;
 }
 
@@ -348,7 +350,7 @@ input {
   font-size: 20px;
 }
 
-.searchbar-section{
+.searchbar-section {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -374,14 +376,95 @@ input {
 .transaction-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 500px;
+  width: 600px;
   padding: 30px;
   background: rgba(97, 97, 107, 0.5);
   border-radius: 15px;
   border-style: groove;
   font-size: 20px;
+}
+
+.transaction-box-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly
+}
+
+/*---------------------------------Crypto infos------------------------*/
+
+.coin-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 2em 2em;
+}
+
+.header-infos {
+  display: flex;
+  width: auto;
+  padding: 1em;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  text-align: center;
+  flex-direction: column;
+  margin: 2em;
+}
+
+.header-infos #name {
+  font-size: 1.5em;
+  padding-top: 0.5em;
+}
+
+.header-infos #current-price {
+  font-size: 3.4em;
+}
+
+.header-infos #price-change {
+  font-size: 1.4em;
+}
+
+.more-infos {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid white;
+  padding: 1em;
+}
+
+.more-infos h1 {
+  font-size: 2em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+.more-infos-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4em;
+  padding: 0.8em 0.8em;
+}
+
+.button-buy {
+  width: 25%;
+  font-size: 1.3em;
+  padding: 0.5em 0.5em;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  background-color: #8bc53f;
+  border: 1px solid #8bc53f;
+  transition: background-color 0.5s, color 0.5s ease-in-out;
+}
+
+.button-buy:hover {
+  color: #8bc53f;
+  background-color: white;
+  border: 1px solid #8bc53f;
 }
 
 /*----------------------------------Footer----------------------------*/
@@ -404,7 +487,6 @@ input {
 .footer-links a:hover {
   color: blue;
 }
-
 
 
 /* @media (max-width: 600px) {

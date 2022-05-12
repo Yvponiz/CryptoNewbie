@@ -1,8 +1,10 @@
 import { useState, useEffect, FunctionComponent } from 'react'
 import { Coin } from '../utils/coin';
 import Image from 'next/image';
+import { CoinBuyProps } from '../utils/commonProps';
+import { useRouter } from 'next/router';
 
-export const CryptoInfos: FunctionComponent = () => {
+export const CryptoInfos: FunctionComponent<CoinBuyProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
     
     useEffect(() => {
@@ -15,7 +17,7 @@ export const CryptoInfos: FunctionComponent = () => {
             })
     }, []);
 
-    if(coinState){
+    if(coinState){ 
         return (
             <div>
                 <div className='header-infos'>
@@ -59,6 +61,9 @@ export const CryptoInfos: FunctionComponent = () => {
                     <div className='more-infos-section'>
                         <li>Capitalisation de marché</li>
                         <li>{coinState.market_data.market_cap.cad.toLocaleString()} $</li>
+                    </div>
+                    <div className='coin-infos'>
+                        {isLoggedIn ? <button className='button-buy' onClick={() => {onBuy(coinState)}}> Acheter</button> : null}
                     </div>
                 </div>
 
