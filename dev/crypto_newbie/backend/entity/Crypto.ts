@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity } from "typeorm";
-import { PersoList } from "./PersoList";
 import { Portfolio } from "./Portfolio";
 import "reflect-metadata";
 
@@ -23,11 +22,6 @@ export class Crypto extends BaseEntity {
 
     @Column({ nullable: true })
     quantity: number;
-
-    @ManyToOne(() => PersoList, (lists) => lists.crypto, {
-        cascade: true
-    })
-    perso_list: Relation<PersoList>
 
     @ManyToOne(() => Portfolio, (portfolio) => portfolio.crypto, {
         cascade: true

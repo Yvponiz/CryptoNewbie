@@ -39,14 +39,18 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
     })
 
     useEffect(() => {
-        fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`) // Appelle la fonction exporté par défaut dans coinList
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then((res) => res.json())
             .then((data) => setCoinState(data as Coin))
     }, [])
+     
     if (coinState) {
         const quantity = state.quantity;
         const price = parseFloat(coinState.market_data.current_price.cad.toLocaleString());
         const total = quantity * price;
+        state.total = total;
+        state.name = coinState.name;
+        state.nameId = coinState.id;
 
         return (
             <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>

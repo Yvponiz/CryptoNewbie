@@ -54,7 +54,7 @@ export class User extends BaseEntity{
     })
     role: UserRole;
 
-    @OneToOne(()=> Portfolio) // Liaison vers la table Portfolio
+    @OneToOne(()=> Portfolio)
     @JoinColumn()
     portfolio: Relation <Portfolio>
 
