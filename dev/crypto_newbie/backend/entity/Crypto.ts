@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity, PrimaryColumn } from "typeorm";
 import { Portfolio } from "./Portfolio";
 import "reflect-metadata";
 
@@ -11,10 +11,7 @@ export class Crypto extends BaseEntity {
         this.quantity = quantity;
     }
 
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column({ nullable: true })
+    @PrimaryColumn()
     nameId: string;
 
     @Column({ nullable: true })

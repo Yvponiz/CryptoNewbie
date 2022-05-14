@@ -28,6 +28,12 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
   ) : <></>
 }
 
+export const pepee:FunctionComponent = () =>{
+  return (
+    <div>SALUT ALEX</div>
+  )
+}
+
 const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
 
   const router = useRouter(); // Redirection vers url avec next
@@ -53,7 +59,7 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
         <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
           <SearchBar isLoggedIn={isLoggedIn} onBuy={(coin)=> {router.push(`/buy/${coin.id}`)}}/>
         </div>
-
+      
         <div className='section-list'>
           <CryptoList />
         </div>

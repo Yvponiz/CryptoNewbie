@@ -17,37 +17,72 @@ export default async function submitForm(
     const { quantity, total, name, nameId } = req.body;
     const session = await getSession(req, res);
 
+    // Repos
     const userRepo = connection.manager.getRepository<User>("User");
     const cryptoRepo = connection.manager.getRepository<Crypto>("Crypto");
     const portfolioRepo = connection.manager.getRepository<Portfolio>("Portfolio");
     const transactionsRepo = connection.manager.getRepository<Transactions>("Transactions");
+
+    // Trouve l'usager connecté, lié avec variable de session
     const user = await userRepo.findOne({ id: session.user.id });
-    
+
     const crypto = new Crypto(nameId, name, quantity);
-    
-    const portfolio = portfolioRepo.findOne({
+    const transaction = new Transactions();
+
+    // Trouve le portofolio de l'usager connecté
+    const portfolio = await portfolioRepo.findOne({
       relations: ['user'],
       where: { user: user }
     });
-    const deduction = (await portfolio).value - total;
-    (await portfolio).value = deduction;
-    crypto.portfolio = (await portfolio);
-    
-    const transaction = new Transactions();
+
+    // Déduction du montant de la transaction du compte de l'usager
+    const deduction = user.accountAmount - total;
+    user.accountAmount = deduction;
+
+    // Lier la crypto au portfolio de l'usager
+    crypto.portfolio = await portfolio;
+
+    // Trouve la quantité d'une crypto l'ajouter
+    const cryptoQuantity = await cryptoRepo.findOne({
+      relations: ['portfolio'],
+      where: {
+        portfolio: portfolio,
+        nameId: nameId,
+      }
+    });
+    let newQuantity: number;
+
+    if (cryptoQuantity) {
+      newQuantity = cryptoQuantity.quantity + parseInt(quantity);
+    }
+    else{
+      newQuantity = parseInt(quantity);
+    }
+    // Sauvegarde de la crypto. Si usager en possède déjà, update
+    cryptoRepo.upsert([
+      {
+        nameId: nameId,
+        name: name,
+        quantity: newQuantity,
+        portfolio: crypto.portfolio
+      }
+    ], ["nameId"]);
+
+
+    // Sauvegarde de la transaction
     let today = new Date();
     (await transaction).crypto = name;
-    (await transaction).date_transaction = formatDate(today.getDay(),today.getMonth(), today.getFullYear());
+    (await transaction).date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
     (await transaction).montant = total;
     transaction.user = user;
-    
+
     await transactionsRepo.save(transaction);
     await portfolioRepo.save(await portfolio);
     await cryptoRepo.save(crypto);
     await userRepo.save(user);
     await session.commit();
 
-    console.log("TRANSACTION", transaction);
-    //return res.status(200).json({ status: "success", errors: [] })
+    return res.status(200).json({ status: "success", errors: [] })
   } catch (error) {
     res.status(500).send(error.toString())
     console.log(error)

@@ -1,27 +1,40 @@
 import { FunctionComponent, useEffect, useState } from "react";
 
+interface Crypto {
+    name: string,
+    quantity: number
+}
 
 export const PortfolioInfo: FunctionComponent = ({}) => {
     const [portfolio, setPortfolio] = useState({
-        value:null,
-        crypto: null
+        value: null
     })
+
+    const [crypto, setCrypto] = useState<Crypto[]>([]);
 
     useEffect(() => {
         fetch('/api/getPortfolio')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                console.log("DATA",JSON.parse(data.crypto))
                 setPortfolio(data)
+                setCrypto(JSON.parse(data.crypto) as Crypto[])
             })
     }, [])
 
-    if(portfolio){
+    if (portfolio) {
 
         return (
             <div>
-                {portfolio.value}
-                {portfolio.crypto}
+                <li> Montant : {portfolio.value}</li>
+                <div>Crypto : {crypto.slice(0,6).map(({name,quantity}) =>
+                    <a href="">
+                        <li>name: {name}</li>
+                        <li>{quantity}</li>
+
+                    </a>
+                )} </div>
+
             </div>
         )
     }

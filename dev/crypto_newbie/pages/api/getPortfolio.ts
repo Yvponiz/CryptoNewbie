@@ -2,9 +2,27 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "../../common/getSession";
 import * as utils from "../../backend/DButils";
 import { User } from "../../backend/entity/User";
-import { AccountType } from "../../common/typecompte";
 import { Portfolio } from "../../backend/entity/Portfolio";
 import { Crypto } from "../../backend/entity/Crypto";
+
+
+async function getPortfolioValue(coinId, quantity){
+    try{
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
+        const data = await response.json();
+        let price = await data.market_data.current_price.cad;
+        let portfolioValue = price * quantity;
+
+        console.log("price",price);
+        console.log("quantity", quantity)
+        console.log("value", portfolioValue)
+        return portfolioValue;
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
 
 export default async function getServerSidePortolio(
     req: NextApiRequest,
@@ -20,8 +38,8 @@ export default async function getServerSidePortolio(
 
         const portfolio = portfolioRepo.findOne({
             relations: ['user'],
-            where: { 
-                user: user, 
+            where: {
+                user: user
             }
         });
 
@@ -32,14 +50,19 @@ export default async function getServerSidePortolio(
             }
         })
 
-        for(let i = 0 ; i < (await crypto).length; i++){
-            console.log([crypto[i]], cryptoCount)
+        let portfolioValue: number = 0;
+
+        for (let i = 0; i < cryptoCount; i++){
+           portfolioValue += await getPortfolioValue(crypto[i].nameId, crypto[i].quantity)
+
         }
 
-        return res.json({
-            value: (await portfolio).value,
-            crypto: crypto
-        })
+
+        console.log("out",portfolioValue);
+        // return res.json({
+        //     value: (await portfolio).value,
+        //     crypto: JSON.stringify(crypto)
+        // })
 
     } catch (error) {
         return res.status(500).send(error.toString())

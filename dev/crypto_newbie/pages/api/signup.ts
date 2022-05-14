@@ -32,7 +32,7 @@ export default async function signup(
     const userRepo = connection.manager.getRepository("User");
 
     // Liens entre tables
-    portfolio.value = AccountType[accountType].Amount;
+    portfolio.value = 0;
     portfolio.crypto = [crypto];
     user.portfolio = portfolio;
 

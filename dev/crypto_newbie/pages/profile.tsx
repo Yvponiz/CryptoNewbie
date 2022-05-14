@@ -5,6 +5,9 @@ import { FormEvent, FunctionComponent, useState } from 'react'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
 import { EmailField } from '../frontend/components/profile/emailField'
 
+export function getServerSideProps({ req, res }) {
+  return commonProps({ req, res })
+}
 
 const UserProfile: FunctionComponent<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth }) => {
 
@@ -31,7 +34,7 @@ const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, 
       <div className='profile-top'>
         <h1 style={{ color: 'gold' }} >{firstName} {lastName}</h1>
         <li>Compte {accountType}</li>
-        <li>Montant dans le compte : {accountAmount.toLocaleString()}$</li>
+        <li>Montant dans le compte : {accountAmount?.toLocaleString()}$</li>
       </div>
       <div>
         <UserProfile
