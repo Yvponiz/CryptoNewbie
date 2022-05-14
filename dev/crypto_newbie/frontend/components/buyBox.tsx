@@ -16,7 +16,7 @@ function onSubmit(event: FormEvent, state) {
         .then((response) => response.json())
         .then((data) => {
             if (data.status === "success") {
-                window.location.href = "/"
+                window.location.href = "/portfolio"
             }
             else if (data.status === "erreur") {
                 window.alert(data.errors.join("\n"))
@@ -25,7 +25,6 @@ function onSubmit(event: FormEvent, state) {
         })
     console.log(state)
 }
-
 
 export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) => {
     const router = useRouter();

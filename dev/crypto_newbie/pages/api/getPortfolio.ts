@@ -13,16 +13,12 @@ async function getPortfolioValue(coinId, quantity){
         let price = await data.market_data.current_price.cad;
         let portfolioValue = price * quantity;
 
-        console.log("price",price);
-        console.log("quantity", quantity)
-        console.log("value", portfolioValue)
         return portfolioValue;
     }
     catch(error){
         console.log(error)
     }
 }
-
 
 export default async function getServerSidePortolio(
     req: NextApiRequest,
@@ -31,18 +27,22 @@ export default async function getServerSidePortolio(
     const connection = await utils.getConnection()
     try {
         const session = await getSession(req, res);
+
+        // Repos
         const userRepo = connection.manager.getRepository<User>("User");
         const portfolioRepo = connection.manager.getRepository<Portfolio>("Portfolio");
         const cryptoRepo = connection.manager.getRepository<Crypto>("Crypto");
         const user = await userRepo.findOne({ id: session.user.id });
 
-        const portfolio = portfolioRepo.findOne({
+        // Trouve le portfolio de l'usager
+        const portfolio = await portfolioRepo.findOne({
             relations: ['user'],
             where: {
                 user: user
             }
         });
 
+        // Compte les crypto dans le portfolio de l'usager
         const [crypto, cryptoCount] = await cryptoRepo.findAndCount({
             relations: ['portfolio'],
             where: {
@@ -50,19 +50,20 @@ export default async function getServerSidePortolio(
             }
         })
 
+        // Calcul valeur portfolio
         let portfolioValue: number = 0;
-
         for (let i = 0; i < cryptoCount; i++){
            portfolioValue += await getPortfolioValue(crypto[i].nameId, crypto[i].quantity)
-
         }
 
+        portfolio.value = portfolioValue;
+        portfolioRepo.save(portfolio);
+        userRepo.save(user);
 
-        console.log("out",portfolioValue);
-        // return res.json({
-        //     value: (await portfolio).value,
-        //     crypto: JSON.stringify(crypto)
-        // })
+        return res.json({
+            value: (await portfolio).value,
+            crypto: JSON.stringify(crypto)
+        })
 
     } catch (error) {
         return res.status(500).send(error.toString())
