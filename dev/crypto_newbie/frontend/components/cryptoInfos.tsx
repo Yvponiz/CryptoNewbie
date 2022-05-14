@@ -7,11 +7,21 @@ export const CryptoInfos: FunctionComponent = () => {
     
     useEffect(() => {
         let coinId = sessionStorage.getItem('coinId');
+        //let chart = document.getElementById('chart').getContext
+
 
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 setCoin(data as Coin);
+            })
+        fetch(`/api/coinHistory/`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                console.log(new Date().getTime() - 3600);
+                console.log(new Date('2021-05-12').getTime());
             })
     }, []);
 
@@ -24,6 +34,9 @@ export const CryptoInfos: FunctionComponent = () => {
                     <li id='current-price'>{coinState.market_data.current_price.cad.toLocaleString()} $</li>
                     <li id='price-change' style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
                             {`${coinState.market_data.price_change_percentage_24h.toFixed(2)} %`}</li>
+                </div>
+                <div className='chart-coin'>
+                    <canvas id='chart'></canvas>
                 </div>
                 <div className='more-infos'>
                     <h1>Informations supplémentaires</h1>
