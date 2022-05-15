@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/coinInfo": [
+    "/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/coinInfo.js"
+      "static/chunks/pages/transactions.js"
     ]
   },
   "ampFirstPages": []

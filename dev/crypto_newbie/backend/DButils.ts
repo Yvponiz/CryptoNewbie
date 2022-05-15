@@ -1,7 +1,6 @@
-import { Connection, ConnectionOptions, getConnectionManager } from "typeorm"
+import { Connection, ConnectionOptions, getConnectionManager} from "typeorm"
 import { User } from "./entity/User"
 import { Portfolio } from "./entity/Portfolio";
-import { PersoList } from "./entity/PersoList";
 import { Crypto } from "./entity/Crypto";
 import { Transactions } from "./entity/Transactions";
 import { Session } from "./entity/Session";
@@ -20,7 +19,6 @@ const connectionOptions: ConnectionOptions = {
   },
   entities: [ //tables
     Crypto,
-    PersoList,
     Transactions,
     Portfolio,
     User,
@@ -29,6 +27,8 @@ const connectionOptions: ConnectionOptions = {
   synchronize: true, //true pour créer la bd, false pour lier
   logging: true
 }
+
+
 
 // Code pour régler méga problème de connexion
 // Source: https://github.com/typeorm/typeorm/issues/6241#issuecomment-643690383

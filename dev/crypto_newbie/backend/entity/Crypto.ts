@@ -1,26 +1,27 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity } from "typeorm";
-import { PersoList } from "./PersoList";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity, PrimaryColumn } from "typeorm";
+import { Portfolio } from "./Portfolio";
 import "reflect-metadata";
 
 @Entity("Crypto")
-export class Crypto extends BaseEntity{
-    constructor(name:string, quantity:number){
+export class Crypto extends BaseEntity {
+    constructor(nameId: string, name: string, quantity: number) {
         super()
+        this.nameId = nameId;
         this.name = name;
         this.quantity = quantity;
     }
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryColumn()
+    nameId: string;
 
-    @Column()
+    @Column({ nullable: true })
     name: string;
 
-    @Column()
+    @Column({ nullable: true })
     quantity: number;
 
-    @ManyToOne(()=> PersoList, (lists) => lists.crypto, {
+    @ManyToOne(() => Portfolio, (portfolio) => portfolio.crypto, {
         cascade: true
     })
-    perso_list: Relation<PersoList>
+    portfolio: Relation<Portfolio>;
 }

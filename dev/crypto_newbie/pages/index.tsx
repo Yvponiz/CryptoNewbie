@@ -53,7 +53,7 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
         <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
           <SearchBar isLoggedIn={isLoggedIn} onBuy={(coin)=> {router.push(`/buy/${coin.id}`)}}/>
         </div>
-
+      
         <div className='section-list'>
           <CryptoList />
         </div>

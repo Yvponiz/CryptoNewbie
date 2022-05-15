@@ -1,4 +1,5 @@
 import { getSession } from "../../common/getSession";
+import { Coin } from "./coin";
 
 // Type créer pour passer props à divers components pour éviter de répéter du code
 
@@ -17,6 +18,12 @@ export type UserProps = {
     accountAmount: number;
     dateOfBirth: string;
 };
+
+export type CoinBuyProps = {
+    isLoggedIn: boolean;
+    onBuy?: (coin:Coin) => void;
+    defaultCoinId?: string;
+}
 
 export default async function getServerSideProps({ req, res }) {
     const session = await getSession(req, res);

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PersoList } from '../../backend/entity/PersoList';
 import { Portfolio } from '../../backend/entity/Portfolio';
 import { User } from "../../backend/entity/User";
 import { Crypto } from '../../backend/entity/Crypto';
@@ -21,47 +20,32 @@ export default async function signup(
       res.status(400).json({ status: "erreur", errors: ["Les deux mots de passes ne sont pas identiques"] })
       return
     }
-    //const nomListe = req.body // arguments reçu de création de liste
-    const listName = "Première liste"
 
     // Classes
     const user = new User(lastName, firstName, email, AccountType[accountType].Type, AccountType[accountType].Amount, password, dateOfBirth)
     const portfolio = new Portfolio()
-    const transaction = new Transactions()
-    const lists = new PersoList(listName)
-    const crypto = new Crypto("doge", 10) // Cadeau de bienvenue
+    const crypto = new Crypto("dogecoin", "Dogecoin", 10) // Cadeau de bienvenue
 
     // Repos
-    const cryptoRepo = connection.manager.getRepository("Crypto")
-    const listsRepo = connection.manager.getRepository("PersoList")
-    const transactionRepo = connection.manager.getRepository("Transactions")
-    const portfolioRepo = connection.manager.getRepository("Portfolio")
-    const userRepo = connection.manager.getRepository("User")
-
+    const cryptoRepo = connection.manager.getRepository("Crypto");
+    const portfolioRepo = connection.manager.getRepository("Portfolio");
+    const userRepo = connection.manager.getRepository("User");
 
     // Liens entre tables
-    lists.crypto = [crypto]
-    portfolio.value = AccountType[accountType].Amount
-    portfolio.perso_list = [lists]
-    user.transactions = [transaction]
-    user.portfolio = portfolio
+    portfolio.value = 0;
+    portfolio.crypto = [crypto];
+    user.portfolio = portfolio;
 
     // Sauvegarde des entities(tables)
     await cryptoRepo.save(crypto);
-    await listsRepo.save(lists);
-    await transactionRepo.save(transaction)
-    await portfolioRepo.save(portfolio)
-    await userRepo.save(user)
+    await portfolioRepo.save(portfolio);
+    await userRepo.save(user);
 
     console.log("User has been saved");
 
     return res.json({ status: "success", errors: [] })
 
-
   } catch (error) {
-    console.log("IM ERRORING", error)
-    console.log("CONNECTION NAME",connection.name)
-    console.log("CONNECTION", connection)
     return res.status(500).send(error.toString())
   }
 }

@@ -3,10 +3,12 @@ import Head from 'next/head'
 import { FunctionComponent } from 'react'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
-import commonProps, { GreetingProps, UserProps } from '../frontend/utils/commonProps'
-import * as utils from "../../backend/DButils";
+import * as utils from "../../crypto_newbie/backend/DButils";
 import { Portfolio } from '../backend/entity/Portfolio'
 
+import { PortfolioInfo } from '../frontend/components/portfolioInfos'
+import commonProps, { UserProps } from '../frontend/utils/commonProps'
+ 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
@@ -37,6 +39,7 @@ const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => 
           </div>
           <h1>Portfolio</h1>
         </div>
+          <PortfolioInfo />
       </main>
     </Layout>
   )

@@ -11,10 +11,10 @@ export default function submitForm(
 
     const { email, password} = req.body
     const userRepo = connection.getRepository<User>("User");
-    const user = await userRepo.findOne({email, password:btoa(password)})  
+    const user = await userRepo.findOne({email, password:btoa(password)});
 
     if(user === undefined){
-        res.status(400).json( {status:"erreur", errors:["Courriel ou mot de passe invalide"]})
+        res.status(400).json( {status:"erreur", errors:["Courriel ou mot de passe invalide"]});
         return
     }
 
