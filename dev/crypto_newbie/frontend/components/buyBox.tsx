@@ -34,7 +34,8 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
         quantity: null,
         total: null,
         name: null,
-        nameId: null
+        nameId: null,
+        averagePrice: null
     })
 
     useEffect(() => {
@@ -45,11 +46,12 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
      
     if (coinState) {
         const quantity = state.quantity;
-        const price = parseFloat(coinState.market_data.current_price.cad.toLocaleString());
+        const price = parseFloat(coinState.market_data.current_price.cad.toFixed(5));
         const total = quantity * price;
         state.total = total;
         state.name = coinState.name;
         state.nameId = coinState.id;
+        state.averagePrice = parseFloat(price.toFixed(2));
 
         return (
             <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>
@@ -57,7 +59,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
                 <div style={{ display: 'flex', justifyContent:'space-evenly',width:'100%'}}>
                     <div className="transaction-box-column">
                         <label htmlFor="name">Crypto : </label>
-                        <label htmlFor="quantity">Quantité : </label>
+                        <label htmlFor="quantity">QuantitÃ© : </label>
                         <label htmlFor="price">Prix : </label>
                         <label htmlFor="total">Total: </label>
                     </div>
@@ -65,8 +67,8 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
                         <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coinState.id}  />
                         <input onChange={(event) => changeState({ ...state, name: event.target.value })} type="text" id="name" name="name" value={coinState.name}  />
                         <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="number" id="quantity" name="quantity" required />
-                        <input type="text" id="price" name="price" value={price.toFixed(2)}  />
-                        <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total}  />
+                        <input type="text" id="price" name="price" value={price.toLocaleString(undefined, {'minimumFractionDigits': 2, 'maximumFractionDigits':2})}  />
+                        <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total.toFixed(2)}  />
                     </div>
                 </div>
 

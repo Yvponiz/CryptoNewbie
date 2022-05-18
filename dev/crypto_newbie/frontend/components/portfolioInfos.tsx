@@ -12,7 +12,8 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
     
     
     const [portfolio, setPortfolio] = useState({
-        value: null
+        value: null,
+        accountAmount: null
     })
     const [crypto, setCrypto] = useState<Crypto[]>([]);
     
@@ -37,6 +38,7 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
                 <div className="montant-investi-section"> 
                     <li>Montant investi</li>
                     <li>{portfolio.value} $</li> 
+                    <li>{portfolio.accountAmount}</li>
                 </div>
                 <div className="tab-portfolio-info">
                     <div className="title-section">

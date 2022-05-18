@@ -14,7 +14,7 @@ export default async function submitForm(
   const connection = await utils.getConnection()
   try {
 
-    const { quantity, total, name, nameId, averagePrice} = req.body;
+    const { quantity, total, name, nameId } = req.body;
     const session = await getSession(req, res);
 
     // Repos
@@ -26,7 +26,7 @@ export default async function submitForm(
     // Trouve l'usager connecté, lié avec variable de session
     const user = await userRepo.findOne({ id: session.user.id });
 
-    const crypto = new Crypto(nameId, name, quantity, averagePrice);
+    const crypto = new Crypto(nameId, name, quantity);
     const transaction = new Transactions();
 
     // Trouve le portofolio de l'usager connecté
@@ -42,7 +42,7 @@ export default async function submitForm(
     // Lier la crypto au portfolio de l'usager
     crypto.portfolio = await portfolio;
 
-    // Trouver la crypto dans la table crypto de la bd
+    // Trouve la quantité d'une crypto l'ajouter
     const cryptoBought = await cryptoRepo.findOne({
       relations: ['portfolio'],
       where: {
@@ -50,50 +50,48 @@ export default async function submitForm(
         nameId: nameId,
       }
     });
-
     let newQuantity: number;
     let newAveragePrice: number;
+    let averagePrice = total / quantity;
 
-    if (cryptoBought) {
+    console.log("CRYPTO BOUGHT", cryptoBought)
+    if (await cryptoBought) {
       newQuantity = cryptoBought.quantity + parseInt(quantity);
-      newAveragePrice = (cryptoBought.averagePrice + averagePrice)/2; 
+      newAveragePrice = (cryptoBought.averagePrice + averagePrice)/2;  
     }
     else{
       newQuantity = parseInt(quantity);
       newAveragePrice = averagePrice;
     }
+    console.log("NEW QUANTITY", newQuantity)
     // Sauvegarde de la crypto. Si usager en possède déjà, update
     cryptoRepo.upsert([
       {
         nameId: nameId,
         name: name,
         quantity: newQuantity,
-        averagePrice: newAveragePrice,
-        portfolio: crypto.portfolio
+        portfolio: crypto.portfolio,
+        averagePrice: newAveragePrice
       }
     ], ["nameId"]);
-
 
     // Sauvegarde de la transaction
     let today = new Date();
     (await transaction).crypto = name;
     (await transaction).date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
     (await transaction).montant = total;
-    crypto.averagePrice = total/quantity; // Donne le montant total à la crypto acheté
+    crypto.averagePrice = total/quantity; 
     transaction.user = user;
 
     await transactionsRepo.save(transaction);
     await portfolioRepo.save(await portfolio);
-    await cryptoRepo.save(crypto);
+    //await cryptoRepo.save(crypto);
     await userRepo.save(user);
     await session.commit();
 
-    return res.status(200).json({ status: "success", errors: [] })
+    //return res.status(200).json({ status: "success", errors: [] })
   } catch (error) {
     res.status(500).send(error.toString())
     console.log(error)
   }
 }
-
-
-

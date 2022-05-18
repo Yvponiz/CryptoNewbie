@@ -4,12 +4,11 @@ import "reflect-metadata";
 
 @Entity("Crypto")
 export class Crypto extends BaseEntity {
-    constructor(nameId: string, name: string, quantity: number, averagePrice:number) {
+    constructor(nameId: string, name: string, quantity: number) {
         super()
         this.nameId = nameId;
         this.name = name;
         this.quantity = quantity;
-        this.averagePrice = averagePrice;
     }
 
     @PrimaryColumn()
@@ -21,7 +20,10 @@ export class Crypto extends BaseEntity {
     @Column({ nullable: true })
     quantity: number;
 
-    @Column({ nullable: true })
+    @Column({
+         nullable: true,
+         type:'float'
+        })
     averagePrice: number;
 
     @ManyToOne(() => Portfolio, (portfolio) => portfolio.crypto, {
