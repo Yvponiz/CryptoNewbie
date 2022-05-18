@@ -1,28 +1,36 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Layout from '../frontend/components/layout'
-import CryptoInfos from '../frontend/components/cryptoInfos'
+import { CryptoInfos } from '../frontend/components/cryptoInfos'
 import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
+import { Welcome } from '.'
+import { useRouter } from 'next/router'
 
-type Props = GreetingProps
+export function getServerSideProps({ req, res }) {
+  return commonProps({ req, res })
+}
 
 
-const CoinInfos: NextPage<Props> = ({isLoggedIn}) => {
+const setCoinName = () => {
+  if (typeof window !== 'undefined') {
+    let coinName = sessionStorage.getItem('coinName');
+    console.log("coinInfo/coin: ", coinName);
+    return coinName;
+  }
+}
 
+const CoinInfos: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
+  const router = useRouter();
+  
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Accueil</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="cryptonewbie.ico" />
-      </Head>
-
+      <title>Crypto Newbie | {setCoinName()}  </title>
       <main className='main'>
-        <div className='coin-infos'>
-          <CryptoInfos />
+        <div className='welcome-section'>
+          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
         </div>
+        <CryptoInfos isLoggedIn={isLoggedIn} onBuy={(coin)=> {router.push(`/buy/${coin.id}`)}} />
       </main>
-      
+
     </Layout>
   )
 }

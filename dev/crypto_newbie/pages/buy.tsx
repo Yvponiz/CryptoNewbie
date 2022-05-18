@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
-import SearchBar from '../frontend/components/searchBar'
+import {SearchBar} from '../frontend/components/searchBar'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
 
 export function getServerSideProps({ req, res }) {
@@ -19,7 +19,9 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) 
 
       <main className='main'>
         <div className='page-top'>
-          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          </div>
           <h1>Acheter</h1>
         </div>
         <div style={{marginTop:'50px'}} className='search-bar'>

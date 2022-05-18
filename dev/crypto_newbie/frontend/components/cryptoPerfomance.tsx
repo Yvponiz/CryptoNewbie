@@ -3,28 +3,27 @@ import Image from "next/image"
 import { Coin } from "../utils/coin"
 
 export const TrendingCrypto: FunctionComponent = () => {
-    const [handlerState, setHandler] = useState<Coin[]>([])
+    const [coinState, setCoinState] = useState<Coin[]>([])
 
     useEffect(() => {
         fetch('/api/trending')
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                setHandler(data as Coin[])
+                setCoinState(data as Coin[])
             })
     }, [])
 
     return (
         <div className="performance">
             <span className="performance-title">Tendance</span>
-            {handlerState.slice(0, 3)
+            {coinState.slice(0, 3)
             .map(({id, item:{name, price_btc, small}}) =>
                 <div className="tendance-layout" key={id}>
                     <div className="performance-layout-in">
                         <div className="performance-layout-left">
                             <li className="coin-name">{name}</li>
                             <li>Prix: {price_btc.toFixed(8) + ' $'}</li>
-                            {/* <li style={{ color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}> {coin.market_data.price_change_percentage_24h.toFixed(2) + ' %'}</li> */}
                         </div>
                         <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
                     </div>

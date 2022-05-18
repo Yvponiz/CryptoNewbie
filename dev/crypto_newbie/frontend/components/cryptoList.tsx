@@ -3,48 +3,42 @@ import Image from "next/image";
 import { Coin } from "../utils/coin";
 import quickSort from "../utils/quickSort";
 
-export function getCoin(){
-    window.sessionStorage.getItem("selectCoin");
-}
-
-
 export const CryptoList: FunctionComponent = () => {
-    const [handlerState, setHandlerState] = useState<Coin[]>([])
-
+    const [coinState, setCoinState] = useState<Coin[]>([])
 
     useEffect(() => {
         fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinList
-        .then((res) => res.json())
-        .then((data) => setHandlerState(data as Coin[]))
+            .then((res) => res.json())
+            .then((data) => setCoinState(data as Coin[]))
     }, [])
 
     const sort = (async (e) => {
-        let newList = await quickSort(handlerState, e.target.id)
-        setHandlerState(newList)
+        let newList = await quickSort(coinState, e.target.id)
+        setCoinState(newList)
     })
-    
-    const setSelection = ( async (e) => {
-        let selectCoin = e.currentTarget.id;
-        let response = await window.sessionStorage.setItem("selectCoin", JSON.stringify(selectCoin));
+
+    const setSelection = ((id, name) => {
+        sessionStorage.setItem("coinId", id);
+        sessionStorage.setItem("coinName", name);
         location.href = 'coinInfo';
-        console.log(response);
+        console.log("CoinId: ", id, "CoinName: ", name);
     })
 
     return (
         <div>
             <div className='titles-list'>
-                <p onClick={sort} className="title-elem">#</p>
-                <p onClick={sort} className="title-elem">Logo</p>
-                <p onClick={sort} className="title-elem">Nom</p>
-                <p onClick={sort} className="title-elem">Symbole</p>
-                <p onClick={sort} className="title-elem">Prix</p>
-                <p onClick={sort} className="title-elem">Market cap</p>
-                <p onClick={sort} className="title-elem">24 heures</p>
+                <p onClick={sort} id="rank" className="title-elem">#</p>
+                <p onClick={sort} id="logo" className="title-elem">Logo</p>
+                <p onClick={sort} id="name" className="title-elem">Nom</p>
+                <p onClick={sort} id="symbol" className="title-elem">Symbole</p>
+                <p onClick={sort} id="current_price" className="title-elem">Prix</p>
+                <p onClick={sort} id="market_cap" className="title-elem">Market cap</p>
+                <p onClick={sort} id="24h_growth" className="title-elem">24 heures</p>
             </div>
 
-            <div>{handlerState.slice(0, 25)
+            <div>{coinState.slice(0, 25)
                 .map(({ id, name, symbol, market_data: { current_price, market_cap, market_cap_rank, price_change_percentage_24h }, image: { small } }) =>
-                    <a onClick={((e) => setSelection(e))} className='index-coin' key={id} id={name}>
+                    <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
                         <li>{market_cap_rank}</li>
                         <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
                         <li>{name}</li>
@@ -57,6 +51,6 @@ export const CryptoList: FunctionComponent = () => {
                 )
             }</div>
         </div>
-        
+
     )
 }

@@ -18,13 +18,11 @@ function onSubmit(event: FormEvent, state) {
         else if (data.status === "erreur") {
           window.alert(data.errors.join("\n"))
         }
-        console.log(data)
       })
-  console.log(state)
 }
 
 export default function LoginForm() {
-
+  
   const [state, changeState] = useState({
     email: null,
     password: null,
@@ -40,10 +38,10 @@ export default function LoginForm() {
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
-      <button style={{marginTop:'30px'}} type="submit">Submit</button>
+      <button className="login-button" type="submit">Connexion</button>
 
       <h1>Pas encore de compte ? Créez en un</h1>
-      <a style={{textDecoration:'underline'}} href="signup">Créer un compte</a>
+      <button className="login-button"><a href="signup">Créer un compte</a></button>
     </form>
   )
 }

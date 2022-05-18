@@ -22,7 +22,7 @@ export default async function quickSort(listCrypto, element){
                     [list[j + 1], list[j]] = [list[j], list[j + 1]]
                 }
             }
-            else if (element === "croissance_24h"){
+            else if (element === "24h_growth"){
                 if (list[j + 1].market_data.price_change_percentage_24h > (list[j].market_data.price_change_percentage_24h)){
                     [list[j + 1], list[j]] = [list[j], list[j + 1]]
                 }
@@ -39,9 +39,8 @@ export default async function quickSort(listCrypto, element){
             }
         }
     }
-        console.log(list)
-        return list
+    return list
 }
 
-
+// Exemple d'algorithme de tri rapide
 //https://www.section.io/engineering-education/sorting-algorithms-in-js/

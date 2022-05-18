@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { FunctionComponent } from "react";
 
 type HeaderProps = {
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
 };
 
 const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
@@ -13,7 +13,6 @@ const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
                 <Link href='/'><a>Accueil</a></Link>
                 <Link href='transactions'><a>Transactions</a></Link>
                 <Link href='portfolio'><a>Portfolio</a></Link>
-                <Link href='lists'><a>Listes</a></Link>
                 <Link href='profile'><a>Profil</a></Link>
                 <Link href='api/disconnect'><a>Deconnexion</a></Link>
             </>

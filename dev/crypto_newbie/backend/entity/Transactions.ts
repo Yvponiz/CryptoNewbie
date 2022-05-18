@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity
 import "reflect-metadata";
 import { User } from "./User";
 
-@Entity()
+@Entity("Transactions")
 export class Transactions extends BaseEntity {
 
     @PrimaryGeneratedColumn()

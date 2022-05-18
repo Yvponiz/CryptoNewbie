@@ -1,9 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { FunctionComponent } from 'react'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
+import * as utils from "../../crypto_newbie/backend/DButils";
+import { PortfolioInfo } from '../frontend/components/portfolioInfos'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
-
+ 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
@@ -17,10 +20,12 @@ const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => 
       </Head>
 
       <main className='main'>
-          <div className='page-top'>
-              <Welcome isLoggedIn={isLoggedIn} firstName={firstName}/>
-              <h1>Portfolio</h1>
+        <div className='page-top'>
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
+        </div>
+        <PortfolioInfo />
       </main>
     </Layout>
   )
