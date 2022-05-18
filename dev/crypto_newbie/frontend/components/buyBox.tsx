@@ -65,7 +65,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
                         <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coinState.id}  />
                         <input onChange={(event) => changeState({ ...state, name: event.target.value })} type="text" id="name" name="name" value={coinState.name}  />
                         <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="number" id="quantity" name="quantity" required />
-                        <input type="text" id="price" name="price" value={price}  />
+                        <input type="text" id="price" name="price" value={price.toFixed(2)}  />
                         <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total}  />
                     </div>
                 </div>

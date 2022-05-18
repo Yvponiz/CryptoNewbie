@@ -61,7 +61,7 @@ export default async function getServerSidePortolio(
         userRepo.save(user);
 
         return res.json({
-            value: (await portfolio).value,
+            value: (await portfolio).value.toFixed(2),
             crypto: JSON.stringify(crypto)
         })
 
