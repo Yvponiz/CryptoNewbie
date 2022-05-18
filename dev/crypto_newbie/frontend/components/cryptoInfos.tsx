@@ -13,9 +13,11 @@ export default function CryptoInfos() {
 
     useEffect(() => {
         if (window.sessionStorage.getItem('selectCoin')) {
-            let coin = getCoin();
+            let coin =window.sessionStorage.getItem("selectCoin");
+            //let coin = getCoin();
             //let coin = sessionStorage.getItem('selectCoin');
             console.log(coin);
+            console.log(`https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`)
             fetch(`https://api.coingecko.com/api/v3/coins/${coin.toLowerCase()}/`).then((response) => {
                 response.json().then((jsonData) => {
                     setHandler(jsonData);
