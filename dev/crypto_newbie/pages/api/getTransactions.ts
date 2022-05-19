@@ -6,7 +6,7 @@ import { Portfolio } from "../../backend/entity/Portfolio";
 import { Transactions } from "../../backend/entity/Transactions";
 
 
-export default async function getServerSidePortolio(
+export default async function getServerSideTransactions(
     req: NextApiRequest,
     res: NextApiResponse
 ) {

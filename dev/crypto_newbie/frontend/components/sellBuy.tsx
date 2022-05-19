@@ -1,14 +1,9 @@
 import { FormEvent, FunctionComponent, useContext, useEffect, useState } from "react";
 import { CoinContext } from "../context/coinContext";
-import { Coin } from "../utils/coin";
-
-export type CoinBuyProps = {
-    coinId: string
-}
 
 function onSubmit(event: FormEvent, state) {
     event.preventDefault()
-    fetch("/api/buyCrypto",
+    fetch("/api/sellCrypto",
         {
             body: JSON.stringify(state),
             method: "POST",
@@ -29,7 +24,7 @@ function onSubmit(event: FormEvent, state) {
     console.log(state)
 }
 
-export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
+export const BuyBox: FunctionComponent = ({}) => {
     const coinState = useContext(CoinContext)
     const [state, changeState] = useState({
         quantity: null,
@@ -57,20 +52,11 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
                         <label htmlFor="total">Total: </label>
                     </div>
                     <div className="transaction-box-column">
-                        <input
-                            onChange={(event) => changeState({ ...state, nameId: event.target.value })}
-                            type="hidden" id="nameId" name="nameId" value={coinState.id} disabled />
-                        <input
-                             onChange={(event) => changeState({ ...state, name: event.target.value })}
-                            type="text" id="name" name="name" value={coinState.name} disabled />
-                        <input onChange={(event) => changeState({ ...state, quantity: event.target.value })}
-                            type="number" id="quantity" name="quantity" required />
-                        <input
-                            type="text" id="price" name="price" disabled
-                            value={price.toLocaleString(undefined, {'minimumFractionDigits': 2, 'maximumFractionDigits':2})}  />
-                        <input 
-                            onChange={(event) => changeState({ ...state, total: event.target.value })}
-                            type="text" id="total" name="total" value={total.toFixed(2)}  disabled/>
+                        <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coinState.id}  />
+                        <input onChange={(event) => changeState({ ...state, name: event.target.value })} type="text" id="name" name="name" value={coinState.name}  />
+                        <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="number" id="quantity" name="quantity" required />
+                        <input type="text" id="price" name="price" value={price.toLocaleString(undefined, {'minimumFractionDigits': 2, 'maximumFractionDigits':2})}  />
+                        <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total.toFixed(2)}  />
                     </div>
                 </div>
 

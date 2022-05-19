@@ -14,7 +14,6 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
         fetch('/api/getTransactions')
             .then((res) => res.json())
             .then((data) => {
-                console.log("DATA", data)
                 setTransaction(data.transactions as Transaction[])
             })
     }, [])
