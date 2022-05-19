@@ -65,3 +65,7 @@ Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?
 Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event	  
 Documentation sur Next-Session : https://github.com/hoangvvo/next-session	  
 Documentation sur Router : https://nextjs.org/docs/api-reference/next/router#router-object	    
+Documentation sur Context : https://www.w3schools.com/react/react_usecontext.asp 
+*How to use React Context With TypeScript* : https://blog.logrocket.com/how-to-use-react-context-typescript/       
+Documentation sur getInitialProps : https://nextjs.org/docs/api-reference/data-fetching/get-initial-props    
+Documentation RegEx : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp    

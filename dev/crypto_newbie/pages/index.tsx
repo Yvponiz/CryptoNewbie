@@ -8,6 +8,8 @@ import { CryptoList } from '../frontend/components/cryptoList'
 import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
 import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
+import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
+import { Coin } from '../frontend/utils/coin'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
@@ -28,41 +30,42 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
   ) : <></>
 }
 
-export const pepee:FunctionComponent = () =>{
-  return (
-    <div>SALUT ALEX</div>
-  )
-}
-
-const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
+const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName, }) => {
 
   const router = useRouter(); // Redirection vers url avec next
-
+  const [coinState, setCoinState] = getCoinState()
   return (
+
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <Head>
         <title>Crypto Newbie | Accueil</title>
         <meta name="description" content="" />
         <link rel="icon" href="cryptonewbie.ico" />
       </Head>
-
       <main className='main'>
-        <div className='welcome-section'>
-          <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
-        </div>
-        <div className='section-performance'>
-          <TrendingCrypto />
-          <BestCrypto />
-          <WorstCrypto />
-        </div>
+        <CoinContext.Provider value={coinState as Coin}>
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          </div>
+          <div className='section-performance'>
+            <TrendingCrypto />
+            <BestCrypto />
+            <WorstCrypto />
+          </div>
 
-        <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
-          <SearchBar isLoggedIn={isLoggedIn} onBuy={(coin)=> {router.push(`/buy/${coin.id}`)}}/>
-        </div>
-      
-        <div className='section-list'>
-          <CryptoList />
-        </div>
+          <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
+            <SearchBar
+              onSearch={(id) => updateCoin(id, setCoinState)}
+              isLoggedIn={isLoggedIn}
+              onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
+            />
+          </div>
+
+          <div className='section-list'>
+            <CryptoList />
+          </div>
+
+        </CoinContext.Provider>
       </main>
 
     </Layout>

@@ -11,10 +11,10 @@ const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
-                <Link href='transactions'><a>Transactions</a></Link>
-                <Link href='portfolio'><a>Portfolio</a></Link>
-                <Link href='profile'><a>Profil</a></Link>
-                <Link href='api/disconnect'><a>Deconnexion</a></Link>
+                <Link href='/transactions'><a>Transactions</a></Link>
+                <Link href='/portfolio'><a>Portfolio</a></Link>
+                <Link href='/profile'><a>Profil</a></Link>
+                <Link href='/api/disconnect'><a>Deconnexion</a></Link>
             </>
         )
     }
@@ -22,7 +22,7 @@ const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
         return (
             <>
                 <Link href='/'><a>Accueil</a></Link>
-                <Link href='login'><a>Connexion</a></Link>
+                <Link href='/login'><a>Connexion</a></Link>
             </>
         )
 }

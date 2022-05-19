@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { Welcome } from '..'
-import { BuyBox } from '../../frontend/components/buyBox'
-import Layout from '../../frontend/components/layout'
-import { SearchBar } from '../../frontend/components/searchBar'
-import { CoinContext, getCoinState, updateCoin } from '../../frontend/context/coinContext'
-import { Coin } from '../../frontend/utils/coin'
-import commonProps, { UserProps } from '../../frontend/utils/commonProps'
+import { Welcome } from '.';
+import { BuyBox } from '../frontend/components/buyBox';
+import Layout from '../frontend/components/layout';
+import { SearchBar } from '../frontend/components/searchBar';
+import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext';
+import { Coin } from '../frontend/utils/coin';
+import commonProps, { UserProps } from '../frontend/utils/commonProps';
 
 export async function getServerSideProps({ req, res }) {
   const regEx = new RegExp(".+/(.+)$"); // Expression regulìère pour prendre l'URL après le buy/
@@ -23,7 +23,7 @@ type InitialProps = UserProps & {
   id: string;
 }
 
-const Buy: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount }) => {
+const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount }) => {
   const [coinState, setCoinState] = getCoinState(id)
   const router = useRouter();
 
@@ -45,14 +45,6 @@ const Buy: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount 
             <h2>Montant dans le compte :</h2>
             <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
-          <div style={{ marginTop: '50px', display: 'flex', alignSelf: 'flex-start' }} className='search-bar'>
-            <SearchBar
-            onSearch={(id) => updateCoin(id, setCoinState)}
-            isLoggedIn={isLoggedIn}
-            defaultCoinId={id}
-            onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
-            />
-          </div>
           <div style={{ marginTop: '50px' }}>
             <BuyBox coinId={id} />
           </div>
@@ -62,7 +54,4 @@ const Buy: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount 
   )
 }
 
-export default Buy
-
-// Code pour expression régulière inspiré de :
-// https://stackoverflow.com/a/57295875
+export default Sell

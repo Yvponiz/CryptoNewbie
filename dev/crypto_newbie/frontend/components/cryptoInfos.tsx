@@ -1,10 +1,9 @@
 import { useState, useEffect, FunctionComponent } from 'react'
 import { Coin } from '../utils/coin';
 import Image from 'next/image';
-import { CoinBuyProps } from '../utils/commonProps';
-import { useRouter } from 'next/router';
+import { SearchProps } from './searchBar';
 
-export const CryptoInfos: FunctionComponent<CoinBuyProps> = ({isLoggedIn, onBuy}) => {
+export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
     
     useEffect(() => {

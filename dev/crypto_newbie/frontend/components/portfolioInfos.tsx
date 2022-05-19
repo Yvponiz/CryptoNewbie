@@ -32,7 +32,7 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
                     <a href="">
                         <li>name: {name}</li>
                         <li>{quantity}</li>
-
+                    
                     </a>
                 )} </div>
 

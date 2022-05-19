@@ -1,41 +1,23 @@
-import { useState, FunctionComponent } from 'react'
+import { useState, FunctionComponent, useContext } from 'react'
 import Image from 'next/image';
 import { Coin } from '../utils/coin';
-import { CoinBuyProps } from '../utils/commonProps';
+import { useRouter } from 'next/router';
+import { CoinContext } from '../context/coinContext';
 
+export type SearchProps = {
+    isLoggedIn: boolean;
+    onBuy?: (coin: Coin) => void;
+    defaultCoinId?: string;
+    onSearch: (coinId: string) => void;
+}
 
-export const SearchBar: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy, defaultCoinId}) => {
-    const [coinState, setCoin] = useState<Coin>();
+export const SearchBar: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy, defaultCoinId, onSearch }) => {
+    const coinState = useContext(CoinContext)
     const [searchId, setSearch] = useState(defaultCoinId);
-    const [isFirstRender, setRender] = useState(true);
 
     const updateSearch = (e) => {
         setSearch(e.target.value);
     };
-
-    const coinGeckoFetch = () => {
-        if (searchId != "") {
-            fetch(`https://api.coingecko.com/api/v3/coins/${searchId.toLowerCase()}/`)
-                .then((res) => res.json()
-                .then((data) => {
-                    if (data.error != "Could not find coin with the given id"){
-                        setCoin(data as Coin);
-                        setRender(false);
-                    }
-                    else {
-                        alert("La recherche n'est pas valide !");
-                    }
-                })
-                );
-            }
-        else {
-            alert("Veuillez spécifier une crypto");
-        }
-    };
-    
-    if(defaultCoinId && isFirstRender){
-        coinGeckoFetch()
-    }
 
     const searchResult = coinState
         ? (
@@ -46,11 +28,10 @@ export const SearchBar: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy, 
                 <li title="Le prix en cad">{coinState.market_data.current_price.cad.toLocaleString() + ' $'}</li>
                 <li title="La capitalisation">{coinState.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
                 <li title="L'évolution en 24h en %" style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{coinState.market_data.price_change_percentage_24h + ' %'}</li>
-                {isLoggedIn ? <button onClick={() => {onBuy(coinState)}}> Acheter</button> : null}
+                {isLoggedIn ? <button onClick={() => { onBuy(coinState) }}> Acheter</button> : null}
             </div>
         )
         : null
-
 
     return (
         <div>
@@ -59,7 +40,7 @@ export const SearchBar: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy, 
                     <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
                 </div>
                 <div className="button-search">
-                    <button onClick={coinGeckoFetch}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
+                    <button onClick={() => { onSearch(searchId) }}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
                 </div>
                 {searchResult}
             </div>

@@ -373,6 +373,12 @@ input {
   text-decoration-color: #00008b;
 }
 
+.buy-account-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .transaction-box {
   display: flex;
   flex-direction: column;

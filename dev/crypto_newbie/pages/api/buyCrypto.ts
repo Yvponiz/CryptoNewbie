@@ -9,7 +9,7 @@ import formatDate from '../../frontend/utils/formatDate';
 
 export default async function submitForm(
   req: NextApiRequest,
-  res: NextApiResponse<{ status: string, errors: string[] }>,
+  res: NextApiResponse,
 ) {
   const connection = await utils.getConnection()
   try {
@@ -36,49 +36,65 @@ export default async function submitForm(
     });
 
     // Déduction du montant de la transaction du compte de l'usager
-    const deduction = user.accountAmount - total;
-    user.accountAmount = deduction;
+    const userAccount = await user.accountAmount;
+
+    if (total > userAccount) {
+      console.log("IM IN", userAccount)
+      res.status(400).json({ status: "erreur", errors: ["Pas assez d'argent dans le compte"] });
+      return
+    }
+    else {
+      const deduction = user.accountAmount - total;
+      user.accountAmount = deduction;
+    }
 
     // Lier la crypto au portfolio de l'usager
     crypto.portfolio = await portfolio;
 
     // Trouve la quantité d'une crypto l'ajouter
-    const cryptoQuantity = await cryptoRepo.findOne({
+    const cryptoBought = await cryptoRepo.findOne({
       relations: ['portfolio'],
       where: {
         portfolio: portfolio,
         nameId: nameId,
       }
     });
-    let newQuantity: number;
 
-    if (cryptoQuantity) {
-      newQuantity = cryptoQuantity.quantity + parseInt(quantity);
+    let newQuantity: number;
+    let newAveragePrice: number;
+    let averagePrice = total / quantity;
+
+
+    if (cryptoBought) {
+      newQuantity = cryptoBought.quantity + parseInt(quantity);
+      newAveragePrice = (cryptoBought.averagePrice + averagePrice)/2;
     }
-    else{
+    else {
       newQuantity = parseInt(quantity);
+      newAveragePrice = averagePrice;
     }
+
     // Sauvegarde de la crypto. Si usager en possède déjà, update
     cryptoRepo.upsert([
       {
         nameId: nameId,
         name: name,
         quantity: newQuantity,
-        portfolio: crypto.portfolio
+        portfolio: crypto.portfolio,
+        averagePrice: newAveragePrice
       }
     ], ["nameId"]);
-
+    crypto.averagePrice = total/quantity;
 
     // Sauvegarde de la transaction
     let today = new Date();
-    (await transaction).crypto = name;
-    (await transaction).date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
-    (await transaction).montant = total;
+    transaction.crypto = name;
+    transaction.date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
+    transaction.montant = total;
     transaction.user = user;
 
     await transactionsRepo.save(transaction);
-    await portfolioRepo.save(await portfolio);
-    await cryptoRepo.save(crypto);
+    await portfolioRepo.save(portfolio);
     await userRepo.save(user);
     await session.commit();
 

@@ -1,7 +1,10 @@
-import { useRouter } from "next/router";
-import { FormEvent, FunctionComponent, useEffect, useState } from "react";
+import { FormEvent, FunctionComponent, useContext, useEffect, useState } from "react";
+import { CoinContext } from "../context/coinContext";
 import { Coin } from "../utils/coin";
-import { CoinBuyProps } from "../utils/commonProps";
+
+export type CoinBuyProps = {
+    coinId: string
+}
 
 function onSubmit(event: FormEvent, state) {
     event.preventDefault()
@@ -26,10 +29,8 @@ function onSubmit(event: FormEvent, state) {
     console.log(state)
 }
 
-export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) => {
-    const router = useRouter();
-    const coinId = router.query.id;
-    const [coinState, setCoinState] = useState<Coin>()
+export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
+    const coinState = useContext(CoinContext)
     const [state, changeState] = useState({
         quantity: null,
         total: null,
@@ -37,15 +38,9 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
         nameId: null
     })
 
-    useEffect(() => {
-        fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
-            .then((res) => res.json())
-            .then((data) => setCoinState(data as Coin))
-    }, [])
-     
     if (coinState) {
         const quantity = state.quantity;
-        const price = parseFloat(coinState.market_data.current_price.cad.toLocaleString());
+        const price = parseFloat(coinState.market_data.current_price.cad.toFixed(5));
         const total = quantity * price;
         state.total = total;
         state.name = coinState.name;
@@ -65,8 +60,8 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ isLoggedIn, onBuy }) =
                         <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coinState.id}  />
                         <input onChange={(event) => changeState({ ...state, name: event.target.value })} type="text" id="name" name="name" value={coinState.name}  />
                         <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="number" id="quantity" name="quantity" required />
-                        <input type="text" id="price" name="price" value={price}  />
-                        <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total}  />
+                        <input type="text" id="price" name="price" value={price.toLocaleString(undefined, {'minimumFractionDigits': 2, 'maximumFractionDigits':2})}  />
+                        <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total.toFixed(2)}  />
                     </div>
                 </div>
 
