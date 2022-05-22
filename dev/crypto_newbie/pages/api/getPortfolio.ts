@@ -6,8 +6,8 @@ import { Portfolio } from "../../backend/entity/Portfolio";
 import { Crypto } from "../../backend/entity/Crypto";
 
 
-async function getPortfolioValue(coinId, quantity){
-    try{
+async function getPortfolioValue(coinId, quantity) {
+    try {
         const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
         const data = await response.json();
         let price = await data.market_data.current_price.cad;
@@ -15,7 +15,7 @@ async function getPortfolioValue(coinId, quantity){
 
         return portfolioValue;
     }
-    catch(error){
+    catch (error) {
         console.log(error)
     }
 }
@@ -52,8 +52,12 @@ export default async function getServerSidePortolio(
 
         // Calcul valeur portfolio
         let portfolioValue: number = 0;
-        for (let i = 0; i < cryptoCount; i++){
-           portfolioValue += await getPortfolioValue(crypto[i].nameId, crypto[i].quantity)
+        for (let i = 0; i < cryptoCount; i++) {
+            portfolioValue += await getPortfolioValue(crypto[i].nameId, crypto[i].quantity)
+
+            if (crypto[i].quantity == 0){
+                cryptoRepo.delete(crypto[i])
+            }
         }
 
         portfolio.value = portfolioValue;

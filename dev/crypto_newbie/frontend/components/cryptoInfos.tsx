@@ -1,22 +1,22 @@
 import { useState, useEffect, FunctionComponent } from 'react'
 import { Coin } from '../utils/coin';
 import Image from 'next/image';
-import { CoinBuyProps } from '../utils/commonProps';
-import { useRouter } from 'next/router';
+import { SearchProps } from './searchBar';
 
-export const CryptoInfos: FunctionComponent<CoinBuyProps> = ({isLoggedIn, onBuy}) => {
+export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
     
     useEffect(() => {
-        let coinId = sessionStorage.getItem('coinId');
         //let chart = document.getElementById('chart').getContext
-
-
+        const coinId = sessionStorage.getItem('coinId');
+        console.log(`https://api.coingecko.com/api/v3/coins/${coinId}`);
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
-            .then((response) => response.json())
+            .then((response) =>response.json())
             .then((data) => {
-                console.log(data);
-                setCoin(data as Coin);
+                if(data.error != "Could not find coin with the given id"){
+                    console.log(data.error);
+                    setCoin(data as Coin);
+                }
             })
         fetch(`/api/coinHistory/`)
             .then((response) => response.json())
@@ -85,6 +85,9 @@ export const CryptoInfos: FunctionComponent<CoinBuyProps> = ({isLoggedIn, onBuy}
     }
 
     return (
-        null
+        <div className='header-infos'>
+            <li id="name">Aucune cryptomonnaie trouvée pour cette saisie</li>
+            <li id="name"> :-(</li>
+        </div>
     )
 }

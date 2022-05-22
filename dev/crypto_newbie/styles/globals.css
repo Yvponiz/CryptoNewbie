@@ -173,6 +173,14 @@ input {
   padding: 30px 0px;
 }
 
+.link-crypto {
+  text-decoration: underline;
+}
+
+.link-crypto:hover {
+  color: #00008b;
+}
+
 /*===Crypto list===*/
 .section-list {
   display: grid;
@@ -453,6 +461,12 @@ input {
   color: #8bc53f;
   background-color: white;
   border: 1px solid #8bc53f;
+}
+
+.buy-account-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .transaction-box {

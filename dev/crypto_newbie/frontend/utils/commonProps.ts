@@ -1,11 +1,12 @@
 import { getSession } from "../../common/getSession";
-import { Coin } from "./coin";
+import * as utils from "../../backend/DButils";
+import { User } from "../../backend/entity/User";
 
 // Type créer pour passer props à divers components pour éviter de répéter du code
 
 export type GreetingProps = {
-    isLoggedIn: boolean; 
-    firstName: string;
+    isLoggedIn: boolean;
+    firstName?: string;
     lastName?: string;
 };
 
@@ -19,15 +20,12 @@ export type UserProps = {
     dateOfBirth: string;
 };
 
-export type CoinBuyProps = {
-    isLoggedIn: boolean;
-    onBuy?: (coin:Coin) => void;
-    defaultCoinId?: string;
-}
-
 export default async function getServerSideProps({ req, res }) {
+    const connection = await utils.getConnection()
     const session = await getSession(req, res);
-    session.views = session.views ? session.views + 1 : 1;
+    const userRepo = connection.manager.getRepository<User>("User");
+    const user = await userRepo.findOne({ id: session?.user?.id });
+    const accountAmount = await user?.accountAmount;
 
     return {
         props: {
@@ -37,7 +35,7 @@ export default async function getServerSideProps({ req, res }) {
             lastName: session?.user?.lastName ?? null,
             email: session?.user?.email ?? null,
             accountType: session?.user?.accountType ?? null,
-            accountAmount: session?.user?.accountAmount ?? null,
+            accountAmount: accountAmount ?? null,
             dateOfBirth: session?.user?.dateOfBirth ?? null
         },
     };

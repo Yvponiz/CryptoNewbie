@@ -31,7 +31,7 @@ export default function SignupForm() {
     lastName: null,
     email: null,
     dateOfBirth: null,
-    accountType: null,
+    accountType: 1,
     password: null,
     confPassword: null,
   })
@@ -52,7 +52,7 @@ export default function SignupForm() {
 
       <label htmlFor="type_compte">Le type de compte</label>
       <select onChange={(event) => changeState({ ...state, accountType: parseInt(event.target.value, 10) })} id="type_compte" name="type_compte" required>
-        {Object.values(AccountType).map((compte) => <option key={compte.Value} value={compte.Value}>{compte.Type}</option>)}
+        {Object.values(AccountType).map((compte) => <option defaultValue={1} key={compte.Value} value={compte.Value}>{compte.Type}</option>)}
       </select>
 
       <label htmlFor="password">Mot de passe</label>

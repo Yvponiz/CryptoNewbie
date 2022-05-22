@@ -29,7 +29,6 @@ const connectionOptions: ConnectionOptions = {
 }
 
 
-
 // Code pour régler méga problème de connexion
 // Source: https://github.com/typeorm/typeorm/issues/6241#issuecomment-643690383
 

@@ -9,16 +9,36 @@ Titre du projet : Crypto-Newbie
 	Yvanoski Sanon
 	Nikolas Ouimet
 
-
-	
 	
 Description du projet :
 =======================================================
 Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la création de listes personnalisée.
 
+Version déployée :    
+-------------------------------------------------------
+> https://cryptonewbie.herokuapp.com    
+
+<br>
 
 Installation :
 =======================================================
+Télécharger et installer Node.Js : https://nodejs.org/en/download/    
+<br>
+Dans l'invite de console Node.Js :    
+
+	cd /crypto_newbie     
+Installer dependecies :  
+
+	npm install    
+
+Exécuter : 
+
+	npm run dev    
+
+Rendez vous sur :
+
+>[localhost:3000](localhost:3000)
+-------------------------------------------------------
 Liste des dependecies :
 -------------------------------------------------------
 	React  
@@ -65,3 +85,7 @@ Documentation API CoinGecko : https://www.coingecko.com/en/api/documentation?
 Documentation sur change event : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event	  
 Documentation sur Next-Session : https://github.com/hoangvvo/next-session	  
 Documentation sur Router : https://nextjs.org/docs/api-reference/next/router#router-object	    
+Documentation sur Context : https://www.w3schools.com/react/react_usecontext.asp 
+*How to use React Context With TypeScript* : https://blog.logrocket.com/how-to-use-react-context-typescript/       
+Documentation sur getInitialProps : https://nextjs.org/docs/api-reference/data-fetching/get-initial-props    
+Documentation RegEx : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp    

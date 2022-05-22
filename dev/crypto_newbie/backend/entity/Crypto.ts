@@ -17,13 +17,15 @@ export class Crypto extends BaseEntity {
     @Column({ nullable: true })
     name: string;
 
-    @Column({ nullable: true })
+    @Column({
+        nullable: true,
+    })
     quantity: number;
 
     @Column({
-         nullable: true,
-         type:'float'
-        })
+        nullable: true,
+        type: 'float'
+    })
     averagePrice: number;
 
     @ManyToOne(() => Portfolio, (portfolio) => portfolio.crypto, {
