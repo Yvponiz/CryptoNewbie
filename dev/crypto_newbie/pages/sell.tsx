@@ -2,11 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Welcome } from '.';
-import { BuyBox } from '../frontend/components/buyBox';
 import Layout from '../frontend/components/layout';
-import { SearchBar } from '../frontend/components/searchBar';
-import { UserCoinList } from '../frontend/components/userCoinList';
-import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext';
+import { SellComponent } from '../frontend/components/sellComponent';
+import { CoinContext, getCoinState } from '../frontend/context/coinContext';
 import { Coin } from '../frontend/utils/coin';
 import commonProps, { UserProps } from '../frontend/utils/commonProps';
 
@@ -47,7 +45,7 @@ const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount
             <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
           <div style={{ marginTop: '50px' }}>
-            <UserCoinList/>
+          <SellComponent/>
           </div>
         </CoinContext.Provider>
       </main>

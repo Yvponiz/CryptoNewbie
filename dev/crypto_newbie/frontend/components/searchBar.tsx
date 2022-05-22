@@ -22,11 +22,18 @@ export const SearchBar: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy, d
     const searchResult = coinState
         ? (
             <div className='search-result'>
+                <Image src={coinState.image.small} width="30px" height="30px" alt='coin image'></Image>
                 <li title="Le rang">{coinState.market_data.market_cap_rank}</li>
                 <li title="Le nom">{coinState.name}</li>
                 <li title="Le symbol">{coinState.symbol}</li>
-                <li title="Le prix en cad">{coinState.market_data.current_price.cad.toLocaleString() + ' $'}</li>
-                <li title="La capitalisation">{coinState.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
+                {coinState.market_data.current_price.cad
+                    ?
+                    <li title="Le prix en cad">{coinState.market_data.current_price.cad.toLocaleString() + ' $'}</li>
+                    : null}
+                {coinState.market_data.market_cap.cad
+                    ?
+                    <li title="La capitalisation">{coinState.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
+                    : null}
                 <li title="L'évolution en 24h en %" style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{coinState.market_data.price_change_percentage_24h + ' %'}</li>
                 {isLoggedIn ? <button onClick={() => { onBuy(coinState) }}> Acheter</button> : null}
             </div>

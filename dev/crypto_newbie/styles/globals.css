@@ -168,6 +168,14 @@ input {
   padding: 30px 0px;
 }
 
+.link-crypto {
+  text-decoration: underline;
+}
+
+.link-crypto:hover {
+  color: #00008b;
+}
+
 /*===Crypto list===*/
 .section-list {
   display: grid;

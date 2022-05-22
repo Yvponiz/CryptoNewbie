@@ -24,8 +24,8 @@ export default async function getServerSideProps({ req, res }) {
     const connection = await utils.getConnection()
     const session = await getSession(req, res);
     const userRepo = connection.manager.getRepository<User>("User");
-    const user = await userRepo.findOne({ id: session.user.id });
-    const accountAmount = await user.accountAmount;
+    const user = await userRepo.findOne({ id: session?.user?.id });
+    const accountAmount = await user?.accountAmount;
 
     return {
         props: {

@@ -1,7 +1,8 @@
 // Interface pour monnaie
 
 enum Currency {
-    CAD = 'cad'
+    CAD = 'cad',
+    USD = 'usd'
 }
 
 type CurrentPrices = Record<Currency, number>

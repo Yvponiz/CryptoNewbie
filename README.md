@@ -9,16 +9,36 @@ Titre du projet : Crypto-Newbie
 	Yvanoski Sanon
 	Nikolas Ouimet
 
-
-	
 	
 Description du projet :
 =======================================================
 Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la création de listes personnalisée.
 
+Version déployée :    
+-------------------------------------------------------
+> https://cryptonewbie.herokuapp.com    
+
+<br>
 
 Installation :
 =======================================================
+Télécharger et installer Node.Js : https://nodejs.org/en/download/    
+<br>
+Dans l'invite de console Node.Js :    
+
+	cd /crypto_newbie     
+Installer dependecies :  
+
+	npm install    
+
+Exécuter : 
+
+	npm run dev    
+
+Rendez vous sur :
+
+>[localhost:3000](localhost:3000)
+-------------------------------------------------------
 Liste des dependecies :
 -------------------------------------------------------
 	React  

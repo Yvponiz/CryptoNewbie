@@ -39,7 +39,6 @@ export default async function submitForm(
     const userAccount = await user.accountAmount;
 
     if (total > userAccount) {
-      console.log("IM IN", userAccount)
       res.status(400).json({ status: "erreur", errors: ["Pas assez d'argent dans le compte"] });
       return
     }
@@ -84,6 +83,7 @@ export default async function submitForm(
         averagePrice: newAveragePrice
       }
     ], ["nameId"]);
+    
     crypto.averagePrice = total/quantity;
 
     // Sauvegarde de la transaction

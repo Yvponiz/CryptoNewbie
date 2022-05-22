@@ -54,6 +54,10 @@ export default async function getServerSidePortolio(
         let portfolioValue: number = 0;
         for (let i = 0; i < cryptoCount; i++) {
             portfolioValue += await getPortfolioValue(crypto[i].nameId, crypto[i].quantity)
+
+            if (crypto[i].quantity == 0){
+                cryptoRepo.delete(crypto[i])
+            }
         }
 
         portfolio.value = portfolioValue;

@@ -10,6 +10,7 @@ import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
 import { Coin } from '../frontend/utils/coin'
+import Link from 'next/link'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
@@ -51,6 +52,14 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName, }) => {
             <TrendingCrypto />
             <BestCrypto />
             <WorstCrypto />
+          </div>
+
+          <div className='link-crypto'>
+            <a 
+              target='_blank'
+              href='https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0'>
+              Liste de Cryptos (id)
+            </a>
           </div>
 
           <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
