@@ -12,6 +12,7 @@ export class Portfolio extends BaseEntity{
     @Column({
         type:'float',
         nullable: true
+        
     })
     value: number;
 

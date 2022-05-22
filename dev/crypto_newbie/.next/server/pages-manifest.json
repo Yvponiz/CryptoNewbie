@@ -2,6 +2,9 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/api/buyCrypto": "pages/api/buyCrypto.js",
-  "/buy/[id]": "pages/buy/[id].js"
+  "/": "pages/index.js",
+  "/api/trending": "pages/api/trending.js",
+  "/api/bestCrypto": "pages/api/bestCrypto.js",
+  "/api/coinList": "pages/api/coinList.js",
+  "/api/worstCrypto": "pages/api/worstCrypto.js"
 }
