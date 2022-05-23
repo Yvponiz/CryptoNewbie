@@ -2,14 +2,15 @@ import { useState, useEffect, FunctionComponent } from 'react'
 import { Coin } from '../utils/coin';
 import Image from 'next/image';
 import { SearchProps } from './searchBar';
+import { time } from 'console';
+
 
 export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
-    
+    const [coinHistory, setCoinHistory] = useState({});
+
     useEffect(() => {
-        //let chart = document.getElementById('chart').getContext
         const coinId = sessionStorage.getItem('coinId');
-        console.log(`https://api.coingecko.com/api/v3/coins/${coinId}`);
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then((response) =>response.json())
             .then((data) => {
@@ -17,13 +18,6 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                     console.log(data.error);
                     setCoin(data as Coin);
                 }
-            })
-        fetch(`/api/coinHistory/`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                console.log(new Date().getTime() - 3600);
-                console.log(new Date('2021-05-12').getTime());
             })
     }, []);
 
@@ -36,9 +30,6 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                     <li id='current-price'>{coinState.market_data.current_price.cad.toLocaleString()} $</li>
                     <li id='price-change' style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
                             {`${coinState.market_data.price_change_percentage_24h.toFixed(2)} %`}</li>
-                </div>
-                <div className='chart-coin'>
-                    <canvas id='chart'></canvas>
                 </div>
                 <div className='more-infos'>
                     <h1>Informations supplémentaires</h1>
@@ -79,7 +70,6 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                         {isLoggedIn ? <button className='button-buy' onClick={() => {onBuy(coinState)}}> Acheter</button> : null}
                     </div>
                 </div>
-
             </div>
         )
     }

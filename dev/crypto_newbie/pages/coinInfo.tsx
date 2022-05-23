@@ -6,7 +6,8 @@ import { Welcome } from '.'
 import { useRouter } from 'next/router'
 import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
 import { Coin } from '../frontend/utils/coin'
-//import { SearchProps } from '../frontend/components/searchBar'
+import { CoinChart } from '../frontend/components/coinChart'
+
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
@@ -39,6 +40,8 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, onBuy, f
             onSearch={(id) => updateCoin(id, setCoinState)}
             onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
           />
+          <CoinChart />
+          
         </CoinContext.Provider>
       </main>
 

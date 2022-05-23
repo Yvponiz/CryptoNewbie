@@ -582,13 +582,14 @@ input {
   text-align: center;
 }
 
-.sell-crypto-list{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+
+.sell-crypto-list-elem{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  padding: 1em;
+  padding: 0.8em;
   border-bottom: 1px solid white;
+  text-align: left;
 }
 
 .sell-button{

@@ -29,8 +29,8 @@ export const SellComponent: FunctionComponent<SellProps> = ({coin}) => {
 
         return (
             <div>
-                <div>{userCryptos.slice(0, 5).map(({name, quantity }, key) =>
-                    <div className="sell-crypto-list">
+                <div className="sell-crypto-list">{userCryptos.slice(0, 5).map(({name, quantity }, key) =>
+                    <div className="sell-crypto-list-elem">
                         <li>Crypto : {name}</li>
                         <li>Quantité : {quantity}</li>
                         <button className="sell-button" onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> Vendre </button>
