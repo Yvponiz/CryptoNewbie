@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Coin } from "../utils/coin";
+import quickSort from "../utils/quickSort";
 
 interface Crypto {
     nameId: string,
@@ -31,6 +31,12 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
         })
     }, [])  
 
+    const sort = (async (e) => {
+        console.log(crypto);
+        let newList = await quickSort(crypto, e.target.id)
+        setCrypto(newList);
+    })
+
     if (portfolio) {
 
         return (
@@ -38,15 +44,16 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
                 <div className="montant-investi-section"> 
                     <li>Montant investi</li>
                     <li>{portfolio.value} $</li> 
-                    <li>{portfolio.accountAmount}</li>
+                    <li>Montant restant</li>
+                    <li>{portfolio.accountAmount} $</li>
                 </div>
                 <div className="tab-portfolio-info">
                     <div className="title-section">
-                        <li>Nom</li>
-                        <li>Quantité</li>
-                        <li>Prix moyen</li>
+                        <li onClick={sort} id="name_crypto" className="title-elem">Nom</li>
+                        <li onClick={sort} id="quantity" className="title-elem">Quantité</li>
+                        <li onClick={sort} id="average_price" className="title-elem">Prix moyen</li>
                     </div>
-                    <div className="crypto-section">{crypto.slice(0,6).map(({name, quantity, nameId, averagePrice}) =>
+                    <div className="crypto-section">{crypto.slice(0, crypto.length).map(({name, quantity, nameId, averagePrice}) =>
                         <a href="coinInfo" onClick={(()=>setIdCoin(nameId))}>
                             <li>{name}</li>
                             <li>{quantity}</li>

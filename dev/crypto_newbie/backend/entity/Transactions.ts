@@ -23,6 +23,9 @@ export class Transactions extends BaseEntity {
     })
     date_transaction: string
 
+    @Column({ nullable: true })
+    type: string;
+
     @ManyToOne(() => User, (user) => user.transactions, {
         cascade: true
     })

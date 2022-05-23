@@ -25,9 +25,10 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
           <h1>Transactions</h1>
         </div>
         <div className='buy-sell'>
+          <a href="/buy">Acheter</a>
           <a href="/sell">Vendre</a>
         </div>
-        <div style={{paddingTop:'20px' }}>
+        <div>
           <TransactionsInfo/>
         </div>
       </main>

@@ -9,9 +9,6 @@ import { Coin } from '../frontend/utils/coin';
 import commonProps, { UserProps } from '../frontend/utils/commonProps';
 
 export async function getServerSideProps({ req, res }) {
-  // const regEx = new RegExp(".+/(.+)$"); // Expression regulìère pour prendre l'URL après le buy/
-  // const regId = req.url.match(regEx); // Url de la page, fonctionnalité de NextJS (NextRequest)
-  // const id = regId[1] // Retourne un array, index 1 est le retour de l'expression régulière
   const common = await commonProps({ req, res })
   const props = {  ...common.props } as InitialProps // object contenant props
 
@@ -44,8 +41,8 @@ const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount
             <h2>Montant dans le compte :</h2>
             <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
-          <div style={{ marginTop: '50px' }}>
-          <SellComponent/>
+          <div className='sell-component'>
+            <SellComponent/>
           </div>
         </CoinContext.Provider>
       </main>

@@ -32,7 +32,8 @@ export default async function getServerSideTransactions(
         type Transaction = {
             crypto: string,
             montant: number,
-            date: string
+            date: string,
+            type: string
         }
 
         let t: Transaction[] = new Array();
@@ -41,7 +42,8 @@ export default async function getServerSideTransactions(
             t[i] = {
                 crypto: transaction[i].crypto,
                 montant: transaction[i].montant,
-                date: transaction[i].date_transaction
+                date: transaction[i].date_transaction,
+                type: transaction[i].type
             }
         }
 

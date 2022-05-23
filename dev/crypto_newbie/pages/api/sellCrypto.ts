@@ -77,6 +77,7 @@ export default async function submitForm(
         transaction.date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
         transaction.montant = total;
         transaction.user = user;
+        transaction.type = "vente";
 
         await transactionsRepo.save(transaction);
         await portfolioRepo.save(portfolio);
