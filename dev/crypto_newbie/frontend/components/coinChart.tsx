@@ -1,6 +1,6 @@
 import { time } from 'console';
 import { FunctionComponent } from 'react';
-import {Bar, Line} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import {CategoryScale} from 'chart.js'; 
 Chart.register(CategoryScale);
@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 export const CoinChart: FunctionComponent = () => {
     const [coinHistory, setCoinHistory] = useState([]);
-    let pricesArray = []
 
     useEffect(() => {
         const coinId = sessionStorage.getItem('coinId');
@@ -34,8 +33,8 @@ export const CoinChart: FunctionComponent = () => {
                         tension: 0.1
                     }]
                 }}
-                width={600}
-                height={400}
+                width={750}
+                height={600}
                 options={{
                     scales: {
                         x: {

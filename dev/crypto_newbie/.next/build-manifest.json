@@ -30,10 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/buy/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/buy/[id].js"
+    ],
     "/coinInfo": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/coinInfo.js"
+    ],
+    "/sell": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/sell.js"
     ]
   },
   "ampFirstPages": []

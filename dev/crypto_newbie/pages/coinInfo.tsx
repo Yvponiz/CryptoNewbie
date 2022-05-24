@@ -34,13 +34,14 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, onBuy, f
           <div className='welcome-section'>
             <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
-
-          <CryptoInfos
-            isLoggedIn={isLoggedIn}
-            onSearch={(id) => updateCoin(id, setCoinState)}
-            onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
-          />
-          <CoinChart />
+          <div className='crypto-infos'>
+            <CryptoInfos
+              isLoggedIn={isLoggedIn}
+              onSearch={(id) => updateCoin(id, setCoinState)}
+              onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
+            />
+            <CoinChart />
+          </div>
           
         </CoinContext.Provider>
       </main>

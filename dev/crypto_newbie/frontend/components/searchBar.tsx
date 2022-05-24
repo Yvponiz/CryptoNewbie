@@ -1,8 +1,8 @@
 import { useState, FunctionComponent, useContext } from 'react'
 import Image from 'next/image';
-import { Coin } from '../utils/coin';
-import { useRouter } from 'next/router';
-import { CoinContext } from '../context/coinContext';
+//import { Coin } from '../utils/coin';
+//import { useRouter } from 'next/router';
+//import { CoinContext } from '../context/coinContext';
 
 export const SearchBar: FunctionComponent = ({}) => {
     const [searchId, setSearch] = useState({});
