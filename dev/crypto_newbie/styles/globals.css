@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  font-family: 'PF Tempesta Five Condensed', sans-serif;
+}
+
 li {
   list-style: none;
 }
@@ -19,15 +23,10 @@ li {
   box-sizing: border-box;
 }
 
-button {
+input {
   font-family: 'PF Tempesta Five Condensed', sans-serif;
   font-size: 1em;
-  margin-top: 30px;
-}
 
-input{
-  font-family: 'PF Tempesta Five Condensed', sans-serif;
-  font-size: 1em;
 }
 
 .container {
@@ -40,15 +39,19 @@ input{
   flex: 1;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  /* background-image: url("../public/crypto_background.png"); */
+  align-items: center;
   background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 0 5% 5%;
+  padding: 0 2em 2em;
 }
 
+.page-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
 /*----------------------------------Header----------------------------*/
 
@@ -62,7 +65,7 @@ input{
   padding-bottom: 30px;
 }
 
-.header-logo{
+.header-logo {
   display: flex;
   justify-self: flex-start;
   align-items: center;
@@ -71,7 +74,7 @@ input{
   font-size: 20px;
 }
 
-.logo{
+.logo {
   align-self: center;
 }
 
@@ -81,7 +84,6 @@ input{
   padding-right: 2rem;
   color: white;
 }
-
 
 .header-links a {
   padding: 2rem;
@@ -93,31 +95,36 @@ input{
   color: blue;
 }
 
+.welcome-section {
+  color: gold;
+  padding-top: 1em;
+}
+
 /*----------------------------------Index----------------------------*/
 
-.index-coin{
+.index-coin {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   padding: 8px 8px;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   width: 100%;
+  text-align: center;
   align-items: center;
 }
 
-/* .coin-name {
-  text-decoration: underline;
-} */
-
 .index-coin:hover {
-  background-color: rgb(40, 40, 40) ;
+  background-color: rgb(40, 40, 40);
+  cursor: pointer;
 }
+
+/*====Performance====*/
 .performance {
   color: white;
   width: 400px;
   padding: 10px;
   background: rgba(97, 97, 107, 0.5);
-  border-radius: 15px ;
+  border-radius: 15px;
   border-style: groove;
   text-align: center;
 }
@@ -142,6 +149,7 @@ input{
   height: 100%;
 }
 
+
 .performance-layout-left {
   display: flex;
   flex-direction: column;
@@ -150,23 +158,54 @@ input{
   height: 100%;
 }
 
-.section-list{
-  display: grid;
-  width: 100%;
+#performance-onclick{
+  cursor: pointer;
 }
 
 .section-performance {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 100%;
   padding: 30px 0px;
 }
 
-.search-bar div{
-  display: flex;
-  flex-direction: row;
+.link-crypto {
+  text-decoration: underline;
 }
 
+.link-crypto:hover {
+  color: #00008b;
+}
+
+/*===Crypto list===*/
+.section-list {
+  display: grid;
+  width: 100%;
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.titles-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.title-elem {
+  padding: 0.8em;
+  text-align: center;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: gold;
+  transition: background-color 0.3s, border-bottom 0.3s;
+}
+
+.title-elem:hover {
+  background-color: rgb(40, 40, 40);
+  border-bottom: 4px solid #00008b;
+}
+
+/*===Searchbar===*/
 .input-search input {
   background: rgba(0, 0, 0, 0.0);
   border: none;
@@ -174,47 +213,43 @@ input{
   color: white;
   font-size: 1.5rem;
   width: 50%;
-  height: 35px;
+  height: 40px;
   margin-top: 1.4em;
   margin-left: 20px;
-  transition: width 0.3s ease-in-out;
-}
-
-.search-bar button {
-  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
-}
-
-.search-bar button:hover{
-  background-color: #00008b;
-  padding: 0.2em;
-  border-radius: 10px;
-  border: none;
+  border-color: white;
+  transition: width 0.3s, border-color 0.3s ease-in-out;
 }
 
 .input-search input:focus {
   outline: none;
+  border-color: #00008b;
   width: 100%;
 }
 
-.search-result{
+.search-section {
   display: flex;
-  margin-left: 75px;
-  visibility: hidden;
+  flex-direction: row;
 }
 
-.search-result li{
-  margin-top: 35px;
-  padding-right: 25px;
-  padding-left: 25px;
-  font-size: 1.3rem;
+.search-bar button {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50%;
+  margin-top: 36px;
+  border-radius: 15px;
+  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
 }
 
-.titles-list{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+.search-bar button:hover {
+  background-color: #00008b;
+  cursor:pointer;
+  padding-right: 2em;
+  padding-left: 2em;
+  border-radius: 10px;
+  border: none;
 }
 
-/*-------------------------------Connexion-------------------------------*/
+/*-------------------------------Login-------------------------------*/
 
 .content-form {
   display: flex;
@@ -232,20 +267,375 @@ input{
   width: 500px;
   padding: 50px;
   background: rgba(97, 97, 107, 0.5);
-  border-radius: 15px ;
+  border-radius: 15px;
   border-style: groove;
   text-align: center;
 }
 
-/*--------------------------Contactez-Nous----------------------------*/
+.form a:hover {
+  color: #00008b;
+}
 
-.contact{
+.submit-button {
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.5em 0.5em;
+  border-radius: 15px;
+  text-align: center;
   color: white;
+  background-color: darkblue;
+  border: 1px solid darkblue;
+  transition: background-color 0.3s, color 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  color: darkblue;
+  background-color: white;
+  border: 1px solid darkblue;
+}
+
+/*----------------------------------Profile----------------------------*/
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-top{
+  font-size: 1.7em;
+  color: gold;
+  padding-bottom: 0.5em;
+  text-align: center;
+  width: 100%;
+}
+
+.profile-account{
+  display: flex;
+  width: 100%;
+  padding: 3em;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  text-align: center;
+  flex-direction: column;
+  margin: 2em;
+}
+
+#account-type{
+  font-size: 2em;
+}
+
+#account-amount{
+  font-size: 1.7em;
+}
+
+.personnal-section{
+  padding-top: 2em;
+  margin-top: 2em;
+  border-top: 1px solid grey;
+  text-align: left;
+}
+
+.personnal-section li{
+  font-size: 1.2em;
+  padding: 5px 5px;
+}
+
+.change-email{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.change-email blockquote{
+  width: auto;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.password-reset-section{
+  display: flex;
+  font-size: 1em;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.password-reset-section h2{
+  padding-bottom: 1em;
+}
+/*-------------------------------Transactions-------------------------*/
+
+.buy-sell {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.2em;
+  text-decoration: underline;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.buy-sell a:hover {
+  color: #00008b;
+  text-decoration: underline;
+  text-decoration-color: #00008b;
+}
+
+/*---------------------------------Crypto infos------------------------*/
+
+.crypto-infos{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.coin-infos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 2em 2em;
+  color: blue;
+}
+
+.header-infos{
+  display: flex;
+  width: auto;
+  padding: 1em;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  text-align: center;
+  flex-direction: column;
+  margin: 2em;
+}
+
+.header-infos #name{
+  font-size: 1.5em;
+  padding-top: 0.5em;
+}
+
+.header-infos #current-price{
+  font-size: 3.4em;
+}
+
+.header-infos #price-change{
+  font-size: 1.4em;
+}
+
+.more-infos{
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid white;
+  padding: 1em;
+  padding-bottom: 2em;
+}
+
+.more-infos h1{
+  font-size: 2em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+.more-infos-section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4em;
+  padding: 0.8em 0.8em;
+}
+
+.button-buy{
+  width: 25%;
+  font-size: 1.3em;
+  padding: 0.5em 0.5em;
+  margin-top: 75px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  background-color: #8bc53f;
+  border: 1px solid #8bc53f;
+  transition: background-color 0.5s, color 0.5s ease-in-out;
+}
+
+.button-buy:hover{
+  color: #8bc53f;
+  background-color: white;
+  border: 1px solid #8bc53f;
+  cursor: pointer;
+}
+
+/*-------------------------------------PORTFOLIO------------------------------------------*/
+
+.portfolio-info{
+  width: 75%;
+}
+
+.portfolio-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.montant-investi-section{
+  display: flex;
+  width: auto;
+  padding: 1em;
+  font-size: 2.1em;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  text-align: center;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.title-section{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1.3em;
+  color: gold;
+  border-bottom: 1px solid white;
+}
+
+.crypto-section a{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1.1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid white;
+  text-align: center;
+}
+
+/*-------------------------------TRANSACTION-----------------------------------------*/
+
+.buy-account-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.transaction-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 600px;
+  padding: 30px;
+  background: rgba(97, 97, 107, 0.5);
+  border-radius: 15px;
+  border-style: groove;
+  font-size: 20px;
+}
+
+.transaction-box-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.transaction-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-title{
+  padding-top: 1.1em;
+  font-size: 2.5em;
+  text-align: center;
+  padding-bottom: 1.1em;
+}
+
+.transaction-title-list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 1.3em;
+  color: gold;
+  border-bottom: 1px solid white;
+}
+
+.transaction-elem{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 1.1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid white;
+  text-align: center;
 }
 
 
+.sell-crypto-list-elem{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0.8em;
+  border-bottom: 1px solid white;
+  text-align: left;
+}
 
-/*----------------------------------Footer----------------------------*/
+.sell-button{
+  width: auto;
+  font-size: 1.3em;
+  padding: 0.5em 0.5em;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  background-color: #a33327;
+  border: 1px solid #a33327;
+  transition: background-color 0.5s, color 0.5s ease-in-out;
+}
+
+.sell-button:hover{
+  color: #a33327;
+  background-color: white;
+  border: 1px solid #a33327;
+}
+
+.sell-component{
+  width: 50%;
+}
+
+.transaction-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.transaction-box button {
+  margin-top: 2em;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.5em 0.5em;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  background-color: darkblue;
+  border: 1px solid darkblue;
+  transition: background-color 0.5s, color 0.5s ease-in-out;
+}
+
+.transaction-box button:hover {
+  color: darkblue;
+  background-color: white;
+  border: 1px solid darkblue;
+}
+
+/*----------------------------------------CONTACT-------------------------------------*/
+
+.contact h1{
+  color: gold;
+  font-size: 2.2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/*-------------------------------------------FOOTER------------------------------------*/
 
 .footer {
   display: flex;
@@ -254,7 +644,7 @@ input{
   align-items: center;
   width: 100%;
   background-color: rgb(40, 40, 40);
-  padding: 50px 30px;
+  padding: 30px;
 }
 
 .footer-links {
@@ -262,15 +652,6 @@ input{
   flex-direction: column;
 }
 
-.footer-links a:hover{
+.footer-links a:hover {
   color: blue;
 }
-
-
-
-/* @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-} */

@@ -1,7 +1,6 @@
 import { SessionData, SessionStore } from "next-session/lib/types";
 import { Session } from "./entity/Session";
-import * as utils from "./utils";
-
+import * as utils from "./DButils";
 
 // MemoryStore pour, pour créer un et garder un cookie(session)
 // Cookie est conservé sur pgadmin
@@ -10,9 +9,10 @@ import * as utils from "./utils";
 export default class MemoryStore implements SessionStore {
 
     async get(sid: string): Promise<SessionData | null> {
-        await utils.getConnection();
-        const sess = (await Session.findOne({ uuid: sid })).data;
-        console.log("GET", sid)
+        let connection = await utils.getConnection(); 
+        const sessionRepository = connection.getRepository<Session>("Session");
+        const sess = (await sessionRepository.findOne({ uuid: sid })).data;
+        
         if (sess) {
             const session = JSON.parse(sess, (key, value) => {
                 if (key === "expires") return new Date(value);
@@ -31,8 +31,9 @@ export default class MemoryStore implements SessionStore {
     }
 
     async set(sid: string, sess: SessionData) {
-        await utils.getConnection();
-        let sessionEntity = await Session.findOne({ uuid: sid });
+        let connection = await utils.getConnection();
+        const sessionRepository = connection.getRepository<Session>("Session");
+        let sessionEntity = await sessionRepository.findOne({ uuid: sid });
 
         if (!sessionEntity) {
             sessionEntity = new Session();
@@ -40,18 +41,17 @@ export default class MemoryStore implements SessionStore {
 
         sessionEntity.uuid = sid
         sessionEntity.data = JSON.stringify(sess)
-        await sessionEntity.save()
+        await sessionRepository.save(sessionEntity)
     }
 
     async destroy(sid: string) {
-        await utils.getConnection();
-        let sessionEntity = await Session.findOne({ uuid: sid });
-        await sessionEntity.remove();
-        console.log("DESTROY", sid)
+        let connection = await utils.getConnection();
+        const sessionRepository = connection.getRepository<Session>("Session");
+        let sessionEntity = await sessionRepository.findOne({ uuid: sid });
+        await sessionRepository.remove(sessionEntity);
     }
 
     async touch(sid: string, sess: SessionData) {
-        console.log("TOUCH", sid, sess)
         return this.set(sid, sess)
     }
 }

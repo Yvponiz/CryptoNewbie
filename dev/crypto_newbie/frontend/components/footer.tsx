@@ -6,7 +6,7 @@ type FooterProps = {
     [name: string]: ReactElement[]
 };
 
-export default function Footer({ children }: FooterProps) {
+export default function Footer({}: FooterProps) {
     return (
         <>
             <div className='footer'>
@@ -19,7 +19,6 @@ export default function Footer({ children }: FooterProps) {
                 <div className='footer-links'>
                     <Link href='/'><a>Accueil</a></Link>
                     <Link href='contact'><a>Contact</a></Link>
-                    <Link href='connexion'><a>Connexion</a></Link>
                 </div>
             </div>
         </>

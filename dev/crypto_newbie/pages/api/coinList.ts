@@ -1,16 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 
-// export async function getPing() {
-//     let data = await CoinGeckoClient.ping();
-//     return data.data.gecko_says
-// };
-
 export async function getCoins() {
     let data = await CoinGeckoClient.coins.all(CoinGecko.ORDER["GECKO_ASC"])
+    
     return data.data
 }
 

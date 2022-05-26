@@ -23,8 +23,8 @@ function onSubmit(event: FormEvent, state) {
   console.log(state)
 }
 
-export default function Login() {
-
+export default function LoginForm() {
+  
   const [state, changeState] = useState({
     email: null,
     password: null,
@@ -40,10 +40,10 @@ export default function Login() {
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
-      <button type="submit">Submit</button>
+      <button className="submit-button" style={{marginTop: '1em'}} type="submit">Connexion</button>
 
       <h1>Pas encore de compte ? Créez en un</h1>
-      <a href="signup">Créer un compte</a>
+      <button style={{marginTop: '1em'}} className="submit-button" onClick={() => {window.location.href = "/signup"}}>Créer un compte</button>
     </form>
   )
 }

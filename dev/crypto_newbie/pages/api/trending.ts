@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
 export async function getTrending() {
     const response = await fetch('https://api.coingecko.com/api/v3/search/trending')
     const data = await response.json()

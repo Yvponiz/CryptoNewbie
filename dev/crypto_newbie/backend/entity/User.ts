@@ -10,16 +10,17 @@ export enum UserRole {
     Public = "Public"
 }
 
-@Entity()
+@Entity("User")
 export class User extends BaseEntity{
-    constructor(lastName:string, firstName:string, email:string, accountType:number, password:string, dateOfBirth:string){
+    constructor(lastName:string, firstName:string, email:string, accountType:string, accountAmount:number, password:string, dateOfBirth:string){
         super()
-        this.lastName = lastName
-        this.firstName = firstName
-        this.email = email
-        this.accountType = accountType
-        this.password = btoa(password)
-        this.dateOfBirth = dateOfBirth
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.accountType = accountType;
+        this.accountAmount = accountAmount;
+        this.password = btoa(password);
+        this.dateOfBirth = dateOfBirth;
     }
 
     @PrimaryGeneratedColumn()
@@ -37,8 +38,11 @@ export class User extends BaseEntity{
     @Column()
     password: string;
 
+    @Column()
+    accountType: string;
+
     @Column( {type: "float"})
-    accountType: number;
+    accountAmount: number;
 
     @Column({ type: 'date' })
     dateOfBirth: string
@@ -50,7 +54,7 @@ export class User extends BaseEntity{
     })
     role: UserRole;
 
-    @OneToOne(()=> Portfolio) // Liaison vers la table Portfolio
+    @OneToOne(()=> Portfolio)
     @JoinColumn()
     portfolio: Relation <Portfolio>
 

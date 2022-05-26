@@ -14,7 +14,7 @@ function onSubmit(event: FormEvent, state) {
       .then((response) => response.json())
       .then((data) => {
         if(data.status === "success"){
-          window.location.href = "/connexion"
+          window.location.href = "/login"
         }
         else if (data.status === "erreur") {
           window.alert(data.errors.join("\n"))
@@ -31,12 +31,10 @@ export default function SignupForm() {
     lastName: null,
     email: null,
     dateOfBirth: null,
-    accountType: null,
+    accountType: 1,
     password: null,
-    conf_password: null,
+    confPassword: null,
   })
-
-  //onChange={(event) => changeState({...state, prenom:event.target.value})} prends tout ce qui à dans le state plus nouvelle valeur
 
   return (
     <form className="form" method="POST" onSubmit={(event) => onSubmit(event, state)}>
@@ -54,16 +52,16 @@ export default function SignupForm() {
 
       <label htmlFor="type_compte">Le type de compte</label>
       <select onChange={(event) => changeState({ ...state, accountType: parseInt(event.target.value, 10) })} id="type_compte" name="type_compte" required>
-        {Object.values(AccountType).map((compte) => <option key={compte.Value} value={compte.Value}>{compte.Type}</option>)}
+        {Object.values(AccountType).map((compte) => <option defaultValue={1} key={compte.Value} value={compte.Value}>{compte.Type}</option>)}
       </select>
 
       <label htmlFor="password">Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, password: event.target.value })} type="password" id="password" name="password" required />
 
       <label htmlFor="conf_password">Confirmer le mot de passe</label>
-      <input onChange={(event) => changeState({ ...state, conf_password: event.target.value })} type="password" id="conf_password" name="conf_password" required />
+      <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="conf_password" name="conf_password" required />
 
-      <button type="submit">Submit</button>
+      <button className="submit-button" style={{marginTop: '1em'}} type="submit">Créer un compte</button>
     </form>
   )
 }

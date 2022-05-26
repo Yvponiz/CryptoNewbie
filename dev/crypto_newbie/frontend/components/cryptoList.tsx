@@ -1,43 +1,55 @@
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { FunctionComponent, useEffect, useState } from "react";
+import Image from "next/image";
+import { Coin } from "../utils/coin";
+import quickSort from "../utils/quickSort";
 
-export function CryptoList() {
-    const [handlerState, setHandler] = useState([])
-    //const [pingState, setPing] = useState("Ping?"); //[données du state | par défaut "Ping?", fonction utilisée pour mettre à jour valeur]
+export const CryptoList: FunctionComponent = () => {
+    const [coinState, setCoinState] = useState<Coin[]>([])
 
-    useEffect(() => { // Fetch les data coté client, empêche le data d'être constament fetch
-        fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinGecko, fonctionne même si en rouge
+    useEffect(() => {
+        fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinList
             .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setHandler(data)
-            })
+            .then((data) => setCoinState(data as Coin[]))
     }, [])
+
+    const sort = (async (e) => {
+        let newList = await quickSort(coinState, e.target.id)
+        setCoinState(newList)
+    })
+
+    const setSelection = ((id, name) => {
+        sessionStorage.setItem("coinId", id);
+        sessionStorage.setItem("coinName", name);
+        location.href = 'coinInfo';
+    })
 
     return (
         <div>
             <div className='titles-list'>
-                <p>#</p>
-                <p>Logo</p>
-                <p>Nom</p>
-                <p>Symbole</p>
-                <p>Prix</p>
-                <p>Market cap</p>
-                <p>24 heures</p>
+                <p onClick={sort} className="title-elem" id="rank">#</p>
+                <p onClick={sort} className="title-elem" id="logo">Logo</p>
+                <p onClick={sort} className="title-elem" id="name">Nom</p>
+                <p onClick={sort} className="title-elem" id="symbol">Symbole</p>
+                <p onClick={sort} className="title-elem" id="current_price">Prix</p>
+                <p onClick={sort} className="title-elem" id="market_cap">Market cap</p>
+                <p onClick={sort} className="title-elem" id="croissance_24h">24 heures</p>
             </div>
 
-            <div>{handlerState.slice(0, 25).map((coin) =>
-                <a href='' className='index-coin' key={coin.id}>
-                    <li>{coin.market_data.market_cap_rank}</li>
-                    <li><Image src={coin.image.small} width="30px" height="30px" alt='coin image'></Image></li>
-                    <li>{coin.name}</li>
-                    <li>{coin.symbol}</li>
-                    <li>{coin.market_data.current_price.cad.toLocaleString() + ' $'}</li>
-                    <li>{coin.market_data.market_cap.cad.toLocaleString() + ' $'}</li>
-                    <li style={{ color: Math.sign(coin.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
-                        {coin.market_data.price_change_percentage_24h.toFixed(2) + ' %'}</li>
-                </a>)
+            <div>{coinState.slice(0, 25)
+                .map(({ id, name, symbol, market_data: { current_price, market_cap, market_cap_rank, price_change_percentage_24h }, image: { small } }) =>
+                    <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
+                        <li>{market_cap_rank}</li>
+                        <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
+                        <li>{name}</li>
+                        <li>{symbol}</li>
+                        <li>{`${current_price.cad.toLocaleString()} $`}</li>
+                        <li>{`${market_cap.cad.toLocaleString()} $`}</li>
+                        <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
+                            {`${price_change_percentage_24h.toFixed(2)} %`}</li>
+                    </a>
+                )
             }</div>
         </div>
+
     )
 }
