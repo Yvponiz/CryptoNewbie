@@ -17,13 +17,9 @@ const Contact: NextPage<Props> = (props:Props) => {
   
         <main className='main'>
           <div className='contact'>
-            <h1>Contactez-nous !</h1>
-            <p>
-              Le projet de Crypto-Newbie a été conçu par deux étudiants du DEC informatique au cegep du Vieux Montréal.
-            </p>
-            <p>
-              Yvanoski Sanon et Nikolas Ouimet
-            </p>
+          <h1>Pour nous contacter</h1>
+            <p>Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca</p>
+            <p>Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca</p>
           </div>
         </main>
       </Layout>

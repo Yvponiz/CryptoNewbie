@@ -1,6 +1,5 @@
-import { FormEvent, FunctionComponent, useContext, useEffect, useState } from "react";
+import { FormEvent, FunctionComponent, useContext, useState } from "react";
 import { CoinContext } from "../context/coinContext";
-import { Coin } from "../utils/coin";
 
 export type CoinBuyProps = {
     coinId: string
@@ -74,7 +73,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
                     </div>
                 </div>
 
-                <button type="submit">Confirmer</button>
+                <button className="submit-button" type="submit">Confirmer</button>
             </form>
         )
     }

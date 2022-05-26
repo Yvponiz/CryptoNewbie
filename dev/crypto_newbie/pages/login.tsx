@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Footer from '../frontend/components/footer'
 import Layout from '../frontend/components/layout'
 import LoginForm from '../frontend/components/loginForm'
 import commonProps, { GreetingProps } from '../frontend/utils/commonProps'

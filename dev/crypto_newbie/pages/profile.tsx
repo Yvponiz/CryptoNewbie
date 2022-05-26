@@ -9,17 +9,22 @@ export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
 
-const UserProfile: FunctionComponent<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth }) => {
+const UserProfile: FunctionComponent<UserProps> = ({ isLoggedIn, lastName, firstName, email, dateOfBirth, accountType, accountAmount }) => {
 
   return isLoggedIn ? (
-    <div className='profile-box'>
-      <li>Nom : {lastName}</li>
-      <li>Prénom : {firstName}</li>
-      <EmailField
-        isLoggedIn={isLoggedIn}
-        email={email}
-      />
-      <li>Date de naissance : {dateOfBirth} </li>
+    <div className='profile-account'>
+      <li id='account-type'>Compte {accountType}</li>
+      <li id='account-amount'>{accountAmount.toFixed(2)} $</li>
+      <div className='personnal-section'>
+        <h2>Informations personnelles</h2>
+        <li>Nom : {lastName}</li>
+        <li>Prénom : {firstName}</li>
+        <li>Date de naissance : {dateOfBirth}</li>
+        <EmailField
+          isLoggedIn={isLoggedIn}
+          email={email}
+        />
+      </div>
     </div>
   ) : <></>
 }
@@ -47,7 +52,7 @@ const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, 
           dateOfBirth={dateOfBirth}
         />
       </div>
-      <button style={{ padding: '10px', marginTop: '30px', fontSize: '1em' }}>
+      <button className='submit-button'>
         <a className='signup' href="password"> Modifier Mot de Passe</a>
       </button>
     </div>

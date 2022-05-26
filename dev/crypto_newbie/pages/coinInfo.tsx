@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
 import { Coin } from '../frontend/utils/coin'
 import { SearchProps } from '../frontend/components/searchBar'
+import { CoinChart } from '../frontend/components/coinChart'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
@@ -20,7 +21,7 @@ const setCoinName = () => {
   }
 }
 
-const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, onBuy, firstName }) => {
+const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstName }) => {
   const router = useRouter();
   const [coinState, setCoinState] = getCoinState()
 
@@ -33,12 +34,14 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, onBuy, f
           <div className='welcome-section'>
             <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
-
-          <CryptoInfos
-            isLoggedIn={isLoggedIn}
-            onSearch={(id) => updateCoin(id, setCoinState)}
-            onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
-          />
+          <div className='crypto-infos'>
+            <CryptoInfos
+              isLoggedIn={isLoggedIn}
+              onSearch={(id) => updateCoin(id, setCoinState)}
+              onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
+            />
+            <CoinChart/>
+          </div>
         </CoinContext.Provider>
       </main>
 

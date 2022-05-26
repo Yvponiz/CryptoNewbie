@@ -18,16 +18,16 @@ export const TrendingCrypto: FunctionComponent = () => {
         <div className="performance">
             <span className="performance-title">Tendance</span>
             {coinState.slice(0, 3)
-            .map(({id, item:{name, price_btc, small}}) =>
-                <div className="tendance-layout" key={id}>
-                    <div className="performance-layout-in">
-                        <div className="performance-layout-left">
-                            <li className="coin-name">{name}</li>
-                            <li>Prix: {price_btc.toFixed(8) + ' $'}</li>
+                .map(({ id, item: { name, price_btc, small } }) =>
+                    <div className="tendance-layout" key={id}>
+                        <div className="performance-layout-in">
+                            <div className="performance-layout-left">
+                                <li className="coin-name">{name}</li>
+                                <li>Prix: {price_btc.toFixed(8) + ' $'}</li>
+                            </div>
+                            <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
                         </div>
-                        <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
-                    </div>
-                </div>)}
+                    </div>)}
         </div>
     )
 }
@@ -48,18 +48,18 @@ export const BestCrypto: FunctionComponent = () => {
         <div className="performance">
             <span className="performance-title">Meilleure performance</span>
             {handlerState.slice(0, 1)
-            .map(({id, name,  market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
-                <div className="performance-layout" key={id}>
-                    <div className="performance-layout-in">
-                        <div className="performance-layout-left">
-                            <li className="coin-name">{name}</li>
-                            <li>Prix: {`${current_price.cad.toFixed(3)}$`}</li>
-                            <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
-                                {price_change_percentage_24h + ' %'}</li>
+                .map(({ id, name, market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
+                    <div id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
+                        <div className="performance-layout-in">
+                            <div className="performance-layout-left">
+                                <li className="coin-name">{name}</li>
+                                <li>Prix: {`${current_price.cad.toFixed(3)}$`}</li>
+                                <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
+                                    {price_change_percentage_24h + ' %'}</li>
+                            </div>
+                            <li><Image src={small} width="70px" height="70px" alt='coin image'></Image></li>
                         </div>
-                        <li><Image src={small} width="70px" height="70px" alt='coin image'></Image></li>
-                    </div>
-                </div>)}
+                    </div>)}
         </div>
     )
 }
@@ -80,17 +80,17 @@ export const WorstCrypto: FunctionComponent = () => {
         <div className="performance">
             <span className="performance-title">Pire performance</span>
             {handlerState.slice(0, 1)
-            .map(({id, name,  market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
-                <div className="performance-layout" key={id}>
-                    <div className="performance-layout-in">
-                        <div className="performance-layout-left">
-                            <li className="coin-name">{name}</li>
-                            <li>Prix: {current_price.cad.toFixed(3) + ' $'}</li>
-                            <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{price_change_percentage_24h + ' %'}</li>
+                .map(({ id, name, market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
+                <div id="performance-onclick" className="performance-layout" key={id} onClick={() =>(sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
+                        <div className="performance-layout-in">
+                            <div className="performance-layout-left">
+                                <li className="coin-name">{name}</li>
+                                <li>Prix: {current_price.cad.toFixed(3) + ' $'}</li>
+                                <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{price_change_percentage_24h + ' %'}</li>
+                            </div>
+                            <li><Image src={small} width="70px" height="70px" alt='coin image'></Image></li>
                         </div>
-                        <li><Image src={small} width="70px" height="70px" alt='coin image'></Image></li>
-                    </div>
-                </div>)}
+                    </div>)}
         </div>
     )
 }

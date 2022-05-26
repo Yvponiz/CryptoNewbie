@@ -12,7 +12,7 @@ type SellProps = {
     coin?: Crypto
 }
 
-export const SellComponent: FunctionComponent<SellProps> = ({coin}) => {
+export const SellComponent: FunctionComponent<SellProps> = ({}) => {
     const [showDiv, setShowDiv] = useState(false);
     const [userCryptos, setUserCryptos] = useState<Crypto[]>([]);
     const [sellingCoin, setSellingCoin] = useState<Crypto>()
@@ -64,7 +64,7 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
     if (coinPrice){
         const quantity = state.quantity;
         const price = coinPrice.market_data.current_price.cad;
-        const total = quantity * price
+        state.total = quantity * price
         return (    
             <>
                 <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>
@@ -79,13 +79,13 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
                         <div className="transaction-box-column">
                             <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coin.nameId} />
                             <input onChange={(event) => changeState({ ...state, name: event.target.value })} type="text" id="name" name="name" value={coin.name} />
-                            <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="n" id="quantity" name="quantity" required />
+                            <input onChange={(event) => changeState({ ...state, quantity: event.target.value })} type="number" id="quantity" name="quantity" required />
                             <input type="text" id="price" name="price" value={price.toLocaleString(undefined, { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })} />
-                            <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={total.toFixed(2)} />
+                            <input onChange={(event) => changeState({ ...state, total: event.target.value })} type="text" id="total" name="total" value={state.total.toFixed(2)} />
                         </div>
                     </div>
     
-                    <button type="submit">Confirmer</button>
+                    <button className="submit-button" type="submit">Confirmer</button>
                 </form>
             </>
         )

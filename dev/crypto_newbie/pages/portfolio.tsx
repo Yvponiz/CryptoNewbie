@@ -9,7 +9,7 @@ export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
 
-const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) => {
+const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>

@@ -21,7 +21,6 @@ export const CryptoList: FunctionComponent = () => {
         sessionStorage.setItem("coinId", id);
         sessionStorage.setItem("coinName", name);
         location.href = 'coinInfo';
-        console.log("CoinId: ", id, "CoinName: ", name);
     })
 
     return (
