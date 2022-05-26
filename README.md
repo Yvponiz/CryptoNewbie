@@ -1,79 +1,83 @@
 # C61_Projet_synthese
-Projet synthèse du programme en Informatique au cégep du Vieux-Montréal
+Projet synthèse du programme en Informatique au cégep du Vieux Montréal
 
-##Titre du projet
-========================================================
+## Titre du projet
+--------
 Crypto-Newbie
 
-##Équipe
-=======================================================
-	Yvanoski Sanon
-	Nikolas Ouimet
+## Équipe
+----------------
+    Yvanoski Sanon
+    Nikolas Ouimet
 
-	
-##Description du projet
-=======================================================
-Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la consultation des données du marché réel.
+    
+## Description du projet
+----------------
+Crypto Newbie est une plateforme Web spécialement conçue pour les débutants dans le domaine de la cryptomonnaie. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposées par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la consultation des données du marché réel.
 
-##Version déployée   
-==================================================
+## Version déployée   
+----------------
 https://cryptonewbie.herokuapp.com    
 
+## Installation
+-----------------
+Le projet se situe sur GitHub à l'adresse : https://github.com/NikolasOuim/C61_Projet_synthese
 
-##Installation
-=======================================================
-Prenez le dossier du projet disponible sur GitHub : https://github.com/NikolasOuim/C61_Projet_synthese
+Déposer ou cloner le dossier du projet dans un dossier situé sur votre disque principal, par exemple c:\travail\
 
-Déposez ou cloner le dossier du projet dans un dossier situé sur votre disque principal, par exemple c:\travail\
-
-Télécharger et installer Visual Studio Code ou autre étidteur capable de lire du code Javascript, HTML, CSS. 
+Télécharger et installer Visual Studio Code ou autre éditeur capables de lire du code JavaScript, HTML, CSS : https://code.visualstudio.com/download
 
 Télécharger et installer PgAdmin 4 v6.9 ou une version ultérieure : https://www.pgadmin.org/download/pgadmin-4-windows/
 
-Si l'installation vous propose d'installer Postgres SQL, installez-le
+Si l'installation propose d'installer Postgres SQL, installez-le
 
-Une fois l'installation terminé, il faudra ouvrir PgAdmin pour :
-	- créer un utilisateur cryptonewbie avec le mot de passe AAAaaa111;
-	- s'assurer que l'utilisateur a le droit de ce connecter, voici comment : 
-		• Cliquer sur Login/Groups roles;
-		• Menu contextuel de l'utilisateur cryptonewbie > properties...;
-		• Dans l'onglet Privileges, cocher Can login? puis enregister.
+Une fois l'installation terminée, il faudra ouvrir PgAdmin pour :
+    
+- créer un utilisateur cryptonewbie avec le mot de passe AAAaaa111;
+- s'assurer que l'utilisateur a le droit de se connecter, voici comment : 
+    - Dans le menu de gauche, cliquer sur Login/Groups roles;
+    - Menu contextuel de l'utilisateur cryptonewbie > properties...;
+    - Dans l'onglet Privilèges, cocher Can login? Puis enregistrer.
 
-	- créer une base de données vierge nommée cryptonewbie.
+- créer une base de données nommée cryptonewbie où l’owner sera l'utilisateur cryptonewbie.
 
 Télécharger et installer Node.Js : https://nodejs.org/en/download/    
 
-Dans l'invite de console Node.Js, écrire la commande suivante : cd /crypto_newbie     
+Dans l'invite de commandes Node.Js, écrire la commande suivante à la racine de votre disque : cd travail/C61_Projet_synthese/dev/crypto_newbie 
 Installer les dépendances : npm install    
 
-##Utilisation
-==========================================================
-Toujours dans le même répertoire de l'invite de commande Node.Js, exécuter : npm run dev    
+***NOTE***
+Pour installer les dépendances, vous devez être dans le dossier du projet crypto_newbie.
+Au besoin, se référer à la liste des dépendances.
+
+## Utilisation
+---------------
+Toujours dans le même répertoire de l'invite de commandes Node.Js, exécuter : npm run dev    
 
 Rendez vous sur : [localhost:3000](localhost:3000)
 
 Lorsque l'application sera lancé, les tables de la base de données seront créé automatiquement afin de simplifier le travail. 
 
-##Liste des dépendances :
-=======================================================
-	React  
-	React-dom  
-	React-Router  
-	Next  
-	Next-Session  
-	Typescript-Node  
-	Postgres  
-	TypeORM  
-	TypeORM-Extension
-	CoinGecko API
-	chart.js
-	react-chartjs-2
-	
+## Liste des dépendances :
+----------------
+    React  
+    React-dom  
+    React-Router  
+    Next  
+    Next-Session  
+    Typescript-Node  
+    Postgres  
+    TypeORM  
+    TypeORM-Extension
+    CoinGecko API
+    chart.js
+    react-chartjs-2
+    
 
-##Références
-=======================================================
+## Références
+---------------
 
-Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
+    Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm  
 Solution pour créer une seule connexion : https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm  
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs  
@@ -116,11 +120,14 @@ Affichage conditionnel si un utilisateur est connecté ou non : https://fr.react
 Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys
 Obtenir une date antérieure avec js : https://www.codegrepper.com/code-examples/javascript/subtract+18+years+from+today+javascript    
 
-##Contact
-============================================
-Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca
-Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca
+## Contact
+----------------
 
-##Licence
-============================================
+- Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca
+- Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca
+
+## Licence
+---------------
 Crypto-Newbie 2022
+
+
