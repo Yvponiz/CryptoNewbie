@@ -1,46 +1,61 @@
 # C61_Projet_synthese
-Projet synthèse
+Projet synthèse du programme en Informatique au cégep du Vieux-Montréal
 
+##Titre du projet
+========================================================
+Crypto-Newbie
 
-Titre du projet : Crypto-Newbie
-
-Équipe :
+##Équipe
 =======================================================
 	Yvanoski Sanon
 	Nikolas Ouimet
 
 	
-Description du projet :
+##Description du projet
 =======================================================
 Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la consultation des données du marché réel.
 
-Version déployée :    
--------------------------------------------------------
-> https://cryptonewbie.herokuapp.com    
+##Version déployée   
+==================================================
+https://cryptonewbie.herokuapp.com    
 
-<br>
 
-Installation :
+##Installation
 =======================================================
+Prenez le dossier du projet disponible sur GitHub : https://github.com/NikolasOuim/C61_Projet_synthese
+
+Déposez ou cloner le dossier du projet dans un dossier situé sur votre disque principal, par exemple c:\travail\
+
+Télécharger et installer Visual Studio Code ou autre étidteur capable de lire du code Javascript, HTML, CSS. 
+
+Télécharger et installer PgAdmin 4 v6.9 ou une version ultérieure : https://www.pgadmin.org/download/pgadmin-4-windows/
+
+Si l'installation vous propose d'installer Postgres SQL, installez-le
+
+Une fois l'installation terminé, il faudra ouvrir PgAdmin pour :
+	- créer un utilisateur cryptonewbie avec le mot de passe AAAaaa111;
+	- s'assurer que l'utilisateur a le droit de ce connecter, voici comment : 
+		• Cliquer sur Login/Groups roles;
+		• Menu contextuel de l'utilisateur cryptonewbie > properties...;
+		• Dans l'onglet Privileges, cocher Can login? puis enregister.
+
+	- créer une base de données vierge nommée cryptonewbie.
+
 Télécharger et installer Node.Js : https://nodejs.org/en/download/    
-<br>
-Dans l'invite de console Node.Js :    
 
-	cd /crypto_newbie     
-Installer les dépendances :  
+Dans l'invite de console Node.Js, écrire la commande suivante : cd /crypto_newbie     
+Installer les dépendances : npm install    
 
-	npm install    
+##Utilisation
+==========================================================
+Toujours dans le même répertoire de l'invite de commande Node.Js, exécuter : npm run dev    
 
-Exécuter : 
+Rendez vous sur : [localhost:3000](localhost:3000)
 
-	npm run dev    
+Lorsque l'application sera lancé, les tables de la base de données seront créé automatiquement afin de simplifier le travail. 
 
-Rendez vous sur :
-
->[localhost:3000](localhost:3000)
--------------------------------------------------------
-Liste des dependecies :
--------------------------------------------------------
+##Liste des dépendances :
+=======================================================
 	React  
 	React-dom  
 	React-Router  
@@ -55,10 +70,10 @@ Liste des dependecies :
 	react-chartjs-2
 	
 
-Références :
+##Références
 =======================================================
 
->Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
+Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm  
 Solution pour créer une seule connexion : https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm  
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs  
@@ -100,3 +115,12 @@ Exemple de sortListe function en js : https://tech-wiki.online/fr/quicksort-java
 Affichage conditionnel si un utilisateur est connecté ou non : https://fr.reactjs.org/docs/conditional-rendering.html  
 Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys
 Obtenir une date antérieure avec js : https://www.codegrepper.com/code-examples/javascript/subtract+18+years+from+today+javascript    
+
+##Contact
+============================================
+Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca
+Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca
+
+##Licence
+============================================
+Crypto-Newbie 2022

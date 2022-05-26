@@ -52,9 +52,6 @@ const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, 
         <h2>Modifier le mot de passe</h2>
         <button className='submit-button' onClick={() => {window.location.href = "/password"}}>Modifier le mot de passe</button>
       </div>
-      <button className='submit-button'>
-        <a className='signup' href="password"> Modifier Mot de Passe</a>
-      </button>
     </div>
   </main>
 </Layout>
