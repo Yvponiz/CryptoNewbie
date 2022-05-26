@@ -31,15 +31,7 @@ Télécharger et installer PgAdmin 4 v6.9 ou une version ultérieure : https://w
 
 Si l'installation propose d'installer Postgres SQL, installez-le
 
-Une fois l'installation terminée, il faudra ouvrir PgAdmin pour :
-    
-- créer un utilisateur cryptonewbie avec le mot de passe AAAaaa111;
-- s'assurer que l'utilisateur a le droit de se connecter, voici comment : 
-    - Dans le menu de gauche, cliquer sur Login/Groups roles;
-    - Menu contextuel de l'utilisateur cryptonewbie > properties...;
-    - Dans l'onglet Privilèges, cocher Can login? Puis enregistrer.
-
-- créer une base de données nommée cryptonewbie où l’owner sera l'utilisateur cryptonewbie.
+Une fois l'installation terminée, il faudra ouvrir PgAdmin puis exécuter dans la query tool le script script_creation_bd.pgsql disponible à la racine du répertoire du projet afin de créer l'utilisateur cryptonewbie et la base de données cryptonewbie.
 
 Télécharger et installer Node.Js : https://nodejs.org/en/download/    
 
