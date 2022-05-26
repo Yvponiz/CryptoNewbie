@@ -43,7 +43,7 @@ export default function ChangePasswordForm() {
       <label htmlFor="confPassword">Confirmer Nouveau Mot de passe</label>
       <input onChange={(event) => changeState({ ...state, confPassword: event.target.value })} type="password" id="confPassword" name="confPassword" required />
 
-      <button style={{marginTop:'30px'}} type="submit">Submit</button>
+      <button className="submit-button" style={{marginTop:'1em'}} type="submit">Submit</button>
     </form>
   )
 }

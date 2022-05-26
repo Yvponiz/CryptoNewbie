@@ -1,6 +1,5 @@
 import { FormEvent, FunctionComponent, useContext, useEffect, useState } from "react";
 import { CoinContext } from "../context/coinContext";
-import { Coin } from "../utils/coin";
 
 export type CoinBuyProps = {
     coinId: string
@@ -54,7 +53,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
                 <div style={{ display: 'flex', justifyContent:'space-evenly',width:'100%'}}>
                     <div className="transaction-box-column">
                         <label htmlFor="name">Crypto : </label>
-                        <label htmlFor="quantity">QuantitÃ© : </label>
+                        <label htmlFor="quantity">Quantité : </label>
                         <label htmlFor="price">Prix : </label>
                         <label htmlFor="total">Total: </label>
                     </div>
@@ -76,7 +75,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
                     </div>
                 </div>
 
-                <button type="submit">Confirmer</button>
+                <button className="submit-button" type="submit">Confirmer</button>
             </form>
         )
     }

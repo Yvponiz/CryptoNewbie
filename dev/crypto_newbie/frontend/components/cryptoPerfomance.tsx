@@ -9,7 +9,6 @@ export const TrendingCrypto: FunctionComponent = () => {
         fetch('/api/trending')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setCoinState(data as Coin[])
             })
     }, [])
@@ -49,7 +48,7 @@ export const BestCrypto: FunctionComponent = () => {
             <span className="performance-title">Meilleure performance</span>
             {handlerState.slice(0, 1)
             .map(({id, name,  market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
-                <div className="performance-layout" key={id}>
+                <div id="performance-onclick" className="performance-layout" key={id} onClick={() =>(sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
                     <div className="performance-layout-in">
                         <div className="performance-layout-left">
                             <li className="coin-name">{name}</li>
@@ -71,7 +70,6 @@ export const WorstCrypto: FunctionComponent = () => {
         fetch('/api/worstCrypto')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setHandler(data as Coin[])
             })
     }, [])
@@ -81,7 +79,7 @@ export const WorstCrypto: FunctionComponent = () => {
             <span className="performance-title">Pire performance</span>
             {handlerState.slice(0, 1)
             .map(({id, name,  market_data: { current_price, price_change_percentage_24h }, image: { small } }) =>
-                <div className="performance-layout" key={id}>
+                <div id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
                     <div className="performance-layout-in">
                         <div className="performance-layout-left">
                             <li className="coin-name">{name}</li>

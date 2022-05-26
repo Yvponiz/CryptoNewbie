@@ -1,41 +1,25 @@
-import { useState, FunctionComponent, useContext } from 'react'
 import Image from 'next/image';
+import { FunctionComponent } from 'react';
 import { Coin } from '../utils/coin';
-import { useRouter } from 'next/router';
-import { CoinContext } from '../context/coinContext';
+
+export type SearchProps = {
+    isLoggedIn: boolean;
+    onBuy?: (coin: Coin) => void;
+    defaultCoinId?: string;
+    onSearch: (coinId: string) => void;
+}
 
 export const SearchBar: FunctionComponent = ({}) => {
-    const [searchId, setSearch] = useState({});
-
-    const updateSearch = (e) => {
-        setSearch(e.target.value);
-    };
-
-    const setCoinId = ((id:string) => {
-        if (id.length > 0){
-            sessionStorage.setItem("coinId", id);
-            location.href = '/coinInfo';
-        }
-        else {
-            alert("Saisissez une cryptomonnaie");
-        }
-    })
-
-        
-
-
     return (
         <div>
-            <div className='search-section'>
+            <form className='search-section' action="/coinInfo" method='post'>
                 <div className="input-search">
-                    <input type="text" id="search" name="search" onChange={updateSearch} placeholder="Rechercher" />
+                    <input type="text" id="search" name="search" onChange={(event) => sessionStorage.setItem('coinId', event.target.value)} placeholder="Rechercher" required />
                 </div>
                 <div className="button-search">
-                    <button onClick={() => setCoinId(searchId)}><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
+                    <button type='submit'><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
                 </div>
-            </div>
+            </form>
         </div>
     )
-
-
 }

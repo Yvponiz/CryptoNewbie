@@ -8,6 +8,5 @@ export default async function disconnectSession(
     const session = await getSession(req, res)
     await session.destroy();
     
-    //res.status(200).json({message:"User disconnected"});
     res.status(200).redirect("/")
 }

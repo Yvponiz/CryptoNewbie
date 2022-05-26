@@ -98,7 +98,7 @@ export default async function submitForm(
     await userRepo.save(user);
     await session.commit();
 
-    //return res.status(200).json({ status: "success", errors: [] })
+    return res.status(200).json({ status: "success", errors: [] })
   } catch (error) {
     res.status(500).send(error.toString())
     console.log(error)

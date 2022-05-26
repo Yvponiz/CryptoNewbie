@@ -46,12 +46,7 @@ const Buy: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount 
             <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
           <div style={{ marginTop: '50px', display: 'flex', alignSelf: 'flex-start' }} className='search-bar'>
-            <SearchBar
-            onSearch={(id) => updateCoin(id, setCoinState)}
-            isLoggedIn={isLoggedIn}
-            defaultCoinId={id}
-            onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
-            />
+            <SearchBar/>
           </div>
           <div style={{ marginTop: '50px' }}>
             <BuyBox coinId={id} />

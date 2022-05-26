@@ -1,11 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Portfolio } from '../../backend/entity/Portfolio';
 import { User } from "../../backend/entity/User";
-import { Crypto } from '../../backend/entity/Crypto';
 import { AccountType } from '../../common/typecompte';
-import { Transactions } from '../../backend/entity/Transactions';
 import * as utils from "../../backend/DButils";
-
 
 export default async function signup(
   req: NextApiRequest,
@@ -13,11 +10,22 @@ export default async function signup(
 ) {
   const connection = await utils.getConnection()
   try {
+    const { lastName, firstName, email, accountType, password, confPassword, dateOfBirth} = req.body // arguments reçu du form dans signupForm.tsx
+    const emailReg = /@/;
+    const verifDate = new Date();
+    verifDate.setFullYear(verifDate.getFullYear()-18);
+    const dateToCheck = new Date(dateOfBirth);
 
-    // Arguments
-    const { lastName, firstName, email, accountType, password, confPassword, dateOfBirth } = req.body // arguments reçu du form dans signupForm.tsx
-    if (password !== confPassword) {
-      res.status(400).json({ status: "erreur", errors: ["Les deux mots de passes ne sont pas identiques"] })
+    if (dateToCheck >= verifDate){
+      res.status(400).json({ status: "erreur", errors: ["Vous devez avoir l'âge légal de la majorité pour utiliser cet plateforme"]})
+      return
+    }
+    else if (password !== confPassword) {
+      res.status(400).json({ status: "erreur", errors: ["Les deux mots de passe ne sont pas identiques"] })
+      return
+    }
+    else if (emailReg.test(email) == false) {
+      res.status(400).json({ status: "erreur", errors: ["Le courriel n'est pas valide"] })
       return
     }
 

@@ -13,12 +13,17 @@ export default function submitForm(
     const session = await getSession(req, res);
     const userRepo = connection.manager.getRepository(User);
     const user = await userRepo.findOne({id: session.user.id});
-    
+    const regexEmail = /@./;
+
+    if (email === "" || regexEmail.test(email) == false) {
+      res.status(400).json({ status: "erreur", errors: ["Entrez une adresse courriel valide"] });
+      return
+  }
+
     (await user).email = email;
     session.user.email = email;
     await userRepo.save(user);
     await session.commit();
-    console.log("Email Changed");
 
     res.status(200).json({status:"success", errors:[]})
   }).catch(error => {

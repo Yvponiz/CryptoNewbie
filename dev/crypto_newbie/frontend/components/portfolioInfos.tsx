@@ -25,7 +25,6 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
         fetch('/api/getPortfolio')
         .then((res) => res.json())
         .then((data) => {
-            console.log("DATA",JSON.parse(data.crypto))
             setPortfolio(data)
             setCrypto(JSON.parse(data.crypto) as Crypto[])
         })

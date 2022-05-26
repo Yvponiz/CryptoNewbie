@@ -10,7 +10,6 @@ import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
 import { Coin } from '../frontend/utils/coin'
-import Link from 'next/link'
 
 export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })

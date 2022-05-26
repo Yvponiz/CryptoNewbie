@@ -13,7 +13,6 @@ button {
   font-family: 'PF Tempesta Five Condensed', sans-serif;
 }
 
-
 li {
   list-style: none;
 }
@@ -27,6 +26,7 @@ li {
 input {
   font-family: 'PF Tempesta Five Condensed', sans-serif;
   font-size: 1em;
+
 }
 
 .container {
@@ -44,7 +44,7 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 0 5% 5%;
+  padding: 0 2em 2em;
 }
 
 .page-top {
@@ -102,11 +102,6 @@ input {
 
 /*----------------------------------Index----------------------------*/
 
-.welcome-section{
-  color: gold;
-  padding-top: 1em;
-}
-
 .index-coin {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -118,16 +113,12 @@ input {
   align-items: center;
 }
 
-/* .coin-name {
-  text-decoration: underline;
-} */
-
 .index-coin:hover {
   background-color: rgb(40, 40, 40);
   cursor: pointer;
 }
 
-/*===Performance===*/
+/*====Performance====*/
 .performance {
   color: white;
   width: 400px;
@@ -158,12 +149,17 @@ input {
   height: 100%;
 }
 
+
 .performance-layout-left {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   font-size: 20px;
   height: 100%;
+}
+
+#performance-onclick{
+  cursor: pointer;
 }
 
 .section-performance {
@@ -200,6 +196,7 @@ input {
   text-align: center;
   font-size: 1.1em;
   cursor: pointer;
+  color: gold;
   transition: background-color 0.3s, border-bottom 0.3s;
 }
 
@@ -229,7 +226,7 @@ input {
   width: 100%;
 }
 
-.search-bar div {
+.search-section {
   display: flex;
   flex-direction: row;
 }
@@ -250,18 +247,6 @@ input {
   padding-left: 2em;
   border-radius: 10px;
   border: none;
-}
-
-.search-result {
-  display: flex;
-  margin-left: 75px;
-}
-
-.search-result li {
-  margin-top: 35px;
-  padding-right: 25px;
-  padding-left: 25px;
-  font-size: 1.3rem;
 }
 
 /*-------------------------------Login-------------------------------*/
@@ -291,8 +276,7 @@ input {
   color: #00008b;
 }
 
-.login-button {
-  margin-top: 2em;
+.submit-button {
   cursor: pointer;
   font-size: 1em;
   padding: 0.5em 0.5em;
@@ -301,74 +285,87 @@ input {
   color: white;
   background-color: darkblue;
   border: 1px solid darkblue;
-  transition: background-color 0.5s, color 0.5s ease-in-out;
+  transition: background-color 0.3s, color 0.3s ease-in-out;
 }
 
-.login-button:hover {
+.submit-button:hover {
   color: darkblue;
   background-color: white;
   border: 1px solid darkblue;
 }
 
-.login-button a {
-  text-decoration: none;
-}
-
-.login-button a:hover {
-  color: black;
-}
-
 /*----------------------------------Profile----------------------------*/
-
-.change-email {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 500px;
-}
-
-.profile {
-  height: 100%;
-  width: 100%;
+.profile{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.profile a:hover {
-  color: #00008b;
-}
-
-.profile-top {
-  padding-bottom: 30px;
+.profile-top{
+  font-size: 1.7em;
+  color: gold;
+  padding-bottom: 0.5em;
   text-align: center;
-  font-size: 20px;
+  width: 100%;
 }
 
-.profile-top h1 {
-  font-size: 40px;
-}
-
-.profile-box {
+.profile-account{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-  padding: 30px;
+  width: 100%;
+  padding: 3em;
   background: rgba(97, 97, 107, 0.5);
   border-radius: 15px;
   border-style: groove;
-  font-size: 20px;
+  text-align: center;
+  flex-direction: column;
+  margin: 2em;
 }
 
-.searchbar-section {
+#account-type{
+  font-size: 2em;
+}
+
+#account-amount{
+  font-size: 1.7em;
+}
+
+.personnal-section{
+  padding-top: 2em;
+  margin-top: 2em;
+  border-top: 1px solid grey;
+  text-align: left;
+}
+
+.personnal-section li{
+  font-size: 1.2em;
+  padding: 5px 5px;
+}
+
+.change-email{
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
+  padding: 5px 5px;
 }
 
+.change-email blockquote{
+  width: auto;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.password-reset-section{
+  display: flex;
+  font-size: 1em;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.password-reset-section h2{
+  padding-bottom: 1em;
+}
 /*-------------------------------Transactions-------------------------*/
 
 .buy-sell {
@@ -388,12 +385,19 @@ input {
 
 /*---------------------------------Crypto infos------------------------*/
 
+.crypto-infos{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
 .coin-infos{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 0 2em 2em;
+  color: blue;
 }
 
 .header-infos{
@@ -426,6 +430,7 @@ input {
   flex-direction: column;
   border-top: 1px solid white;
   padding: 1em;
+  padding-bottom: 2em;
 }
 
 .more-infos h1{
@@ -447,6 +452,7 @@ input {
   width: 25%;
   font-size: 1.3em;
   padding: 0.5em 0.5em;
+  margin-top: 75px;
   border-radius: 15px;
   text-align: center;
   color: white;
@@ -459,6 +465,7 @@ input {
   color: #8bc53f;
   background-color: white;
   border: 1px solid #8bc53f;
+  cursor: pointer;
 }
 
 /*----------------------------------Footer----------------------------*/
@@ -639,4 +646,13 @@ input {
   color: darkblue;
   background-color: white;
   border: 1px solid darkblue;
+}
+
+/*-----------------------------------CONTACT-------------------------------------------*/
+
+.contact h1{
+  color: gold;
+  font-size: 2.2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }

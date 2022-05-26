@@ -2,15 +2,13 @@ import { useState, useEffect, FunctionComponent } from 'react'
 import { Coin } from '../utils/coin';
 import Image from 'next/image';
 import { SearchProps } from './searchBar';
-import { time } from 'console';
-
 
 export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
-    const [coinHistory, setCoinHistory] = useState({});
 
     useEffect(() => {
         const coinId = sessionStorage.getItem('coinId');
+        console.log(coinId);
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then((response) =>response.json())
             .then((data) => {

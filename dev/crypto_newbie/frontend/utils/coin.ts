@@ -15,8 +15,8 @@ interface MarketData {
     price_change_percentage_7d: number;
     price_change_percentage_30d: number;
     current_price: CurrentPrices;
-    low_24h : number;
-    high_24h : number;
+    low_24h : CurrentPrices;
+    high_24h : CurrentPrices;
 }
 
 interface Image {

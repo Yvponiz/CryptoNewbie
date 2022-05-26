@@ -24,9 +24,7 @@ function onSubmit(event: FormEvent, state) {
             else if (data.status === "erreur") {
                 window.alert(data.errors.join("\n"))
             }
-            console.log(data)
         })
-    console.log(state)
 }
 
 export async function getServerSideProps({ req, res }) {
@@ -44,11 +42,11 @@ export const EmailField: FunctionComponent<EmailProps> = ({ email }) => {
         return (
             <>
                 <div className='change-email'>
-                    Courriel :
+                    <p>Courriel : </p>
                     <blockquote contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
                         {email}
                     </blockquote>
-                    <button style={{ padding: '2px' }} onClick={handleClick}>Modifier courriel</button>
+                    <button className="submit-button" onClick={handleClick}>Modifier</button>
                 </div>
             </>
         );
@@ -56,11 +54,11 @@ export const EmailField: FunctionComponent<EmailProps> = ({ email }) => {
     else {
         return (
             <form className='change-email' onSubmit={(event) => onSubmit(event, state)}>
-                Courriel :
+                <p>Courriel : </p>
                 <blockquote style={{ backgroundColor: '#00008b' }} contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
                     {email}
                 </blockquote>
-                <button style={{ padding: '2px' }}> Modifier courriel</button>
+                <button className="submit-button">Confirmer</button>
             </form>
         )
     }

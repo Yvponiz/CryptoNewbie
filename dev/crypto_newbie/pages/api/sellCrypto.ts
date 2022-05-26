@@ -40,10 +40,8 @@ export default async function submitForm(
 
         const gain = userAccount + total;
         user.accountAmount = gain;;
-
         // Lier la crypto au portfolio de l'usager
         crypto.portfolio = await portfolio;
-
         // Trouve la quantité d'une crypto l'ajouter
         const cryptoSold = await cryptoRepo.findOne({
             relations: ['portfolio'],

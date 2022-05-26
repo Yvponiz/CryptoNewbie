@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { FunctionComponent } from 'react'
 import { Welcome } from '.'
 import Layout from '../frontend/components/layout'
-import * as utils from "../../crypto_newbie/backend/DButils";
 import { PortfolioInfo } from '../frontend/components/portfolioInfos'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
  
