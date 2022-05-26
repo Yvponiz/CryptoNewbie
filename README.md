@@ -12,7 +12,7 @@ Titre du projet : Crypto-Newbie
 	
 Description du projet :
 =======================================================
-Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la création de listes personnalisée.
+Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la consultation des données du marché réel.
 
 Version déployée :    
 -------------------------------------------------------
@@ -27,7 +27,7 @@ Télécharger et installer Node.Js : https://nodejs.org/en/download/
 Dans l'invite de console Node.Js :    
 
 	cd /crypto_newbie     
-Installer dependecies :  
+Installer les dépendances :  
 
 	npm install    
 
@@ -50,7 +50,10 @@ Liste des dependecies :
 	Postgres  
 	TypeORM  
 	TypeORM-Extension
-	CoinGecko API  
+	CoinGecko API
+	chart.js
+	react-chartjs-2
+	
 
 Références :
 =======================================================
@@ -95,4 +98,5 @@ Ajouter une condition de style dans le html : https://stackoverflow.com/question
 Exemple de call à un api avec un String à envoyer : https://javascript.plainenglish.io/build-a-cryptocurrency-returns-calculator-with-reactjs-coingecko-api-part-1-a286ceada6ff  
 Exemple de sortListe function en js : https://tech-wiki.online/fr/quicksort-javascript.html#:~:text=Quicksort%20est%20un%20algorithme%20de,l'un%20de%20ces%20cas  
 Affichage conditionnel si un utilisateur est connecté ou non : https://fr.reactjs.org/docs/conditional-rendering.html  
-Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys   
+Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys
+Obtenir une date antérieure avec js : https://www.codegrepper.com/code-examples/javascript/subtract+18+years+from+today+javascript    
