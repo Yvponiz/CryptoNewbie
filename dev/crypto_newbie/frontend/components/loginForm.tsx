@@ -18,13 +18,10 @@ function onSubmit(event: FormEvent, state) {
         else if (data.status === "erreur") {
           window.alert(data.errors.join("\n"))
         }
-        console.log(data)
       })
-  console.log(state)
 }
 
 export default function LoginForm() {
-  
   const [state, changeState] = useState({
     email: null,
     password: null,

@@ -24,7 +24,10 @@ const Portfolio: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
           </div>
           <h1>Portfolio</h1>
         </div>
+        <div className='portfolio-info'>
           <PortfolioInfo />
+        </div>
+        
       </main>
     </Layout>
   )

@@ -5,14 +5,17 @@ import { SearchProps } from './searchBar';
 
 export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
     const [coinState, setCoin] = useState<Coin>();
-    
-    useEffect(() => {
-        let coinId = sessionStorage.getItem('coinId');
 
+    useEffect(() => {
+        const coinId = sessionStorage.getItem('coinId');
+        console.log(coinId);
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
-            .then((response) => response.json())
+            .then((response) =>response.json())
             .then((data) => {
-                setCoin(data as Coin);
+                if(data.error != "Could not find coin with the given id"){
+                    console.log(data.error);
+                    setCoin(data as Coin);
+                }
             })
     }, []);
 
@@ -65,12 +68,14 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                         {isLoggedIn ? <button className='button-buy' onClick={() => {onBuy(coinState)}}> Acheter</button> : null}
                     </div>
                 </div>
-
             </div>
         )
     }
 
     return (
-        null
+        <div className='header-infos'>
+            <li id="name">Aucune cryptomonnaie trouvée pour cette saisie</li>
+            <li id="name"> :-(</li>
+        </div>
     )
 }

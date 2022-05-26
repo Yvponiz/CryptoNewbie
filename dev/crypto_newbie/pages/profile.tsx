@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../frontend/components/layout'
-import { FormEvent, FunctionComponent, useState } from 'react'
+import { FunctionComponent} from 'react'
 import commonProps, { UserProps } from '../frontend/utils/commonProps'
 import { EmailField } from '../frontend/components/profile/emailField'
 
@@ -34,23 +34,23 @@ const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, 
   <Head> <title>Crypto Newbie | Profil</title> </Head>
 
   <main className='main'>
-    <h1 style={{alignSelf:'flex-end'}} >Profil</h1>
+    <h1 style={{alignSelf:'flex-end'}}>Profil</h1>
     <div className='profile'>
       <div className='profile-top'>
-        <h1 style={{ color: 'gold' }} >{firstName} {lastName}</h1>
-        <li>Compte {accountType}</li>
-        <li>Montant dans le compte : {accountAmount?.toLocaleString()}$</li>
+        <h1>{firstName} {lastName}</h1>
       </div>
-      <div>
-        <UserProfile
-          isLoggedIn={isLoggedIn}
-          firstName={firstName}
-          lastName={lastName}
-          accountType={accountType}
-          accountAmount={accountAmount}
-          email={email}
-          dateOfBirth={dateOfBirth}
-        />
+      <UserProfile
+        isLoggedIn={isLoggedIn}
+        firstName={firstName}
+        lastName={lastName}
+        accountType={accountType}
+        accountAmount={accountAmount}
+        email={email}
+        dateOfBirth={dateOfBirth}
+      />
+      <div className='password-reset-section'>
+        <h2>Modifier le mot de passe</h2>
+        <button className='submit-button' onClick={() => {window.location.href = "/password"}}>Modifier le mot de passe</button>
       </div>
       <button className='submit-button'>
         <a className='signup' href="password"> Modifier Mot de Passe</a>

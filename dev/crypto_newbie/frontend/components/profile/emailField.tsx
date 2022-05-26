@@ -24,9 +24,7 @@ function onSubmit(event: FormEvent, state) {
             else if (data.status === "erreur") {
                 window.alert(data.errors.join("\n"))
             }
-            console.log(data)
         })
-    console.log(state)
 }
 
 export async function getServerSideProps({ req, res }) {

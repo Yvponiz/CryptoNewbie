@@ -72,7 +72,6 @@ export default async function submitForm(
       newQuantity = parseInt(quantity);
       newAveragePrice = averagePrice;
     }
-
     // Sauvegarde de la crypto. Si usager en possède déjà, update
     cryptoRepo.upsert([
       {
@@ -92,6 +91,7 @@ export default async function submitForm(
     transaction.date_transaction = formatDate(today.getDay(), today.getMonth(), today.getFullYear());
     transaction.montant = total;
     transaction.user = user;
+    transaction.type = "achat";
 
     await transactionsRepo.save(transaction);
     await portfolioRepo.save(portfolio);
@@ -104,6 +104,3 @@ export default async function submitForm(
     console.log(error)
   }
 }
-
-
-

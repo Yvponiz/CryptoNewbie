@@ -1,11 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Portfolio } from '../../backend/entity/Portfolio';
 import { User } from "../../backend/entity/User";
-import { Crypto } from '../../backend/entity/Crypto';
 import { AccountType } from '../../common/typecompte';
-import { Transactions } from '../../backend/entity/Transactions';
 import * as utils from "../../backend/DButils";
-
 
 export default async function signup(
   req: NextApiRequest,
@@ -13,9 +10,7 @@ export default async function signup(
 ) {
   const connection = await utils.getConnection()
   try {
-
-    // Arguments
-    const { lastName, firstName, email, accountType, password, confPassword, dateOfBirth } = req.body // arguments reçu du form dans signupForm.tsx
+    const { lastName, firstName, email, accountType, password, confPassword, dateOfBirth} = req.body // arguments reçu du form dans signupForm.tsx
     const emailReg = /@/;
     const verifDate = new Date();
     verifDate.setFullYear(verifDate.getFullYear()-18);

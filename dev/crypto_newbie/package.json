@@ -11,6 +11,7 @@
    },
    "dependencies": {
       "@types/react-dom": "^17.0.13",
+      "chart.js": "^3.7.1",
       "coingecko-api": "^1.0.10",
       "next": "^12.1.0",
       "next-session": "^4.0.4",

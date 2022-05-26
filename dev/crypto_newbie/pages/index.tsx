@@ -20,7 +20,7 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
   let message = ""
   if (h >= 9 && h < 18)
     message = "Bonjour"
-  else if (h >= 18 && h < 23)
+  else if (h >= 18 && h <= 23)
     message = "Bonsoir"
   else
     message = "Bon matin"
@@ -30,7 +30,7 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
   ) : <></>
 }
 
-const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName, }) => {
+const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
 
   const router = useRouter(); // Redirection vers url avec next
   const [coinState, setCoinState] = getCoinState()

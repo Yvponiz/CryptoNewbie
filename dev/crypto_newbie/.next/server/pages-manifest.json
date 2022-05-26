@@ -2,6 +2,9 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+  "/sell": "pages/sell.js",
+  "/api/getCryptos": "pages/api/getCryptos.js",
+  "/portfolio": "pages/portfolio.js",
   "/transactions": "pages/transactions.js",
-  "/api/getTransactions": "pages/api/getTransactions.js"
+  "/api/getPortfolio": "pages/api/getPortfolio.js"
 }

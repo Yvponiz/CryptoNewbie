@@ -40,8 +40,9 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstNam
               onSearch={(id) => updateCoin(id, setCoinState)}
               onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
             />
-            <CoinChart/>
+            <CoinChart />
           </div>
+          
         </CoinContext.Provider>
       </main>
 

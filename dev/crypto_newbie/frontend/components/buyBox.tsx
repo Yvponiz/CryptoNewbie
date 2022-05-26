@@ -34,7 +34,8 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
         quantity: null,
         total: null,
         name: null,
-        nameId: null
+        nameId: null,
+        averagePrice: null
     })
 
     if (coinState) {
@@ -44,6 +45,7 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
         state.total = total;
         state.name = coinState.name;
         state.nameId = coinState.id;
+        state.averagePrice = parseFloat(price.toFixed(2));
 
         return (
             <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>

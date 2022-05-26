@@ -1,10 +1,11 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Coin } from "../utils/coin";
+import quickSort from "../utils/quickSort";
 
 type Transaction = {
     crypto: string,
     montant: number,
-    date: string
+    date: string,
+    type: string
 }
 
 export const TransactionsInfo: FunctionComponent = ({ }) => {
@@ -18,17 +19,29 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
             })
     }, [])
 
+    const sort = (async (e) => {
+        let newList = await quickSort(transaction, e.target.id)
+        setTransaction(newList);
+    })
+
     if (transaction) {
 
         return (
-            <div>
-                <div>{transaction.slice(0, 6).map(({ crypto, montant, date }) =>
-                    <ul className="form">
-                        <li>Transaction: {date}</li>
-                        <li>Crypto: {crypto}</li>
-                        <li>Montant: {montant} </li>
-
-                    </ul>
+            <div className="transaction-section">
+                <h1 className="transaction-title">Historique de vos transactions</h1>
+                <div className="transaction-title-list">
+                    <li id="date" onClick={sort} className="title-elem">Date</li>
+                    <li id="crypto" onClick={sort} className="title-elem">Crypto</li>
+                    <li id="price" onClick={sort}className="title-elem">Montant</li>
+                    <li id="type" className="title-elem">Type de transaction</li>
+                </div>
+                <div className="transaction-list">{transaction.slice(0, transaction.length).map(({ crypto, montant, date, type }) =>
+                    <div className="transaction-elem">
+                        <li>{date}</li>
+                        <li>{crypto}</li>
+                        <li>{montant} $</li>
+                        <li>{type}</li>
+                    </div>
                 )} </div>
 
             </div>

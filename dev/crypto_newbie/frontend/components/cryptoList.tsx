@@ -26,13 +26,13 @@ export const CryptoList: FunctionComponent = () => {
     return (
         <div>
             <div className='titles-list'>
-                <p onClick={sort} className="title-elem" id="rank">#</p>
-                <p onClick={sort} className="title-elem" id="logo">Logo</p>
-                <p onClick={sort} className="title-elem" id="name">Nom</p>
-                <p onClick={sort} className="title-elem" id="symbol">Symbole</p>
-                <p onClick={sort} className="title-elem" id="current_price">Prix</p>
-                <p onClick={sort} className="title-elem" id="market_cap">Market cap</p>
-                <p onClick={sort} className="title-elem" id="croissance_24h">24 heures</p>
+                <p onClick={sort} id="rank" className="title-elem">#</p>
+                <p onClick={sort} id="logo" className="title-elem">Logo</p>
+                <p onClick={sort} id="name" className="title-elem">Nom</p>
+                <p onClick={sort} id="symbol" className="title-elem">Symbole</p>
+                <p onClick={sort} id="current_price" className="title-elem">Prix</p>
+                <p onClick={sort} id="market_cap" className="title-elem">Market cap</p>
+                <p onClick={sort} id="24h_growth" className="title-elem">24 heures</p>
             </div>
 
             <div>{coinState.slice(0, 25)

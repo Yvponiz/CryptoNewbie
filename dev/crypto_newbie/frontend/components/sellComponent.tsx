@@ -29,13 +29,12 @@ export const SellComponent: FunctionComponent<SellProps> = ({}) => {
 
         return (
             <div>
-                <div>{userCryptos.slice(0, 5).map(({ nameId, name, quantity }, key) =>
-                    <ul className="form">
-                        <li>{nameId}</li>
-                        <li>{name}</li>
-                        <li>Quantité: {quantity}</li>
-                        <button onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> Vendre </button>
-                    </ul>
+                <div className="sell-crypto-list">{userCryptos.slice(0, 5).map(({name, quantity }, key) =>
+                    <div className="sell-crypto-list-elem">
+                        <li>Crypto : {name}</li>
+                        <li>Quantité : {quantity}</li>
+                        <button className="sell-button" onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> Vendre </button>
+                    </div>
                 )} </div>
                 {showDiv ? <SellBox coin={sellingCoin}/> : null}
             </div>

@@ -9,7 +9,6 @@ export const TrendingCrypto: FunctionComponent = () => {
         fetch('/api/trending')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setCoinState(data as Coin[])
             })
     }, [])
@@ -71,7 +70,6 @@ export const WorstCrypto: FunctionComponent = () => {
         fetch('/api/worstCrypto')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setHandler(data as Coin[])
             })
     }, [])

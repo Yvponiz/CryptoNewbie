@@ -16,10 +16,10 @@ export const CoinChart: FunctionComponent = () => {
                 console.log(data);
                 setCoinHistory(data.prices);
             })
-    }, []);
+        }, []);
 
-    if (coinHistory) {
-        return (
+    if(coinHistory){
+        return(
             <div>
                 <Line
                     data={{
@@ -40,7 +40,7 @@ export const CoinChart: FunctionComponent = () => {
                             }
                         },
                         elements: {
-                            point: {
+                            point:{
                                 radius: 0
                             }
                         },
@@ -51,7 +51,7 @@ export const CoinChart: FunctionComponent = () => {
         )
     }
 
-    return (
+    return(
         null
     )
-}
+}        
