@@ -8,12 +8,10 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
 
     useEffect(() => {
         const coinId = sessionStorage.getItem('coinId');
-        console.log(coinId);
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then((response) =>response.json())
             .then((data) => {
                 if(data.error != "Could not find coin with the given id"){
-                    console.log(data.error);
                     setCoin(data as Coin);
                 }
             })

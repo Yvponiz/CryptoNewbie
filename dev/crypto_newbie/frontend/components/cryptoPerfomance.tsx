@@ -38,7 +38,6 @@ export const BestCrypto: FunctionComponent = () => {
         fetch('/api/bestCrypto')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setHandler(data as Coin[])
             })
     }, [])

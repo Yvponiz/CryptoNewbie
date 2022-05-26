@@ -13,7 +13,6 @@ export const CoinChart: FunctionComponent = () => {
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?days=${'365'}&vs_currency=${'cad'}`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setCoinHistory(data.prices);
             })
         }, []);

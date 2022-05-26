@@ -8,7 +8,7 @@ import { CryptoList } from '../frontend/components/cryptoList'
 import commonProps, { GreetingProps } from '../frontend/utils/commonProps'
 import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
-import { CoinContext, getCoinState, updateCoin } from '../frontend/context/coinContext'
+import { CoinContext, getCoinState} from '../frontend/context/coinContext'
 import { Coin } from '../frontend/utils/coin'
 
 export function getServerSideProps({ req, res }) {
@@ -32,7 +32,6 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
 
 const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
 
-  const router = useRouter(); // Redirection vers url avec next
   const [coinState, setCoinState] = getCoinState()
   return (
 
@@ -40,7 +39,7 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
       <Head>
         <title>Crypto Newbie | Accueil</title>
         <meta name="description" content="" />
-        <link rel="icon" href="cryptonewbie.ico" />
+        <link rel="icon" href="favicon.ico" />
       </Head>
       <main className='main'>
         <CoinContext.Provider value={coinState as Coin}>
