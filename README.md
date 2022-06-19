@@ -1,8 +1,4 @@
-# C61_Projet_synthese
-Projet synthèse
-
-
-Titre du projet : Crypto-Newbie
+# Crypto Newbie
 
 Auteurs :
 =======================================================
