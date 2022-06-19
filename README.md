@@ -1,75 +1,60 @@
 # C61_Projet_synthese
-Projet synthèse du programme en Informatique au cégep du Vieux Montréal
+Projet synthèse
 
-## Titre du projet
---------
-Crypto-Newbie
 
-## Équipe
-----------------
-    Yvanoski Sanon
-    Nikolas Ouimet
+Titre du projet : Crypto-Newbie
 
-    
-## Description du projet
-----------------
-Crypto Newbie est une plateforme Web spécialement conçue pour les débutants dans le domaine de la cryptomonnaie. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposées par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la consultation des données du marché réel.
+Auteurs :
+=======================================================
+	Yvanoski Sanon
+	Nikolas Ouimet  
+	
+Description du projet :
+=======================================================
+Crypto Newbie est une plateforme Web spécialement conçu pour les débutants dans le domaine de la cryptomonnaies. Les utilisateurs doivent s'inscrire sur la plateforme pour bénéficier des fonctionnalités proposés par le site Web, dont l'achat, la vente, la visualisation d'un portefeuille fictif et la création de listes personnalisée.
 
-## Version déployée   
-----------------
-https://cryptonewbie.herokuapp.com    
+Version déployée :    
+-------------------------------------------------------
+> https://cryptonewbie.herokuapp.com    
 
-## Installation
------------------
-Le projet se situe sur GitHub à l'adresse : https://github.com/NikolasOuim/C61_Projet_synthese
+<br>
 
-Déposer ou cloner le dossier du projet dans un dossier situé sur votre disque principal, par exemple c:\travail\
-
-Télécharger et installer Visual Studio Code ou autre éditeur capables de lire du code JavaScript, HTML, CSS : https://code.visualstudio.com/download
-
-Télécharger et installer PgAdmin 4 v6.9 ou une version ultérieure : https://www.pgadmin.org/download/pgadmin-4-windows/
-
-Si l'installation propose d'installer Postgres SQL, installez-le
-
-Une fois l'installation terminée, il faudra ouvrir PgAdmin puis exécuter dans la query tool le script script_creation_bd.pgsql disponible à la racine du répertoire du projet afin de créer l'utilisateur cryptonewbie et la base de données cryptonewbie.
-
+Installation :
+=======================================================
 Télécharger et installer Node.Js : https://nodejs.org/en/download/    
+<br>
+Dans l'invite de console Node.Js :    
 
-Dans l'invite de commandes Node.Js, écrire la commande suivante à la racine de votre disque : cd travail/C61_Projet_synthese/dev/crypto_newbie 
-Installer les dépendances : npm install    
+	cd /crypto_newbie     
+Installer dependecies :  
 
-***NOTE***
-Pour installer les dépendances, vous devez être dans le dossier du projet crypto_newbie.
-Au besoin, se référer à la liste des dépendances.
+	npm install    
 
-## Utilisation
----------------
-Toujours dans le même répertoire de l'invite de commandes Node.Js, exécuter : npm run dev    
+Exécuter : 
 
-Rendez vous sur : [localhost:3000](localhost:3000)
+	npm run dev    
 
-Lorsque l'application sera lancé, les tables de la base de données seront créé automatiquement afin de simplifier le travail. 
+Rendez vous sur :
 
-## Liste des dépendances :
-----------------
-    React  
-    React-dom  
-    React-Router  
-    Next  
-    Next-Session  
-    Typescript-Node  
-    Postgres  
-    TypeORM  
-    TypeORM-Extension
-    CoinGecko API
-    chart.js
-    react-chartjs-2
-    
+>[localhost:3000](localhost:3000)
+-------------------------------------------------------
+Liste des dependecies :
+-------------------------------------------------------
+	React  
+	React-dom  
+	React-Router  
+	Next  
+	Next-Session  
+	Typescript-Node  
+	Postgres  
+	TypeORM  
+	TypeORM-Extension
+	CoinGecko API  
 
-## Références
----------------
+Références :
+=======================================================
 
-    Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
+>Connexion à la base de données : https://stackoverflow.com/questions/43464908/reactjs-connection-with-database  
 Connexion à la base de données avec TypeOrm : https://github.com/typeorm/typeorm  
 Solution pour créer une seule connexion : https://stackoverflow.com/questions/49794140/connection-default-was-not-found-with-typeorm  
 Initiation à React : https://gogs.damonpl.com/Mentoring/nextjs  
@@ -109,17 +94,4 @@ Ajouter une condition de style dans le html : https://stackoverflow.com/question
 Exemple de call à un api avec un String à envoyer : https://javascript.plainenglish.io/build-a-cryptocurrency-returns-calculator-with-reactjs-coingecko-api-part-1-a286ceada6ff  
 Exemple de sortListe function en js : https://tech-wiki.online/fr/quicksort-javascript.html#:~:text=Quicksort%20est%20un%20algorithme%20de,l'un%20de%20ces%20cas  
 Affichage conditionnel si un utilisateur est connecté ou non : https://fr.reactjs.org/docs/conditional-rendering.html  
-Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys
-Obtenir une date antérieure avec js : https://www.codegrepper.com/code-examples/javascript/subtract+18+years+from+today+javascript    
-
-## Contact
-----------------
-
-- Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca
-- Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca
-
-## Licence
----------------
-Crypto-Newbie 2022
-
-
+Créer un graphique avec Chart js : Using Chart.JS in React.JS -https://www.youtube.com/watch?v=c_9c5zkfQ3Y&t=269s&ab_channel=WornOffKeys   
