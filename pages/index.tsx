@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../frontend/components/layout'
-import { SearchBar } from '../frontend/components/searchBar'
-import { BestCrypto, TrendingCrypto } from '../frontend/components/cryptoPerfomance'
-import { WorstCrypto } from '../frontend/components/cryptoPerfomance'
-import { CryptoList } from '../frontend/components/cryptoList'
+import Layout from '../components/layout'
+import { SearchBar } from '../components/searchBar'
+import { BestCrypto, TrendingCrypto } from '../components/cryptoPerfomance'
+import { WorstCrypto } from '../components/cryptoPerfomance'
+import { CryptoList } from '../components/cryptoList'
 import commonProps, { GreetingProps } from '../models/commonProps'
 import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
@@ -55,7 +55,7 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
           <div className='link-crypto'>
             <a 
               target='_blank'
-              href='https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0'>
+              href='https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0' rel="noreferrer">
               Liste de Cryptos (id)
             </a>
           </div>

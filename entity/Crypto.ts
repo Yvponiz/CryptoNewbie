@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Relation, BaseEntity, PrimaryColumn } from "typeorm";
+import { Entity, Column, ManyToOne, Relation, BaseEntity, PrimaryColumn } from "typeorm";
 import { Portfolio } from "./Portfolio";
 import "reflect-metadata";
 

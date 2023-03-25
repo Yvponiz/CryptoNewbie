@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Image from "next/image";
-import { Coin } from "../../models/coin";
-import quickSort from "../../utils/quickSort";
+import { Coin } from "../models/coin";
+import quickSort from "../utils/quickSort";
 
 export const CryptoList: FunctionComponent = () => {
     const [coinState, setCoinState] = useState<Coin[]>([])

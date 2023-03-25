@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import { Welcome } from '.'
-import Layout from '../frontend/components/layout'
-import { TransactionsInfo } from '../frontend/components/transactionsInfo'
+import Layout from '../components/layout'
+import { TransactionsInfo } from '../components/transactionsInfo'
 import commonProps, { UserProps } from '../models/commonProps'
 
 export function getServerSideProps({ req, res }) {
@@ -25,8 +26,8 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName }) => {
           <h1>Transactions</h1>
         </div>
         <div className='buy-sell'>
-          <a href="/buy">Acheter</a>
-          <a href="/sell">Vendre</a>
+          <Link href="/buy">Acheter</Link>
+          <Link href="/sell">Vendre</Link>
         </div>
         <div>
           <TransactionsInfo/>

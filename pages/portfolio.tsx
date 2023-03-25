@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Welcome } from '.'
-import Layout from '../frontend/components/layout'
-import { PortfolioInfo } from '../frontend/components/portfolioInfos'
+import Layout from '../components/layout'
+import { PortfolioInfo } from '../components/portfolioInfos'
 import commonProps, { UserProps } from '../models/commonProps'
  
 export function getServerSideProps({ req, res }) {

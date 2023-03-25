@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../frontend/components/layout'
-import ChangePasswordForm from '../frontend/components/passwordForm'
+import Layout from '../components/layout'
+import ChangePasswordForm from '../components/passwordForm'
 import commonProps, { GreetingProps } from '../models/commonProps'
 
 

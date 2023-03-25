@@ -1,5 +1,5 @@
 import { FormEvent, FunctionComponent, useEffect, useState } from "react";
-import { Coin } from "../../models/coin";
+import { Coin } from "../models/coin";
 
 interface Crypto {
     nameId: string,
@@ -30,7 +30,7 @@ export const SellComponent: FunctionComponent<SellProps> = ({}) => {
         return (
             <div>
                 <div className="sell-crypto-list">{userCryptos.slice(0, 5).map(({name, quantity }, key) =>
-                    <div className="sell-crypto-list-elem">
+                    <div className="sell-crypto-list-elem" key={key}>
                         <li>Crypto : {name}</li>
                         <li>Quantité : {quantity}</li>
                         <button className="sell-button" onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> Vendre </button>

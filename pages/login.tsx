@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../frontend/components/layout'
-import LoginForm from '../frontend/components/loginForm'
+import Layout from '../components/layout'
+import LoginForm from '../components/loginForm'
 import commonProps, { GreetingProps } from '../models/commonProps'
 
 export function getServerSideProps({ req, res }) {

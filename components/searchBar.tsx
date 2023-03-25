@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FunctionComponent } from 'react';
-import { Coin } from '../../models/coin';
+import { Coin } from '../models/coin';
 
 export type SearchProps = {
     isLoggedIn: boolean;

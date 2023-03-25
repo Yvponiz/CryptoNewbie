@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react"
-import { AccountType } from "../../common/typecompte"
+import { AccountType } from "../common/typecompte"
 
 function onSubmit(event: FormEvent, state) {
   event.preventDefault()

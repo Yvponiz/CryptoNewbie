@@ -1,5 +1,5 @@
 import { useState, useEffect, FunctionComponent } from 'react'
-import { Coin } from '../../models/coin';
+import { Coin } from '../models/coin';
 import Image from 'next/image';
 import { SearchProps } from './searchBar';
 

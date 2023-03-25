@@ -35,7 +35,7 @@ export default function Header({ isLoggedIn }: HeaderProps) {
                 <div className='header-logo'>
                     <Image className="logo" src={"/CryptoNewbie.png"} width={"80px"} height={"80px"} />
                     <h1>
-                        <a href="/">Crypto Newbie</a>
+                        <Link href="/">Crypto Newbie</Link>
                     </h1>
                 </div>
                 <div className='header-links' id="header-links">

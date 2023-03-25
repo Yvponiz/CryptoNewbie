@@ -12,7 +12,7 @@ export default function Footer({}: FooterProps) {
             <div className='footer'>
                 <div className='footer-logo'>
                     <h1>
-                        <a href="/">Crypto Newbie</a>
+                        <Link href="/">Crypto Newbie</Link>
                     </h1>
                     <span>© 2022 CryptoNewbie. Tout droits réservés</span>
                 </div>

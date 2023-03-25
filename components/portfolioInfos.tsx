@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import quickSort from "../../utils/quickSort";
+import { Link } from "react-router-dom";
+import quickSort from "../utils/quickSort";
 
 interface Crypto {
     nameId: string,
@@ -53,11 +54,15 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
                         <li onClick={sort} id="average_price" className="title-elem">Prix moyen</li>
                     </div>
                     <div className="crypto-section">{crypto.slice(0, crypto.length).map(({name, quantity, nameId, averagePrice}) =>
-                        <a href="coinInfo" onClick={(()=>setIdCoin(nameId))}>
+                        <Link
+                            to="coinInfo"
+                            onClick={(()=>setIdCoin(nameId))}
+                            key={nameId}
+                        >
                             <li>{name}</li>
                             <li>{quantity}</li>
                             <li>{averagePrice} $</li>
-                        </a>
+                        </Link>
                 )} </div>
                 </div>
             </div>

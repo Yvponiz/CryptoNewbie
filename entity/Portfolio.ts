@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, Relation, BaseEntity } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany, Relation, BaseEntity } from "typeorm";
 import { User } from "./User";
 import { Crypto } from "./Crypto";
 import "reflect-metadata";

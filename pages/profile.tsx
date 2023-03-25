@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Layout from '../frontend/components/layout'
+import Layout from '../components/layout'
 import { FunctionComponent} from 'react'
 import commonProps, { UserProps } from '../models/commonProps'
 import { EmailField } from '../components/profile/emailField'

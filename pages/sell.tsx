@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Welcome } from '.';
-import Layout from '../frontend/components/layout';
-import { SellComponent } from '../frontend/components/sellComponent';
+import Layout from '../components/layout';
+import { SellComponent } from '../components/sellComponent';
 import { CoinContext, getCoinState } from '../context/coinContext';
 import { Coin } from '../models/coin';
 import commonProps, { UserProps } from '../models/commonProps';

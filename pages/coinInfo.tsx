@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import Layout from '../frontend/components/layout'
-import { CryptoInfos } from '../frontend/components/cryptoInfos'
+import Layout from '../components/layout'
+import { CryptoInfos } from '../components/cryptoInfos'
 import commonProps, { GreetingProps } from '../models/commonProps'
 import { Welcome } from '.'
 import { useRouter } from 'next/router'
 import { CoinContext, getCoinState, updateCoin } from '../context/coinContext'
 import { Coin } from '../models/coin'
-import { SearchProps } from '../frontend/components/searchBar'
+import { SearchProps } from '../components/searchBar'
 import { CoinChart } from '../components/coinChart'
 
 export function getServerSideProps({ req, res }) {

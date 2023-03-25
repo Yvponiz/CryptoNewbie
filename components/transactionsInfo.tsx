@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import quickSort from "../../utils/quickSort";
+import quickSort from "../utils/quickSort";
 
 type Transaction = {
     crypto: string,
@@ -36,7 +36,7 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
                     <li id="type" className="title-elem">Type de transaction</li>
                 </div>
                 <div className="transaction-list">{transaction.slice(0, transaction.length).map(({ crypto, montant, date, type }) =>
-                    <div className="transaction-elem">
+                    <div className="transaction-elem" key={crypto}>
                         <li>{date}</li>
                         <li>{crypto}</li>
                         <li>{montant} $</li>
