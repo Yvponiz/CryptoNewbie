@@ -1,0 +1,53 @@
+import type { NextPage } from 'next'
+import Layout from '../frontend/components/layout'
+import { CryptoInfos } from '../frontend/components/cryptoInfos'
+import commonProps, { GreetingProps } from '../models/commonProps'
+import { Welcome } from '.'
+import { useRouter } from 'next/router'
+import { CoinContext, getCoinState, updateCoin } from '../context/coinContext'
+import { Coin } from '../models/coin'
+import { SearchProps } from '../frontend/components/searchBar'
+import { CoinChart } from '../components/coinChart'
+
+export function getServerSideProps({ req, res }) {
+  return commonProps({ req, res })
+}
+
+const setCoinName = () => {
+  if (typeof window !== 'undefined') {
+    let coinName = sessionStorage.getItem('coinName');
+    console.log("coinInfo/coin: ", coinName);
+    return coinName;
+  }
+}
+
+const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstName }) => {
+  const router = useRouter();
+  const [coinState, setCoinState] = getCoinState()
+
+  return (
+    <Layout isLoggedIn={isLoggedIn} className='container'>
+      <title>Crypto Newbie | {setCoinName()}  </title>
+
+      <main className='main'>
+        <CoinContext.Provider value={coinState as Coin} >
+          <div className='welcome-section'>
+            <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
+          </div>
+          <div className='crypto-infos'>
+            <CryptoInfos
+              isLoggedIn={isLoggedIn}
+              onSearch={(id) => updateCoin(id, setCoinState)}
+              onBuy={(coin) => { router.push(`/buy/${coin.id}`) }}
+            />
+            <CoinChart />
+          </div>
+          
+        </CoinContext.Provider>
+      </main>
+
+    </Layout>
+  )
+}
+
+export default CoinInfos
