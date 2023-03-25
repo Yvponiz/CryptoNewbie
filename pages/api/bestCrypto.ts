@@ -3,15 +3,17 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 
-export async function getBest() {
-    let data = await CoinGeckoClient.coins.all({ order: CoinGecko.ORDER.HOUR_24_DESC })
-
-    return data.data
-}
-
-export default async function handler(
+export default async function getBest(
     req: NextApiRequest,
-    res: NextApiResponse<string>
+    res: NextApiResponse<{ status?: string, error?: string}>
 ) {
-    res.status(200).json(await getBest())
+    try{
+        let response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=h24_change_desc&per_page=3')
+        const data = await response.json();
+
+        res.status(200).json(data)
+    }
+    catch (error: any) {
+        return res.status(500).json({ error: error.toString() })
+    }
 }

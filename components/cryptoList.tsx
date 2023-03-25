@@ -7,9 +7,9 @@ export const CryptoList: FunctionComponent = () => {
     const [coinState, setCoinState] = useState<Coin[]>([])
 
     useEffect(() => {
-        fetch('/api/coinList') // Appelle la fonction exporté par défaut dans coinList
+        fetch('/api/coinList')
             .then((res) => res.json())
-            .then((data) => setCoinState(data as Coin[]))
+            .then((data) => {setCoinState(data as Coin[])})
     }, [])
 
     const sort = (async (e) => {
@@ -35,15 +35,15 @@ export const CryptoList: FunctionComponent = () => {
                 <p onClick={sort} id="24h_growth" className="title-elem">24 heures</p>
             </div>
 
-            <div>{coinState.slice(0, 25)
-                .map(({ id, name, symbol, market_data: { current_price, market_cap, market_cap_rank, price_change_percentage_24h }, image: { small } }) =>
+            <div>{coinState?.slice(0, 25)
+                .map(({ id, name, symbol, current_price, market_cap, market_cap_rank, price_change_percentage_24h , image }) =>
                     <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
                         <li>{market_cap_rank}</li>
-                        <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
+                        <li><Image src={image} width="30px" height="30px" alt='coin image'></Image></li>
                         <li>{name}</li>
                         <li>{symbol}</li>
-                        <li>{`${current_price.cad.toLocaleString()} $`}</li>
-                        <li>{`${market_cap.cad.toLocaleString()} $`}</li>
+                        <li>{`${current_price.toLocaleString()} $`}</li>
+                        <li>{`${market_cap.toLocaleString()} $`}</li>
                         <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
                             {`${price_change_percentage_24h.toFixed(2)} %`}</li>
                     </a>
