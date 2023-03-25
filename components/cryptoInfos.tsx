@@ -3,29 +3,37 @@ import { Coin } from '../models/coin';
 import Image from 'next/image';
 import { SearchProps } from './searchBar';
 
-export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy}) => {
+export const CryptoInfos: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy }) => {
     const [coinState, setCoin] = useState<Coin>();
+    let largeImage: string;
 
     useEffect(() => {
         const coinId = sessionStorage.getItem('coinId');
         fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
-            .then((response) =>response.json())
+            .then((response) => response.json())
             .then((data) => {
-                if(data.error != "Could not find coin with the given id"){
+                if (data.error != "Could not find coin with the given id") {
                     setCoin(data as Coin);
+                    console.log(data)
                 }
             })
     }, []);
 
-    if(coinState){ 
+    
+    if (coinState) {
+        if (typeof coinState.image !== 'string') {
+            // Access the large property of the Image object
+            largeImage = coinState.image.large;
+        } 
+
         return (
             <div>
                 <div className='header-infos'>
-                    <li><Image src={coinState.image.large} width="100px" height="100px" alt='coin image'></Image></li>
+                    <li><Image src={largeImage} width="100px" height="100px" alt='coin image'></Image></li>
                     <li id="name">{coinState.name} ({coinState.symbol})</li>
                     <li id='current-price'>{coinState.market_data.current_price.cad.toLocaleString()} $</li>
                     <li id='price-change' style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
-                            {`${coinState.market_data.price_change_percentage_24h.toFixed(2)} %`}</li>
+                        {`${coinState.market_data.price_change_percentage_24h.toFixed(2)} %`}</li>
                 </div>
                 <div className='more-infos'>
                     <h1>Informations supplémentaires</h1>
@@ -41,7 +49,7 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                             {`${coinState.market_data.price_change_percentage_7d.toFixed(2)} %`}</li>
                     </div>
                     <div className='more-infos-section'>
-                        <li>Croisasnce en 1 mois</li>   
+                        <li>Croisasnce en 1 mois</li>
                         <li style={{ color: Math.sign(coinState.market_data.price_change_percentage_30d) === -1 ? 'red' : 'green' }}>
                             {`${coinState.market_data.price_change_percentage_30d.toFixed(2)} %`}</li>
                     </div>
@@ -63,7 +71,7 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({isLoggedIn, onBuy})
                         <li>{coinState.market_data.market_cap.cad.toLocaleString()} $</li>
                     </div>
                     <div className='coin-infos'>
-                        {isLoggedIn ? <button className='button-buy' onClick={() => {onBuy(coinState)}}> Acheter</button> : null}
+                        {isLoggedIn ? <button className='button-buy' onClick={() => { onBuy(coinState) }}> Acheter</button> : null}
                     </div>
                 </div>
             </div>

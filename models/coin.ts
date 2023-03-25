@@ -44,7 +44,7 @@ export interface Coin {
     current_price: CurrentPrices;
     low_24h: CurrentPrices;
     high_24h: CurrentPrices;
-    image: string;
+    image: string | Image;
     item?: Item;
 }
 
