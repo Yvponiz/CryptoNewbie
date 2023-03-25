@@ -6,7 +6,7 @@ export const CoinContext = createContext<Coin | undefined>(undefined)
 export function updateCoin(coinId, setCoinState) {
     fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`)
         .then((res) => res.json())
-        .then((data) => setCoinState(data as Coin))
+        .then((data) => {setCoinState(data as Coin), console.log(data)})
 }
 
 export function getCoinState(coinId?) {

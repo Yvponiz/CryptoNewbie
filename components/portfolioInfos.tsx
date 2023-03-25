@@ -11,7 +11,6 @@ interface Crypto {
 
 export const PortfolioInfo: FunctionComponent = ({}) => {
     
-    
     const [portfolio, setPortfolio] = useState({
         value: null,
         accountAmount: null
@@ -54,15 +53,15 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
                         <li onClick={sort} id="average_price" className="title-elem">Prix moyen</li>
                     </div>
                     <div className="crypto-section">{crypto.slice(0, crypto.length).map(({name, quantity, nameId, averagePrice}) =>
-                        <Link
-                            to="coinInfo"
+                        <a
+                            href="coinInfo"
                             onClick={(()=>setIdCoin(nameId))}
                             key={nameId}
                         >
                             <li>{name}</li>
                             <li>{quantity}</li>
                             <li>{averagePrice} $</li>
-                        </Link>
+                        </a>
                 )} </div>
                 </div>
             </div>
