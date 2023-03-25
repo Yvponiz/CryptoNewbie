@@ -1,3 +1,10 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -35,10 +42,3 @@ yarn-error.log*
 .vercel
 *.pack
 *.pack
-dev/crypto_newbie/.next/build-manifest.json
-dev/crypto_newbie/.next/cache/webpack/client-development/index.pack.old
-dev/crypto_newbie/.next/cache/webpack/server-development/index.pack.old
-dev/crypto_newbie/.next/server/pages-manifest.json
-dev/crypto_newbie/.next/server/webpack-runtime.js
-dev/crypto_newbie/.next/static/chunks/webpack.js
-dev/crypto_newbie/.next/static/development/_buildManifest.js
