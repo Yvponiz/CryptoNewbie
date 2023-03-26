@@ -11,7 +11,7 @@ Crypto Newbie est une plateforme Web spécialement conçu pour les débutants da
 
 Version déployée :    
 -------------------------------------------------------
-> https://cryptonewbie.herokuapp.com    
+> https://crypto-newbie.vercel.app/  
 
 <br>
 
