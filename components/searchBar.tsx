@@ -17,7 +17,7 @@ export const SearchBar: FunctionComponent = ({}) => {
                     <input type="text" id="search" name="search" onChange={(event) => sessionStorage.setItem('coinId', event.target.value)} placeholder="Rechercher" required />
                 </div>
                 <div className="button-search">
-                    <button type='submit'><Image src={"/search-icon.png"} width={"32px"} height={"32px"} /></button>
+                    <button type='submit'><Image src={"/search-icon.png"} width={"32px"} height={"32px"} alt='search-icon'/></button>
                 </div>
             </form>
         </div>

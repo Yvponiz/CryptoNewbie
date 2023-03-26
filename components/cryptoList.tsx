@@ -39,7 +39,7 @@ export const CryptoList: FunctionComponent = () => {
                 .map(({ id, name, symbol, current_price, market_cap, market_cap_rank, price_change_percentage_24h , image }) =>
                     <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
                         <li>{market_cap_rank}</li>
-                        <li><Image src={image} width="30px" height="30px" alt='coin image'></Image></li>
+                        <li><Image src={typeof image !== 'string' ? image.small : image} width="30px" height="30px" alt='coin image'></Image></li>
                         <li>{name}</li>
                         <li>{symbol}</li>
                         <li>{`${current_price.toLocaleString()} $`}</li>

@@ -58,7 +58,7 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
             .then((data) => {
                 setCoinPrice(data as Coin)
             })
-    }, [])
+    }, [coin.nameId])
     
     if (coinPrice){
         const quantity = state.quantity;

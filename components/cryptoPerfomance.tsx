@@ -56,7 +56,7 @@ export const BestCrypto: FunctionComponent = () => {
                                 <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
                                     {price_change_percentage_24h + ' %'}</li>
                             </div>
-                            <li><Image src={image} width="70px" height="70px" alt='coin image'></Image></li>
+                            <li><Image src={typeof image !== 'string' ? image.small : image} width="70px" height="70px" alt='coin image'></Image></li>
                         </div>
                     </div>)}
         </div>
@@ -86,7 +86,7 @@ export const WorstCrypto: FunctionComponent = () => {
                                 <li>Prix: {current_price + ' $'}</li>
                                 <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{price_change_percentage_24h + ' %'}</li>
                             </div>
-                            <li><Image src={image} width="70px" height="70px" alt='coin image'></Image></li>
+                            <li><Image src={typeof image !== 'string' ? image.small : image} width="70px" height="70px" alt='coin image'></Image></li>
                         </div>
                     </div>)}
         </div>

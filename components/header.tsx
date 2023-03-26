@@ -33,7 +33,7 @@ export default function Header({ isLoggedIn }: HeaderProps) {
         <>
             <div className='header'>
                 <div className='header-logo'>
-                    <Image className="logo" src={"/CryptoNewbie.png"} width={"80px"} height={"80px"} />
+                    <Image className="logo" src={"/CryptoNewbie.png"} width={"80px"} height={"80px"} alt='header-logo' />
                     <h1>
                         <Link href="/">Crypto Newbie</Link>
                     </h1>

@@ -19,7 +19,7 @@ interface MarketData {
     high_24h: CurrentPrices;
 }
 
-interface Image {
+interface ImageData {
     small: string;
     large: string;
 }
@@ -44,7 +44,7 @@ export interface Coin {
     current_price: CurrentPrices;
     low_24h: CurrentPrices;
     high_24h: CurrentPrices;
-    image: string | Image;
+    image: string | ImageData;
     item?: Item;
 }
 

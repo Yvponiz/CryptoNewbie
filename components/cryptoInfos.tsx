@@ -5,7 +5,6 @@ import { SearchProps } from './searchBar';
 
 export const CryptoInfos: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy }) => {
     const [coinState, setCoin] = useState<Coin>();
-    let largeImage: string;
 
     useEffect(() => {
         const coinId = sessionStorage.getItem('coinId');
@@ -14,22 +13,19 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy 
             .then((data) => {
                 if (data.error != "Could not find coin with the given id") {
                     setCoin(data as Coin);
-                    console.log(data)
                 }
             })
     }, []);
 
-    
     if (coinState) {
-        if (typeof coinState.image !== 'string') {
-            // Access the large property of the Image object
-            largeImage = coinState.image.large;
-        } 
 
         return (
             <div>
                 <div className='header-infos'>
-                    <li><Image src={largeImage} width="100px" height="100px" alt='coin image'></Image></li>
+                    <li><Image
+                        src={typeof coinState.image !== 'string' ? coinState.image.small : coinState.image}
+                        width="100px" height="100px" alt='coin image'>
+                    </Image></li>
                     <li id="name">{coinState.name} ({coinState.symbol})</li>
                     <li id='current-price'>{coinState.market_data.current_price.cad.toLocaleString()} $</li>
                     <li id='price-change' style={{ color: Math.sign(coinState.market_data.price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
