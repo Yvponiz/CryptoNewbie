@@ -9,7 +9,8 @@ export const CryptoList: FunctionComponent = () => {
     useEffect(() => {
         fetch('/api/coinList')
             .then((res) => res.json())
-            .then((data) => {setCoinState(data as Coin[])})
+            .then((data) => {setCoinState(data as Coin[]), console.log(data)})
+            
     }, [])
 
     const sort = (async (e) => {
@@ -25,27 +26,30 @@ export const CryptoList: FunctionComponent = () => {
 
     return (
         <div>
-            <div className='titles-list'>
-                <p onClick={sort} id="rank" className="title-elem">#</p>
-                <p onClick={sort} id="logo" className="title-elem">Logo</p>
-                <p onClick={sort} id="name" className="title-elem">Nom</p>
-                <p onClick={sort} id="symbol" className="title-elem">Symbole</p>
-                <p onClick={sort} id="current_price" className="title-elem">Prix</p>
-                <p onClick={sort} id="market_cap" className="title-elem">Market cap</p>
-                <p onClick={sort} id="24h_growth" className="title-elem">24 heures</p>
-            </div>
+            <ul className='titles-list'>
+                <li onClick={sort} id="name" className="title-elem">Nom</li>
+                <li onClick={sort} id="current_price" className="title-elem">Prix</li>
+                <li onClick={sort} id="market_cap" className="title-elem">Market cap</li>
+                <li onClick={sort} id="24h_growth" className="title-elem">24 heures</li>
+            </ul>
 
             <div>{coinState?.slice(0, 25)
-                .map(({ id, name, symbol, current_price, market_cap, market_cap_rank, price_change_percentage_24h , image }) =>
+                .map(({ id, name, current_price, market_cap, price_change_percentage_24h , image }) =>
                     <a onClick={(() => setSelection(id, name))} className='index-coin' key={id}>
-                        <li>{market_cap_rank}</li>
-                        <li><Image src={typeof image !== 'string' ? image.small : image} width="30px" height="30px" alt='coin image'></Image></li>
-                        <li>{name}</li>
-                        <li>{symbol}</li>
-                        <li>{`${current_price.toLocaleString()} $`}</li>
-                        <li>{`${market_cap.toLocaleString()} $`}</li>
-                        <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
-                            {`${price_change_percentage_24h.toFixed(2)} %`}</li>
+                        <span>
+                            <Image
+                                src={typeof image !== 'string' ? image.small : image}
+                                width={50}
+                                height={50}
+                                alt='coin image'
+                            >
+                            </Image>
+                            {name}
+                        </span>
+                        <p>{`${current_price.toLocaleString()} $`}</p>
+                        <p>{`${market_cap.toLocaleString()} $`}</p>
+                        <p style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
+                            {`${price_change_percentage_24h.toFixed(2)} %`}</p>
                     </a>
                 )
             }</div>

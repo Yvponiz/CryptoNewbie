@@ -10,11 +10,11 @@ type LayoutProps = {
 
 export default function Layout({ children, isLoggedIn }: LayoutProps) {
   return (
-    <>
+    <div className="layout">
       <Header isLoggedIn={isLoggedIn}></Header>
       <div>
         {children}
       </div>
       <Footer></Footer>
-    </>);
+    </div>);
 }

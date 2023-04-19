@@ -33,14 +33,35 @@ export default function Header({ isLoggedIn }: HeaderProps) {
         <>
             <div className='header'>
                 <div className='header-logo'>
-                    <Image className="logo" src={"/CryptoNewbie.png"} width={"80px"} height={"80px"} alt='header-logo' />
+                    <Image
+                        className="logo"
+                        src={"/CryptoNewbie.png"}
+                        width={60}
+                        height={60}
+                        alt='header-logo'
+                    />
                     <h1>
                         <Link href="/">Crypto Newbie</Link>
                     </h1>
                 </div>
-                <div className='header-links' id="header-links">
+                <nav className='header-links' id="header-links">
                     <ShowHeader isLoggedIn={isLoggedIn} />
-                </div>
+                </nav>
+
+                <span>
+                    <Image 
+                        src={'/twitter-logo.svg'}
+                        height={30}
+                        width={30}
+                        alt="twitter logo"
+                        />
+                    <Image 
+                        src={'/discord-logo.svg'}
+                        height={30}
+                        width={30}
+                        alt="discord logo"
+                        />
+                </span>
             </div>
         </>
     )

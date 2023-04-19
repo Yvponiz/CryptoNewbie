@@ -2,6 +2,12 @@ html,
 body {
   font-family: 'PF Tempesta Five Condensed', sans-serif;
   color: white;
+  background-image: linear-gradient(0deg, #0f051d 30%, #130749 70%);
+}
+
+#__next {
+  display: flex;
+  justify-content: center;
 }
 
 a {
@@ -33,6 +39,12 @@ input {
   padding: 0 2rem;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
 .main {
   min-height: 100vh;
   display: flex;
@@ -40,7 +52,6 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -61,17 +72,23 @@ input {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: rgb(40, 40, 40);
+  background-color: transparent;
   padding-bottom: 30px;
 }
 
 .header-logo {
   display: flex;
-  justify-self: flex-start;
   align-items: center;
+  gap: 1rem;
   padding-left: 2rem;
-  color: darkblue;
   font-size: 20px;
+}
+
+.header-logo a {
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(25deg, #2600fc, #ff00ea);
+  color: transparent;
 }
 
 .logo {
@@ -95,6 +112,20 @@ input {
   color: blue;
 }
 
+.header span {
+  display: flex;
+  gap: 1rem;
+}
+
+.header span svg {
+  cursor: pointer;
+  fill:#000000
+}
+
+.header span img:hover {
+  display: flex;
+}
+
 .welcome-section {
   color: gold;
   padding-top: 1em;
@@ -104,13 +135,22 @@ input {
 
 .index-coin {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding: 8px 8px;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   width: 100%;
+  height: 5rem;
   text-align: center;
   align-items: center;
+  font-size: 1.4rem;
+}
+
+.index-coin span {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  text-align: left;
 }
 
 .index-coin:hover {
@@ -120,20 +160,20 @@ input {
 
 /*====Performance====*/
 .performance {
+  display: flex;
+  justify-content: space-evenly;
   color: white;
-  width: 400px;
+  width: 75%;
   padding: 10px;
-  background: rgba(97, 97, 107, 0.5);
-  border-radius: 15px;
-  border-style: groove;
   text-align: center;
 }
 
 .performance-layout {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 5px;
   height: 200px;
+  font-size: 1.3rem;
 }
 
 .performance-title {
@@ -142,23 +182,12 @@ input {
   text-decoration: underline;
 }
 
-.performance-layout-in {
+.coin-name {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
+  gap: 1rem
 }
 
-
-.performance-layout-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-size: 20px;
-  height: 100%;
-}
-
-#performance-onclick{
+#performance-onclick {
   cursor: pointer;
 }
 
@@ -180,28 +209,36 @@ input {
 /*===Crypto list===*/
 .section-list {
   display: grid;
-  width: 100%;
+  width: 80%;
   padding: 20px 20px;
-  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
 }
 
 .titles-list {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  background: linear-gradient(25deg, #2600fc, #ff00ea);
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  list-style: none;
+}
+
+.titles-list:last-child:hover {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 0px;
 }
 
 .title-elem {
   padding: 0.8em;
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1.4em;
   cursor: pointer;
   color: gold;
   transition: background-color 0.3s, border-bottom 0.3s;
 }
 
 .title-elem:hover {
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(40, 40, 40, 0.5);
   border-bottom: 4px solid #00008b;
 }
 
@@ -242,7 +279,7 @@ input {
 
 .search-bar button:hover {
   background-color: #00008b;
-  cursor:pointer;
+  cursor: pointer;
   padding-right: 2em;
   padding-left: 2em;
   border-radius: 10px;
@@ -268,8 +305,17 @@ input {
   padding: 50px;
   background: rgba(97, 97, 107, 0.5);
   border-radius: 15px;
-  border-style: groove;
   text-align: center;
+}
+
+.form input {
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.form select {
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .form a:hover {
@@ -295,14 +341,14 @@ input {
 }
 
 /*----------------------------------Profile----------------------------*/
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.profile-top{
+.profile-top {
   font-size: 1.7em;
   color: gold;
   padding-bottom: 0.5em;
@@ -310,7 +356,7 @@ input {
   width: 100%;
 }
 
-.profile-account{
+.profile-account {
   display: flex;
   width: 100%;
   padding: 3em;
@@ -322,40 +368,40 @@ input {
   margin: 2em;
 }
 
-#account-type{
+#account-type {
   font-size: 2em;
 }
 
-#account-amount{
+#account-amount {
   font-size: 1.7em;
 }
 
-.personnal-section{
+.personnal-section {
   padding-top: 2em;
   margin-top: 2em;
   border-top: 1px solid grey;
   text-align: left;
 }
 
-.personnal-section li{
+.personnal-section li {
   font-size: 1.2em;
   padding: 5px 5px;
 }
 
-.change-email{
+.change-email {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 5px 5px;
 }
 
-.change-email blockquote{
+.change-email blockquote {
   width: auto;
   margin-left: 8px;
   margin-right: 8px;
 }
 
-.password-reset-section{
+.password-reset-section {
   display: flex;
   font-size: 1em;
   align-items: center;
@@ -363,9 +409,10 @@ input {
   text-align: center;
 }
 
-.password-reset-section h2{
+.password-reset-section h2 {
   padding-bottom: 1em;
 }
+
 /*-------------------------------Transactions-------------------------*/
 
 .buy-sell {
@@ -385,13 +432,13 @@ input {
 
 /*---------------------------------Crypto infos------------------------*/
 
-.crypto-infos{
+.crypto-infos {
   display: flex;
   flex-direction: column;
   width: 75%;
 }
 
-.coin-infos{
+.coin-infos {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -400,7 +447,7 @@ input {
   color: blue;
 }
 
-.header-infos{
+.header-infos {
   display: flex;
   width: auto;
   padding: 1em;
@@ -412,20 +459,20 @@ input {
   margin: 2em;
 }
 
-.header-infos #name{
+.header-infos #name {
   font-size: 1.5em;
   padding-top: 0.5em;
 }
 
-.header-infos #current-price{
+.header-infos #current-price {
   font-size: 3.4em;
 }
 
-.header-infos #price-change{
+.header-infos #price-change {
   font-size: 1.4em;
 }
 
-.more-infos{
+.more-infos {
   display: flex;
   flex-direction: column;
   border-top: 1px solid white;
@@ -433,13 +480,13 @@ input {
   padding-bottom: 2em;
 }
 
-.more-infos h1{
+.more-infos h1 {
   font-size: 2em;
   padding-bottom: 0.5em;
   text-align: center;
 }
 
-.more-infos-section{
+.more-infos-section {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -448,7 +495,7 @@ input {
   padding: 0.8em 0.8em;
 }
 
-.button-buy{
+.button-buy {
   width: 25%;
   font-size: 1.3em;
   padding: 0.5em 0.5em;
@@ -461,7 +508,7 @@ input {
   transition: background-color 0.5s, color 0.5s ease-in-out;
 }
 
-.button-buy:hover{
+.button-buy:hover {
   color: #8bc53f;
   background-color: white;
   border: 1px solid #8bc53f;
@@ -492,16 +539,16 @@ input {
 
 /*-------------------------------------PORTFOLIO------------------------------------------*/
 
-.portfolio-info{
+.portfolio-info {
   width: 75%;
 }
 
-.portfolio-section{
+.portfolio-section {
   display: flex;
   flex-direction: column;
 }
 
-.montant-investi-section{
+.montant-investi-section {
   display: flex;
   width: auto;
   padding: 1em;
@@ -514,7 +561,7 @@ input {
   margin: 1em;
 }
 
-.title-section{
+.title-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-size: 1.3em;
@@ -522,7 +569,7 @@ input {
   border-bottom: 1px solid white;
 }
 
-.crypto-section a{
+.crypto-section a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-size: 1.1em;
@@ -559,19 +606,19 @@ input {
   justify-content: space-evenly;
 }
 
-.transaction-section{
+.transaction-section {
   display: flex;
   flex-direction: column;
 }
 
-.transaction-title{
+.transaction-title {
   padding-top: 1.1em;
   font-size: 2.5em;
   text-align: center;
   padding-bottom: 1.1em;
 }
 
-.transaction-title-list{
+.transaction-title-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   font-size: 1.3em;
@@ -579,7 +626,7 @@ input {
   border-bottom: 1px solid white;
 }
 
-.transaction-elem{
+.transaction-elem {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   font-size: 1.1em;
@@ -590,7 +637,7 @@ input {
 }
 
 
-.sell-crypto-list-elem{
+.sell-crypto-list-elem {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -599,7 +646,7 @@ input {
   text-align: left;
 }
 
-.sell-button{
+.sell-button {
   width: auto;
   font-size: 1.3em;
   padding: 0.5em 0.5em;
@@ -611,17 +658,17 @@ input {
   transition: background-color 0.5s, color 0.5s ease-in-out;
 }
 
-.sell-button:hover{
+.sell-button:hover {
   color: #a33327;
   background-color: white;
   border: 1px solid #a33327;
 }
 
-.sell-component{
+.sell-component {
   width: 50%;
 }
 
-.transaction-box{
+.transaction-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -650,7 +697,7 @@ input {
 
 /*-----------------------------------CONTACT-------------------------------------------*/
 
-.contact h1{
+.contact h1 {
   color: gold;
   font-size: 2.2em;
   padding-top: 1em;

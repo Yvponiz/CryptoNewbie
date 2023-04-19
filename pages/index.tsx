@@ -2,13 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../components/layout'
 import { SearchBar } from '../components/searchBar'
-import { BestCrypto, TrendingCrypto } from '../components/cryptoPerfomance'
-import { WorstCrypto } from '../components/cryptoPerfomance'
+import { BestCrypto } from '../components/cryptoPerfomance'
 import { CryptoList } from '../components/cryptoList'
 import commonProps, { GreetingProps } from '../models/commonProps'
 import { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
-import { CoinContext, getCoinState} from '../context/coinContext'
+import { CoinContext, getCoinState } from '../context/coinContext'
 import { Coin } from '../models/coin'
 
 export function getServerSideProps({ req, res }) {
@@ -30,7 +29,7 @@ export const Welcome: FunctionComponent<GreetingProps> = ({ isLoggedIn, firstNam
   ) : <></>
 }
 
-const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
+const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
 
   const [coinState, setCoinState] = getCoinState()
   return (
@@ -38,8 +37,6 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <Head>
         <title>Crypto Newbie | Accueil</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="favicon.ico" />
       </Head>
       <main className='main'>
         <CoinContext.Provider value={coinState as Coin}>
@@ -47,21 +44,19 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName}) => {
             <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
           </div>
           <div className='section-performance'>
-            <TrendingCrypto />
-            <BestCrypto />
-            <WorstCrypto />
+            <BestCrypto/>
           </div>
 
           <div className='link-crypto'>
-            <a 
+            <a
               target='_blank'
               href='https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0' rel="noreferrer">
               Liste de Cryptos (id)
             </a>
           </div>
 
-          <div style={{ alignSelf: 'flex-start' }} className='search-bar'>
-            <SearchBar/>
+          <div className='search-bar'>
+            <SearchBar />
           </div>
 
           <div className='section-list'>

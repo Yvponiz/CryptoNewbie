@@ -2,40 +2,11 @@ import { FunctionComponent, useEffect, useState } from "react"
 import Image from "next/image"
 import { Coin } from "../models/coin"
 
-export const TrendingCrypto: FunctionComponent = () => {
-    const [coinState, setCoinState] = useState<Coin[]>([])
-
-    useEffect(() => {
-        fetch('/api/trending')
-            .then((res) => res.json())
-            .then((data) => {
-                setCoinState(data as Coin[])
-            })
-    }, [])
-
-    return (
-        <div className="performance">
-            <span className="performance-title">Tendance</span>
-            {coinState.slice(0, 3)
-                .map(({ id, item: { name, price_btc, small } }) =>
-                    <div className="tendance-layout" key={id}>
-                        <div className="performance-layout-in">
-                            <div className="performance-layout-left">
-                                <li className="coin-name">{name}</li>
-                                <li>Prix: {price_btc.toFixed(8) + ' $'}</li>
-                            </div>
-                            <li><Image src={small} width="30px" height="30px" alt='coin image'></Image></li>
-                        </div>
-                    </div>)}
-        </div>
-    )
-}
-
 export const BestCrypto: FunctionComponent = () => {
     const [handlerState, setHandler] = useState<Coin[]>([])
 
     useEffect(() => {
-        fetch('/api/bestCrypto')
+        fetch('/api/coinList')
             .then((res) => res.json())
             .then((data) => {
                 setHandler(data as Coin[]);
@@ -45,50 +16,25 @@ export const BestCrypto: FunctionComponent = () => {
 
     return (
         <div className="performance">
-            <span className="performance-title">Meilleure performance</span>
-            {handlerState.slice(0, 1)
-                .map(({ id, name, current_price, price_change_percentage_24h, image}) =>
-                    <div id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
-                        <div className="performance-layout-in">
-                            <div className="performance-layout-left">
-                                <li className="coin-name">{name}</li>
-                                <li>Prix: {`${current_price}$`}</li>
-                                <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
-                                    {price_change_percentage_24h + ' %'}</li>
-                            </div>
-                            <li><Image src={typeof image !== 'string' ? image.small : image} width="70px" height="70px" alt='coin image'></Image></li>
-                        </div>
-                    </div>)}
-        </div>
-    )
-}
-
-export const WorstCrypto: FunctionComponent = () => {
-    const [handlerState, setHandler] = useState<Coin[]>([])
-
-    useEffect(() => {
-        fetch('/api/worstCrypto')
-            .then((res) => res.json())
-            .then((data) => {
-                setHandler(data as Coin[])
-            })
-    }, [])
-
-    return (
-        <div className="performance">
-            <span className="performance-title">Pire performance</span>
-            {handlerState.slice(0, 1)
+            {handlerState!.slice(0, 4)
                 .map(({ id, name, current_price, price_change_percentage_24h, image }) =>
-                <div id="performance-onclick" className="performance-layout" key={id} onClick={() =>(sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
-                        <div className="performance-layout-in">
-                            <div className="performance-layout-left">
-                                <li className="coin-name">{name}</li>
-                                <li>Prix: {current_price + ' $'}</li>
-                                <li style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>{price_change_percentage_24h + ' %'}</li>
-                            </div>
-                            <li><Image src={typeof image !== 'string' ? image.small : image} width="70px" height="70px" alt='coin image'></Image></li>
-                        </div>
-                    </div>)}
+                    <ul id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
+                        <li>
+                            <Image
+                                src={typeof image !== 'string' ? image.small : image}
+                                width={100}
+                                height={100}
+                                alt='coin image'
+                            ></Image>
+                        </li>
+                        <li className="coin-name">
+                            {name}
+                            <p style={{ color: Math.sign(price_change_percentage_24h) === -1 ? 'red' : 'green' }}>
+                                {price_change_percentage_24h.toPrecision(3) + ' %'}
+                            </p>
+                        </li>
+                        <li>{`${current_price} $`}</li>
+                    </ul>)}
         </div>
     )
 }
