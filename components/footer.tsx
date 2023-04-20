@@ -1,12 +1,14 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 
 type FooterProps = {
     [name: string]: ReactElement[]
 };
 
-export default function Footer({}: FooterProps) {
+export default function Footer({ }: FooterProps) {
+    const { t } = useTranslation();
     return (
         <>
             <div className='footer'>
@@ -14,11 +16,11 @@ export default function Footer({}: FooterProps) {
                     <h1>
                         <Link href="/">Crypto Newbie</Link>
                     </h1>
-                    <span>© 2022 CryptoNewbie. Tout droits réservés</span>
+                    <span>{t('copyright')}</span>
                 </div>
                 <div className='footer-links'>
-                    <Link href='/'><a>Accueil</a></Link>
-                    <Link href='contact'><a>Contact</a></Link>
+                    <Link href='/'>{t('navbar.home')}</Link>
+                    <Link href='contact'>{t('contact.contact')}</Link>
                 </div>
             </div>
         </>

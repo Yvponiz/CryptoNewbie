@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
 
-module.exports = {
-  nextConfig,
-  images: {
-    domains:['assets.coingecko.com']
+    return config;
   },
-}
+  images: {
+    domains: ['assets.coingecko.com'],
+  },
+};
+
+module.exports = nextConfig;

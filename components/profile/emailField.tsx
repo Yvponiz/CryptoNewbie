@@ -1,5 +1,6 @@
 import { FormEvent, FunctionComponent, useState } from "react";
 import commonProps from "../../models/commonProps";
+import { useTranslation } from "react-i18next";
 
 type EmailProps = {
     isLoggedIn: boolean;
@@ -37,16 +38,17 @@ export const EmailField: FunctionComponent<EmailProps> = ({ email }) => {
     const [state, changeState] = useState({
         email: null
     })
+    const { t } = useTranslation();
 
     if (!editable) {
         return (
             <>
                 <div className='change-email'>
-                    <span>Courriel :</span>
+                    <span>{t('profile.email')} :</span>
                     <blockquote contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
                         {email}
                     </blockquote>
-                    <button className="submit-button" onClick={handleClick}>Modifier</button>
+                    <button className="submit-button" onClick={handleClick}>{t('profile.modify')}</button>
                 </div>
             </>
         );
@@ -58,7 +60,7 @@ export const EmailField: FunctionComponent<EmailProps> = ({ email }) => {
                 <blockquote style={{ backgroundColor: '#00008b' }} contentEditable={editable} onInput={(event) => changeState({ ...state, email: event.currentTarget.textContent })}>
                     {email}
                 </blockquote>
-                <button className="submit-button">Confirmer</button>
+                <button className="submit-button">{t('profile.confirm')}</button>
             </form>
         )
     }

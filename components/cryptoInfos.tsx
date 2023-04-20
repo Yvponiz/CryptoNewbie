@@ -24,7 +24,7 @@ export const CryptoInfos: FunctionComponent<SearchProps> = ({ isLoggedIn, onBuy 
                 <div className='header-infos'>
                     <li><Image
                         src={typeof coinState.image !== 'string' ? coinState.image.small : coinState.image}
-                        width="100px" height="100px" alt='coin image'>
+                        width={100} height={100} alt='coin image'>
                     </Image></li>
                     <li id="name">{coinState.name} ({coinState.symbol})</li>
                     <li id='current-price'>{coinState.market_data.current_price.cad.toLocaleString()} $</li>

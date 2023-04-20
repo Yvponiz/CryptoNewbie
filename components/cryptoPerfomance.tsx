@@ -2,21 +2,14 @@ import { FunctionComponent, useEffect, useState } from "react"
 import Image from "next/image"
 import { Coin } from "../models/coin"
 
-export const BestCrypto: FunctionComponent = () => {
-    const [handlerState, setHandler] = useState<Coin[]>([])
-
-    useEffect(() => {
-        fetch('/api/coinList')
-            .then((res) => res.json())
-            .then((data) => {
-                setHandler(data as Coin[]);
-                console.log("HELLO", data)
-            })
-    }, [])
+export const BestCrypto: FunctionComponent<{ coins: Coin[] }> = ({ coins }) => {
+    if (!Array.isArray(coins)) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="performance">
-            {handlerState!.slice(0, 4)
+            {coins?.slice(0, 4)
                 .map(({ id, name, current_price, price_change_percentage_24h, image }) =>
                     <ul id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
                         <li>

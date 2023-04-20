@@ -1,33 +1,26 @@
 import Link from "next/link";
 import Image from "next/image"
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
+import TwitterLogo from "../public/twitter-logo.svg"
+import DiscordLogo from "../public/discord-logo.svg"
+import { useTranslation } from "react-i18next";
+import i18n from "../utils/i18n";
 
 type HeaderProps = {
     isLoggedIn: boolean;
 };
 
-const ShowHeader: FunctionComponent<HeaderProps> = ({ isLoggedIn }) => {
-    if (isLoggedIn) {
-        return (
-            <>
-                <Link href='/'><a>Accueil</a></Link>
-                <Link href='/transactions'><a>Transactions</a></Link>
-                <Link href='/portfolio'><a>Portfolio</a></Link>
-                <Link href='/profile'><a>Profil</a></Link>
-                <Link href='/api/disconnect'><a>Deconnexion</a></Link>
-            </>
-        )
-    }
-    else
-        return (
-            <>
-                <Link href='/'><a>Accueil</a></Link>
-                <Link href='/login'><a>Connexion</a></Link>
-            </>
-        )
-}
-
 export default function Header({ isLoggedIn }: HeaderProps) {
+    const { t } = useTranslation();
+    const defaultLang: string = i18n.resolvedLanguage === 'en' ? 'fr' : 'en'
+    const [languageButton, setLanguageButton] = useState<string>(defaultLang);
+
+    const handleLanguageToggle = () => {
+        const newLanguage = i18n.resolvedLanguage === 'en' ? 'fr' : 'en';
+        i18n.changeLanguage(newLanguage);
+        const newButtonLanguage = newLanguage === 'en' ? 'fr' : 'en';
+        setLanguageButton(newButtonLanguage);
+    };
 
     return (
         <>
@@ -36,8 +29,8 @@ export default function Header({ isLoggedIn }: HeaderProps) {
                     <Image
                         className="logo"
                         src={"/CryptoNewbie.png"}
-                        width={60}
-                        height={60}
+                        width={40}
+                        height={40}
                         alt='header-logo'
                     />
                     <h1>
@@ -45,22 +38,26 @@ export default function Header({ isLoggedIn }: HeaderProps) {
                     </h1>
                 </div>
                 <nav className='header-links' id="header-links">
-                    <ShowHeader isLoggedIn={isLoggedIn} />
+                    {isLoggedIn ?
+                        <>
+                            <Link href='/'>{t('navbar.home')}</Link>
+                            <Link href='/transactions'>{t('navbar.transactions')}</Link>
+                            <Link href='/portfolio'>{t('navbar.portfolio')}</Link>
+                            <Link href='/profile'>{t('navbar.profile')}</Link>
+                            <Link href='/api/disconnect'>{t('navbar.logout')}</Link>
+                        </>
+                        :
+                        <>
+                        <Link href='/'>{t('navbar.home')}</Link>
+                        <Link href='/login'>{t('navbar.login')}</Link>
+                    </>
+                    }
                 </nav>
 
                 <span>
-                    <Image 
-                        src={'/twitter-logo.svg'}
-                        height={30}
-                        width={30}
-                        alt="twitter logo"
-                        />
-                    <Image 
-                        src={'/discord-logo.svg'}
-                        height={30}
-                        width={30}
-                        alt="discord logo"
-                        />
+                    <button onClick={handleLanguageToggle}>{languageButton}</button>
+                    <TwitterLogo />
+                    <DiscordLogo />
                 </span>
             </div>
         </>

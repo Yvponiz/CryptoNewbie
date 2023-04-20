@@ -3,6 +3,9 @@ body {
   font-family: 'PF Tempesta Five Condensed', sans-serif;
   color: white;
   background-image: linear-gradient(0deg, #0f051d 30%, #130749 70%);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: #db00d9 #fff;
 }
 
 #__next {
@@ -68,8 +71,7 @@ input {
 
 .header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   background-color: transparent;
@@ -82,6 +84,7 @@ input {
   gap: 1rem;
   padding-left: 2rem;
   font-size: 20px;
+  font-size: 1rem;
 }
 
 .header-logo a {
@@ -114,16 +117,29 @@ input {
 
 .header span {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
 .header span svg {
   cursor: pointer;
-  fill:#000000
+  width: 30px;
+  height: 30px;
+  fill: white;
+  transition: fill ease-in-out 0.3s;
 }
 
-.header span img:hover {
-  display: flex;
+.header span *:hover {
+  fill: #2600fc;
+  color: #2600fc;
+}
+
+.header span button {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .welcome-section {
@@ -156,6 +172,58 @@ input {
 .index-coin:hover {
   background-color: rgb(40, 40, 40);
   cursor: pointer;
+}
+
+.index-intro {
+  display: flex;
+  color: #f3f2f4;
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 0 auto;
+  max-width: 104rem;
+  position: relative;
+  text-align: center;
+  margin: 3rem;
+}
+
+.index-intro span{
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(25deg,#2600fc,#ff00ea);
+  color: transparent;
+}
+
+.coin-logo {
+  animation: moveUpDown 2s infinite;
+  -webkit-animation: moveUpDown 2s infinite;
+  position: absolute;
+  top: 40px;
+}
+
+.coin-logo.bitcoin {
+  left: -50px;
+}
+
+.coin-logo.ethereum {
+  right: -50px;
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@-webkit-keyframes moveUpDown {
+  0%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+  }
 }
 
 /*====Performance====*/
@@ -525,6 +593,7 @@ input {
   width: 100%;
   background-color: rgb(40, 40, 40);
   padding: 30px;
+  margin-top: 10rem;
 }
 
 .footer-links {
@@ -548,12 +617,16 @@ input {
   flex-direction: column;
 }
 
+.tab-portfolio-info {
+  margin-top: 5rem;
+}
+
 .montant-investi-section {
   display: flex;
   width: auto;
   padding: 1em;
   font-size: 2.1em;
-  background: rgba(97, 97, 107, 0.5);
+  background: rgba(97, 97, 107, 0.3);
   border-radius: 15px;
   border-style: groove;
   text-align: center;
@@ -567,6 +640,9 @@ input {
   font-size: 1.3em;
   color: gold;
   border-bottom: 1px solid white;
+  background: linear-gradient(25deg, #2600fc, #ff00ea);
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 .crypto-section a {
@@ -596,8 +672,15 @@ input {
   padding: 30px;
   background: rgba(97, 97, 107, 0.5);
   border-radius: 15px;
-  border-style: groove;
   font-size: 20px;
+}
+
+.transaction-box input {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .transaction-box-column {

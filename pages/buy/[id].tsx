@@ -7,6 +7,7 @@ import { SearchBar } from '../../components/searchBar'
 import { CoinContext, getCoinState, updateCoin } from '../../context/coinContext'
 import { Coin } from '../../models/coin'
 import commonProps, { UserProps } from '../../models/commonProps'
+import { useTranslation } from 'react-i18next'
 
 export async function getServerSideProps({ req, res }) {
   const regEx = new RegExp(".+/(.+)$"); // Expression regulìère pour prendre l'URL après le buy/
@@ -24,27 +25,24 @@ type InitialProps = UserProps & {
 
 const Buy: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount }) => {
   const [coinState, setCoinState] = getCoinState(id)
+  const { t } = useTranslation();
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Acheter</title>
-      </Head>
-
       <main className='main'>
         <CoinContext.Provider value={coinState as Coin}>
           <div className='page-top'>
             <div className='welcome-section'>
               <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
             </div>
-            <h1>Acheter</h1>
+            <h1> {t('transaction.buy')} </h1>
           </div>
           <div className='buy-account-amount'>
-            <h2>Montant dans le compte :</h2>
-            <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
+            <h2>{t('transaction.balance')} :</h2>
+            <h2 style={{ color: 'gold' }}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
-          <div style={{ marginTop: '50px', display: 'flex', alignSelf: 'flex-start' }} className='search-bar'>
-            <SearchBar/>
+          <div style={{ marginTop: '50px', display: 'flex' }} className='search-bar'>
+            <SearchBar />
           </div>
           <div style={{ marginTop: '50px' }}>
             <BuyBox coinId={id} />

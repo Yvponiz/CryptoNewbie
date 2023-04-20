@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import quickSort from "../utils/quickSort";
+import { useTranslation } from "react-i18next";
 
 type Transaction = {
     crypto: string,
@@ -10,6 +11,7 @@ type Transaction = {
 
 export const TransactionsInfo: FunctionComponent = ({ }) => {
     const [transaction, setTransaction] = useState<Transaction[]>([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetch('/api/getTransactions')
@@ -28,12 +30,12 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
 
         return (
             <div className="transaction-section">
-                <h1 className="transaction-title">Historique de vos transactions</h1>
+                <h1 className="transaction-title">{t('transaction.type')}</h1>
                 <div className="transaction-title-list">
                     <li id="date" onClick={sort} className="title-elem">Date</li>
-                    <li id="crypto" onClick={sort} className="title-elem">Crypto</li>
-                    <li id="price" onClick={sort}className="title-elem">Montant</li>
-                    <li id="type" className="title-elem">Type de transaction</li>
+                    <li id="crypto" onClick={sort} className="title-elem">{t('transaction.coin')}</li>
+                    <li id="price" onClick={sort} className="title-elem">{t('transaction.amount')}</li>
+                    <li id="type" className="title-elem">{t('transaction.type')}</li>
                 </div>
                 <div className="transaction-list">{transaction.slice(0, transaction.length).map(({ crypto, montant, date, type }) =>
                     <div className="transaction-elem" key={crypto}>

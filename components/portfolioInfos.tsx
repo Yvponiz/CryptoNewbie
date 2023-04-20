@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import quickSort from "../utils/quickSort";
+import { useTranslation } from "react-i18next";
 
 interface Crypto {
     nameId: string,
@@ -9,26 +10,28 @@ interface Crypto {
     averagePrice: number
 }
 
-export const PortfolioInfo: FunctionComponent = ({}) => {
-    
+export const PortfolioInfo: FunctionComponent = ({ }) => {
+
     const [portfolio, setPortfolio] = useState({
         value: null,
         accountAmount: null
     })
     const [crypto, setCrypto] = useState<Crypto[]>([]);
-    
-    const setIdCoin = ((id)=>{
+
+    const setIdCoin = ((id) => {
         sessionStorage.setItem("coinId", id);
     })
 
+    const { t } = useTranslation();
+
     useEffect(() => {
         fetch('/api/getPortfolio')
-        .then((res) => res.json())
-        .then((data) => {
-            setPortfolio(data)
-            setCrypto(JSON.parse(data.crypto) as Crypto[])
-        })
-    }, [])  
+            .then((res) => res.json())
+            .then((data) => {
+                setPortfolio(data)
+                setCrypto(JSON.parse(data.crypto) as Crypto[])
+            })
+    }, [])
 
     const sort = (async (e) => {
         console.log(crypto);
@@ -40,29 +43,29 @@ export const PortfolioInfo: FunctionComponent = ({}) => {
 
         return (
             <div className="portfolio-section">
-                <div className="montant-investi-section"> 
-                    <li>Montant investi</li>
-                    <li>{portfolio.value} $</li> 
-                    <li>Montant restant</li>
+                <div className="montant-investi-section">
+                    <li>{t('portfolio.invested')}</li>
+                    <li>{portfolio.value} $</li>
+                    <li>{t('portfolio.balance')}</li>
                     <li>{portfolio.accountAmount} $</li>
                 </div>
                 <div className="tab-portfolio-info">
                     <div className="title-section">
-                        <li onClick={sort} id="name_crypto" className="title-elem">Nom</li>
-                        <li onClick={sort} id="quantity" className="title-elem">Quantité</li>
-                        <li onClick={sort} id="average_price" className="title-elem">Prix moyen</li>
+                        <li onClick={sort} id="name_crypto" className="title-elem">{t('portfolio.coin')}</li>
+                        <li onClick={sort} id="quantity" className="title-elem">{t('portfolio.quantity')}</li>
+                        <li onClick={sort} id="average_price" className="title-elem">{t('portfolio.average')}</li>
                     </div>
-                    <div className="crypto-section">{crypto.slice(0, crypto.length).map(({name, quantity, nameId, averagePrice}) =>
+                    <div className="crypto-section">{crypto.slice(0, crypto.length).map(({ name, quantity, nameId, averagePrice }) =>
                         <a
                             href="coinInfo"
-                            onClick={(()=>setIdCoin(nameId))}
+                            onClick={(() => setIdCoin(nameId))}
                             key={nameId}
                         >
                             <li>{name}</li>
                             <li>{quantity}</li>
                             <li>{averagePrice} $</li>
                         </a>
-                )} </div>
+                    )} </div>
                 </div>
             </div>
         )

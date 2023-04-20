@@ -1,5 +1,6 @@
 import { FormEvent, FunctionComponent, useContext, useState } from "react";
 import { CoinContext } from "../context/coinContext";
+import { useTranslation } from "react-i18next";
 
 export type CoinBuyProps = {
     coinId: string
@@ -38,6 +39,8 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
         averagePrice: null
     })
 
+    const { t } = useTranslation();
+
     if (coinState) {
         const quantity = state.quantity;
         const price = parseFloat(coinState.market_data.current_price.cad.toFixed(5));
@@ -49,33 +52,33 @@ export const BuyBox: FunctionComponent<CoinBuyProps> = ({ coinId }) => {
 
         return (
             <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>
-                <h2>Transaction</h2>
-                <div style={{ display: 'flex', justifyContent:'space-evenly',width:'100%'}}>
+                <h2>{t('transaction.transaction')}</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
                     <div className="transaction-box-column">
-                        <label htmlFor="name">Crypto : </label>
-                        <label htmlFor="quantity">Quantité : </label>
-                        <label htmlFor="price">Prix : </label>
-                        <label htmlFor="total">Total: </label>
+                        <label htmlFor="name">{t('transaction.coin')} : </label>
+                        <label htmlFor="quantity">{t('transaction.quantity')} : </label>
+                        <label htmlFor="price">{t('transaction.price')} : </label>
+                        <label htmlFor="total">{t('transaction.total')}: </label>
                     </div>
                     <div className="transaction-box-column">
                         <input
                             onChange={(event) => changeState({ ...state, nameId: event.target.value })}
                             type="hidden" id="nameId" name="nameId" value={coinState.id} disabled />
                         <input
-                             onChange={(event) => changeState({ ...state, name: event.target.value })}
+                            onChange={(event) => changeState({ ...state, name: event.target.value })}
                             type="text" id="name" name="name" value={coinState.name} disabled />
                         <input onChange={(event) => changeState({ ...state, quantity: event.target.value })}
                             type="number" id="quantity" name="quantity" required />
                         <input
                             type="text" id="price" name="price" disabled
-                            value={price.toLocaleString(undefined, {'minimumFractionDigits': 2, 'maximumFractionDigits':2})}  />
-                        <input 
+                            value={price.toLocaleString(undefined, { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })} />
+                        <input
                             onChange={(event) => changeState({ ...state, total: event.target.value })}
-                            type="text" id="total" name="total" value={total.toFixed(2)}  disabled/>
+                            type="text" id="total" name="total" value={total.toFixed(2)} disabled />
                     </div>
                 </div>
 
-                <button className="submit-button" type="submit">Confirmer</button>
+                <button className="submit-button" type="submit">{t('transaction.confirm')}</button>
             </form>
         )
     }

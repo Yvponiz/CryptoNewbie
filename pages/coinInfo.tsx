@@ -27,9 +27,7 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstNam
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <title>Crypto Newbie | {setCoinName()}  </title>
-
-      <main className='main'>
+       <main className='main'>
         <CoinContext.Provider value={coinState as Coin} >
           <div className='welcome-section'>
             <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
@@ -42,7 +40,6 @@ const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstNam
             />
             <CoinChart />
           </div>
-          
         </CoinContext.Provider>
       </main>
 
