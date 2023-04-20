@@ -15,10 +15,6 @@ const Password: NextPage<Props> = ({ isLoggedIn, firstName, lastName }) => {
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Connexion</title>
-      </Head>
-
       <main className='main'>
         <div className='profile'>
           <div className='profile-top'>

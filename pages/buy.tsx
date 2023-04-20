@@ -13,10 +13,6 @@ const Transactions: NextPage<UserProps> = ({ isLoggedIn, firstName, lastName }) 
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Acheter</title>
-      </Head>
-
       <main className='main'>
         <div className='page-top'>
           <div className='welcome-section'>

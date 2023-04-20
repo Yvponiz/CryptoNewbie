@@ -25,10 +25,6 @@ const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
-      <Head>
-        <title>Crypto Newbie | Vendre</title>
-      </Head>
-
       <main className='main'>
         <CoinContext.Provider value={coinState as Coin}>
           <div className='page-top'>

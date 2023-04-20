@@ -12,12 +12,11 @@ type Props = GreetingProps
 const Contact: NextPage<Props> = (props:Props) => {
     return (
         <Layout isLoggedIn={props.isLoggedIn} className='container'>
-        <Head> <title>Crypto Newbie | Contactez-Nous</title> </Head>
   
         <main className='main'>
           <div className='contact'>
           <h1>Pour nous contacter</h1>
-            <p>Yvanoski Sanon : e.ysanon@etu.cvm.qc.ca</p>
+            <p>Yvanoski Sanon : yvanoski.s@gmail.com</p>
             <p>Nikolas Ouimet : e.nouimet@etu.cvm.qc.ca</p>
           </div>
         </main>
