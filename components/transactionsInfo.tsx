@@ -42,7 +42,9 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
                         <li>{date}</li>
                         <li>{crypto}</li>
                         <li>{montant} $</li>
-                        <li>{type}</li>
+                        <li style={{color: type === 'achat' ? 'green': 'red' }}>
+                            {t(`transaction.${type}`)}
+                        </li>
                     </div>
                 )} </div>
 

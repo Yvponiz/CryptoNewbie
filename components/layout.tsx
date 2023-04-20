@@ -12,7 +12,10 @@ export default function Layout({ children, isLoggedIn }: LayoutProps) {
   return (
     <div className="layout">
       <Header isLoggedIn={isLoggedIn}></Header>
-        {children}
+        <div className="layout-child">
+          {children}
+        </div>
       <Footer></Footer>
-    </div>);
+    </div>
+  );
 }

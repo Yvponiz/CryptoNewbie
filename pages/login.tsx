@@ -17,7 +17,7 @@ const Login: NextPage<Props> = (props: Props) => {
   return (
     <Layout isLoggedIn={props.isLoggedIn} className='container'>
       <main className='main'>
-        <h1>{t('signup.login')}</h1>
+        <h1>{t('login.login')}</h1>
         <div className='content-form'>
           <LoginForm />
         </div>

@@ -13,17 +13,15 @@ export function getServerSideProps({ req, res }) {
   return commonProps({ req, res })
 }
 
-const setCoinName = () => {
-  if (typeof window !== 'undefined') {
-    let coinName = sessionStorage.getItem('coinName');
-    console.log("coinInfo/coin: ", coinName);
-    return coinName;
-  }
-}
 
 const CoinInfos: NextPage<SearchProps & GreetingProps> = ({ isLoggedIn, firstName }) => {
-  const router = useRouter();
   const [coinState, setCoinState] = getCoinState()
+  const router = useRouter();
+  
+  const setCoinName = () => {
+    const {coinName} = router.query;
+    return coinName;
+  }
 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>

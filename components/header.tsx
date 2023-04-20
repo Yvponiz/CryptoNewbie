@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image"
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import TwitterLogo from "../public/twitter-logo.svg"
 import DiscordLogo from "../public/discord-logo.svg"
 import { useTranslation } from "react-i18next";
@@ -11,6 +11,7 @@ type HeaderProps = {
 };
 
 export default function Header({ isLoggedIn }: HeaderProps) {
+    const [sticky, setSticky] = useState(false);
     const { t } = useTranslation();
     const defaultLang: string = i18n.resolvedLanguage === 'en' ? 'fr' : 'en'
     const [languageButton, setLanguageButton] = useState<string>(defaultLang);
@@ -22,10 +23,33 @@ export default function Header({ isLoggedIn }: HeaderProps) {
         setLanguageButton(newButtonLanguage);
     };
 
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const handleScroll = () => {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition > 150) {
+                    setSticky(true);
+                } else {
+                    setSticky(false);
+                }
+            };
+            window.addEventListener("scroll", handleScroll);
+            return () => window.removeEventListener("scroll", handleScroll);
+        }
+    }, []);
+
+
+    const goTop = () => {
+        window.scrollTo({
+            top: (0),
+            behavior: "smooth",
+        });
+    };
+
     return (
         <>
-            <div className='header'>
-                <div className='header-logo'>
+            <div className={sticky ? "header-sticky" : "header"}>
+                <div className='header-logo' onClick={goTop}>
                     <Image
                         className="logo"
                         src={"/CryptoNewbie.png"}
@@ -48,13 +72,13 @@ export default function Header({ isLoggedIn }: HeaderProps) {
                         </>
                         :
                         <>
-                        <Link href='/'>{t('navbar.home')}</Link>
-                        <Link href='/login'>{t('navbar.login')}</Link>
-                    </>
+                            <Link href='/'>{t('navbar.home')}</Link>
+                            <Link href='/login'>{t('navbar.login')}</Link>
+                        </>
                     }
                 </nav>
 
-                <span>
+                <span className="header-span">
                     <button onClick={handleLanguageToggle}>{languageButton}</button>
                     <TwitterLogo />
                     <DiscordLogo />

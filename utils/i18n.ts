@@ -21,11 +21,12 @@ i18next
                     index: {
                         introtrack: 'Track and Trade',
                         introcrypto: 'Crypto Currencies',
-                        list:'List of coins (id)',
+                        list: 'List of coins (id)',
                     },
                     greetings: {
+                        morning: 'good morning',
                         hi: 'hi',
-                        evening:'good evening'
+                        evening: 'good evening'
                     },
                     login: {
                         login: 'login',
@@ -52,7 +53,15 @@ i18next
                         coin: 'coin',
                         price: 'price',
                         market: 'market cap',
-                        twentyfour: '24h'
+                        twentyfour: '24h',
+                        info: 'More informations',
+                        growth: 'Growth in ',
+                        hours: '24 hours',
+                        days: '7 days',
+                        month: 'a month',
+                        year: 'in a year',
+                        highest: 'highest price in 24h',
+                        lowest: 'lowest price in 24h',                        
                     },
                     transaction: {
                         transaction: 'transaction',
@@ -66,7 +75,9 @@ i18next
                         confirm: 'confirm',
                         history: 'transaction history',
                         type: 'type of transaction',
-                        amount: 'amount'
+                        amount: 'amount',
+                        achat:'purchase',
+                        vente:'sale'
                     },
                     portfolio: {
                         portfolio: 'portfolio',
@@ -78,20 +89,22 @@ i18next
                     },
                     profile: {
                         account: 'account',
-                        info:'personal informations',
-                        lastname:'last name',
+                        info: 'personal informations',
+                        lastname: 'last name',
                         firstname: 'first name',
                         birth: 'date of birth',
                         email: 'email',
                         modify: 'change email',
-                        modifypass:'modify password',
-                        confirm:'confirm'
+                        modifypass: 'modify password',
+                        confirm: 'confirm'
                     },
                     contact: {
                         contact: 'Contact',
+                        us:'Contact us'
                     },
                     copyright: 'Copyright © 2023. All rights are reserved.',
-                    search:'search'
+                    search: 'search',
+                    sorry: `CryptoNewbie uses a free API and the limit of calls has been reached, please try again in a few minutes. Sorry for the inconvenience 🙇🏾‍♂️`
                 }
             },
             fr: {
@@ -107,11 +120,12 @@ i18next
                     index: {
                         introtrack: 'Suivre et échanger',
                         introcrypto: 'des crypto-monnaies',
-                        list:'Liste de cryptos (id)',
+                        list: 'Liste de cryptos (id)',
                     },
                     greetings: {
+                        morning: 'bon matin',
                         hi: 'bonjour',
-                        evening:'bonsoir'
+                        evening: 'bonsoir'
                     },
                     login: {
                         login: 'Connexion',
@@ -138,7 +152,15 @@ i18next
                         coin: 'Crypto',
                         price: 'prix',
                         market: 'market cap',
-                        twentyfour: '24h'
+                        twentyfour: '24h',
+                        info: 'informations supplémentaires',
+                        growth: 'Croissance en ',
+                        hours: '24 heures',
+                        days: '7 jours',
+                        month: 'un mois',
+                        year: 'un an',
+                        highest: 'plus haut prix 24h',
+                        lowest: 'plus bas prix 24h',  
                     },
                     transaction: {
                         transaction: 'transaction',
@@ -152,7 +174,9 @@ i18next
                         confirm: 'confirmer',
                         history: 'Historique de transactions',
                         type: 'Type de transaction',
-                        amount: 'Montant'
+                        amount: 'Montant',
+                        achat:'achat',
+                        vente:'vente'
                     },
                     portfolio: {
                         portfolio: 'portfolio',
@@ -164,20 +188,22 @@ i18next
                     },
                     profile: {
                         account: 'Compte',
-                        info:'Informations personnelles',
-                        lastname:'Nom',
+                        info: 'Informations personnelles',
+                        lastname: 'Nom',
                         firstname: 'Prénom',
                         birth: 'Date de naissance',
                         email: 'courriel',
                         modify: 'modifier courriel',
-                        modifypass:'modifier mot de passe',
-                        confirm:'confirmer'
+                        modifypass: 'modifier mot de passe',
+                        confirm: 'confirmer'
                     },
                     contact: {
                         contact: 'Contacte',
+                        us:'Contactez-nous'
                     },
                     copyright: 'Copyright © 2023. Tous droits réservés.',
-                    search:'rechercher'
+                    search: 'rechercher',
+                    sorry: `CryptoNewbie utilise un API gratuit et la limite d'appels a été atteinte, veuillez réessayer dans quelques minutes. Désolé pour l'inconvenient 🙇🏾‍♂️`
                 }
             },
         },
