@@ -15,6 +15,11 @@ export default function Header({ isLoggedIn }: HeaderProps) {
     const { t } = useTranslation();
     const defaultLang: string = i18n.resolvedLanguage === 'en' ? 'fr' : 'en'
     const [languageButton, setLanguageButton] = useState<string>(defaultLang);
+    const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuVisible(!isMobileMenuVisible);
+    };
 
     const handleLanguageToggle = () => {
         const newLanguage = i18n.resolvedLanguage === 'en' ? 'fr' : 'en';
@@ -47,44 +52,54 @@ export default function Header({ isLoggedIn }: HeaderProps) {
     };
 
     return (
-        <>
-            <div className={sticky ? "header-sticky" : "header"}>
-                <div className='header-logo' onClick={goTop}>
-                    <Image
-                        className="logo"
-                        src={"/CryptoNewbie.png"}
-                        width={40}
-                        height={40}
-                        alt='header-logo'
-                    />
-                    <h1>
-                        <Link href="/">Crypto Newbie</Link>
-                    </h1>
-                </div>
-                <nav className='header-links' id="header-links">
-                    {isLoggedIn ?
-                        <>
-                            <Link href='/'>{t('navbar.home')}</Link>
-                            <Link href='/transactions'>{t('navbar.transactions')}</Link>
-                            <Link href='/portfolio'>{t('navbar.portfolio')}</Link>
-                            <Link href='/profile'>{t('navbar.profile')}</Link>
-                            <Link href='/api/disconnect'>{t('navbar.logout')}</Link>
-                        </>
-                        :
-                        <>
-                            <Link href='/'>{t('navbar.home')}</Link>
-                            <Link href='/login'>{t('navbar.login')}</Link>
-                        </>
-                    }
-                </nav>
+        <header className={sticky ? "header-sticky" : "header"}>
+            <div className='header-logo' onClick={goTop}>
+                <Image
+                    className="logo"
+                    src={"/CryptoNewbie.png"}
+                    width={40}
+                    height={40}
+                    alt='header-logo'
+                />
+                <h1>
+                    <Link href="/">Crypto Newbie</Link>
+                </h1>
+            </div>
 
+            <button onClick={toggleMobileMenu} className="hamburger">
+                <Image
+                    src={"/hamburger.svg"}
+                    alt={"/hamburger icon"}
+                    width={30}
+                    height={30}
+                />
+
+            </button>
+            
+            <nav className={`header-links ${isMobileMenuVisible ? "visible" : ""}`} id="header-links">
+                {isLoggedIn ?
+                    <ul>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/'>{t('navbar.home')}</Link>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/transactions'>{t('navbar.transactions')}</Link>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/portfolio'>{t('navbar.portfolio')}</Link>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/profile'>{t('navbar.profile')}</Link>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/api/disconnect'>{t('navbar.logout')}</Link>
+                    </ul>
+                    :
+                    <ul>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/'>{t('navbar.home')}</Link>
+                        <Link onClick={()=> setIsMobileMenuVisible(false)} href='/login'>{t('navbar.login')}</Link>
+                    </ul>
+                }
+                
                 <span className="header-span">
                     <button onClick={handleLanguageToggle}>{languageButton}</button>
                     <TwitterLogo />
                     <DiscordLogo />
                 </span>
-            </div>
-        </>
+            </nav>
+
+        </header>
     )
 }
 
