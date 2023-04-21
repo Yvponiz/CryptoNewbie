@@ -45,7 +45,7 @@ export const CryptoList: FunctionComponent<{ coins: Coin[] }> = ({ coins }) => {
     const currentCoins = coins.slice(startIndex, endIndex);
   
     return (
-      <div>
+      <div className="crypto-list">
         <ul className="titles-list">
           <li onClick={sort} id="name" className="title-elem">
             {t("crypto.coin")}

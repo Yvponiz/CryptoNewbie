@@ -45,7 +45,7 @@ const Profile: NextPage<UserProps> = ({ isLoggedIn, lastName, firstName, email, 
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <main className='main'>
-        <h1 style={{ alignSelf: 'flex-end' }}>Profil</h1>
+        <h1 style={{ alignSelf: 'flex-end', fontSize:'1.5rem' }}>{t('profile.profile')}</h1>
         <div className='profile'>
           <div className='profile-top'>
             <h1>{firstName} {lastName}</h1>

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Layout from '../components/layout'
 import { SearchBar } from '../components/searchBar'
-import { BestCrypto } from '../components/cryptoPerfomance'
+import { BestCrypto } from '../components/bestCrypto'
 import { CryptoList } from '../components/cryptoList'
 import commonProps, { GreetingProps } from '../models/commonProps'
 import { FunctionComponent, useEffect, useState } from 'react'
@@ -34,6 +34,7 @@ const Home: NextPage<GreetingProps> = ({ isLoggedIn, firstName }) => {
   const [coinState, setCoinState] = useState<Coin[]>([]);
   const [showMessage, setShowMessage] = useState<boolean>(false)
   const [message, setMessage] = useState<string>();
+  
   const { t } = useTranslation();
 
   useEffect(() => {

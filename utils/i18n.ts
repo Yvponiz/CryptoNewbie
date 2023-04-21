@@ -88,6 +88,7 @@ i18next
                         average: 'average price'
                     },
                     profile: {
+                        profile: 'profile',
                         account: 'account',
                         info: 'personal informations',
                         lastname: 'last name',
@@ -187,6 +188,7 @@ i18next
                         average: 'Prix moyen'
                     },
                     profile: {
+                        profile: 'profil',
                         account: 'Compte',
                         info: 'Informations personnelles',
                         lastname: 'Nom',

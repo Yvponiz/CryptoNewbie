@@ -47,7 +47,7 @@ export const PortfolioInfo: FunctionComponent = ({ }) => {
                     <li>{t('portfolio.invested')}</li>
                     <li>{portfolio.value} $</li>
                     <li>{t('portfolio.balance')}</li>
-                    <li>{portfolio.accountAmount} $</li>
+                    <li>{portfolio.accountAmount?.toPrecision(6)} $</li>
                 </div>
                 <div className="tab-portfolio-info">
                     <div className="title-section">

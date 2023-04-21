@@ -7,6 +7,7 @@ import { SellComponent } from '../components/sellComponent';
 import { CoinContext, getCoinState } from '../context/coinContext';
 import { Coin } from '../models/coin';
 import commonProps, { UserProps } from '../models/commonProps';
+import { useTranslation } from 'react-i18next';
 
 export async function getServerSideProps({ req, res }) {
   const common = await commonProps({ req, res })
@@ -22,7 +23,8 @@ type InitialProps = UserProps & {
 const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount }) => {
   const [coinState, setCoinState] = getCoinState(id)
   const router = useRouter();
-
+  const { t } = useTranslation();
+  
   return (
     <Layout isLoggedIn={isLoggedIn} className='container'>
       <main className='main'>
@@ -31,10 +33,10 @@ const Sell: NextPage<InitialProps> = ({ isLoggedIn, firstName, id, accountAmount
             <div className='welcome-section'>
               <Welcome isLoggedIn={isLoggedIn} firstName={firstName} />
             </div>
-            <h1>Vendre</h1>
+            <h1>{t('transaction.sell')}</h1>
           </div>
           <div className='buy-account-amount'>
-            <h2>Montant dans le compte :</h2>
+            <h2>{t('transaction.balance')}</h2>
             <h2 style={{color:'gold'}}>{`${accountAmount.toLocaleString()}$`}</h2>
           </div>
           <div className='sell-component'>

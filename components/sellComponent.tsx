@@ -1,5 +1,6 @@
 import { FormEvent, FunctionComponent, useEffect, useState } from "react";
 import { Coin } from "../models/coin";
+import { useTranslation } from "react-i18next";
 
 interface Crypto {
     nameId: string,
@@ -16,7 +17,8 @@ export const SellComponent: FunctionComponent<SellProps> = ({}) => {
     const [showDiv, setShowDiv] = useState(false);
     const [userCryptos, setUserCryptos] = useState<Crypto[]>([]);
     const [sellingCoin, setSellingCoin] = useState<Crypto>()
-
+    const { t } = useTranslation();
+    
     useEffect(() => {
         fetch('/api/getCryptos')
             .then((res) => res.json())
@@ -31,9 +33,9 @@ export const SellComponent: FunctionComponent<SellProps> = ({}) => {
             <div>
                 <div className="sell-crypto-list">{userCryptos.slice(0, 5).map(({name, quantity }, key) =>
                     <div className="sell-crypto-list-elem" key={key}>
-                        <li>Crypto : {name}</li>
-                        <li>Quantité : {quantity}</li>
-                        <button className="sell-button" onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> Vendre </button>
+                        <li>{t('transaction.coin')} : {name}</li>
+                        <li>{t('transaction.quantity')} : {quantity}</li>
+                        <button className="sell-button" onClick={() => { setShowDiv(true), setSellingCoin(userCryptos[key])}} key={key}> {t('transaction.sell')} </button>
                     </div>
                 )} </div>
                 {showDiv ? <SellBox coin={sellingCoin}/> : null}
@@ -51,6 +53,7 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
         name: coin.name,
         nameId: coin.nameId
     });
+    const { t } = useTranslation();
 
     useEffect(() => {
         fetch(`https://api.coingecko.com/api/v3/coins/${coin.nameId}`)
@@ -67,13 +70,13 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
         return (    
             <>
                 <form className="transaction-box" action="/" method="post" onSubmit={(event) => onSubmit(event, state)}>
-                    <h2>Transaction</h2>
+                    <h2>{t('transaction.transaction')}</h2>
                     <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
                         <div className="transaction-box-column">
-                            <label htmlFor="name">Crypto : </label>
-                            <label htmlFor="quantity">Quantité : </label>
-                            <label htmlFor="price">Prix : </label>
-                            <label htmlFor="total">Total: </label>
+                            <label htmlFor="name">{t('transaction.coin')} : </label>
+                            <label htmlFor="quantity">{t('transaction.quantity')} : </label>
+                            <label htmlFor="price">{t('transaction.price')} : </label>
+                            <label htmlFor="total">{t('transaction.total')}: </label>
                         </div>
                         <div className="transaction-box-column">
                             <input onChange={(event) => changeState({ ...state, nameId: event.target.value })} type="hidden" id="nameId" name="nameId" value={coin.nameId} />
@@ -84,7 +87,7 @@ export const SellBox: FunctionComponent<SellProps> = ({coin}) => {
                         </div>
                     </div>
     
-                    <button className="submit-button" type="submit">Confirmer</button>
+                    <button className="submit-button" type="submit">{t('transaction.confirm')}</button>
                 </form>
             </>
         )

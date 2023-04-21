@@ -30,7 +30,7 @@ export const TransactionsInfo: FunctionComponent = ({ }) => {
 
         return (
             <div className="transaction-section">
-                <h1 className="transaction-title">{t('transaction.type')}</h1>
+                <h1 className="transaction-title">{t('transaction.history')}</h1>
                 <div className="transaction-title-list">
                     <li id="date" onClick={sort} className="title-elem">Date</li>
                     <li id="crypto" onClick={sort} className="title-elem">{t('transaction.coin')}</li>
