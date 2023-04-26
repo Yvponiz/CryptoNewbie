@@ -1,17 +1,28 @@
-import { FunctionComponent, useEffect, useState } from "react"
+import { FunctionComponent } from "react"
 import Image from "next/image"
 import { Coin } from "../models/coin"
+import { useRouter } from 'next/router';
+
 
 export const BestCrypto: FunctionComponent<{ coins: Coin[] }> = ({ coins }) => {
+    const router = useRouter();
     if (!Array.isArray(coins)) {
         return <div>Loading...</div>;
     }
+    
+    const setSelection = (id) => {
+        router.push({
+            pathname: "/coinInfo",
+            query: { coinId: id }
+        });
+    };
+
 
     return (
         <div className="performance">
             {coins?.slice(0, 4)
                 .map(({ id, name, current_price, price_change_percentage_24h, image }) =>
-                    <ul id="performance-onclick" className="performance-layout" key={id} onClick={() => (sessionStorage.setItem('coinId', id), window.location.href = '/coinInfo')}>
+                    <ul id="performance-onclick" className="performance-layout" key={id} onClick={() => setSelection(id)}>
                         <li>
                             <Image
                                 src={typeof image !== 'string' ? image.small : image}
